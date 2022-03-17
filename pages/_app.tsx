@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app'
 import { DAppProvider, Config } from '@usedapp/core'
 import { Mainnet } from '@usedapp/core'
 import '../styles/globals.css'
+import Layout from '../components/utils/Layout'
 
 const config = {
   readOnlyChainId: Mainnet.chainId,
@@ -13,7 +14,9 @@ const config = {
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <DAppProvider config={config}>
-      <Component {...pageProps} /> 
+      <Layout>
+        <Component {...pageProps} /> 
+      </Layout>
     </DAppProvider>
   )
 }

@@ -7,7 +7,7 @@ const Home: NextPage = () => {
   const userBalance = useEtherBalance(account)
 
   return (
-    <div className='flex-row bg-blue'>
+    <div className='bg-blue'>
       {!account && <button onClick={activateBrowserWallet}>Connect</button>}
       {account && <h1 className=''>Account: {account}</h1>}
       {userBalance && <h1>Balance: {parseFloat(formatEther(userBalance)).toFixed(3)}</h1>}
