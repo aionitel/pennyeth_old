@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app'
 import { DAppProvider, Config } from '@usedapp/core'
 import { Mainnet } from '@usedapp/core'
+import '../styles/globals.css'
 
 const config = {
   readOnlyChainId: Mainnet.chainId,
