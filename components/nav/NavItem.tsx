@@ -10,13 +10,12 @@ interface NavItemProps {
 }
 
 const NavItem: React.FC<NavItemProps> = ({ title, path, Icon }) => {
-
   return (
     <div className='flex'>
       <li className='hover:cursor-pointer'>
         <Link href={path}>
           <a className="flex items-center text-sm py-4 px-6 h-12 overflow-hidden">
-            <div className='bg-red p-2 rounded-full'>
+            <div className='bg-gray p-2 rounded-full'>
               <Icon className='text-white' />
             </div>
             <span>

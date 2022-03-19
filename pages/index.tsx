@@ -2,14 +2,17 @@ import type { NextPage } from 'next'
 import { useState, useEffect } from 'react'
 import { useMoralis } from 'react-moralis'
 import { useRecoilState } from 'recoil'
-import { currUserAtom } from '../state/atoms'
+import { currUserAtom, currPageAtom } from '../state/atoms'
 import { useMoralisWeb3Api } from 'react-moralis'
+import Image from 'next/image'
+
+const logoSize = 25;
 
 const Home: NextPage = () => {
   const Web3Api = useMoralisWeb3Api()
 
   const [currUser, setCurrUser] = useRecoilState<any>(currUserAtom)
-  const [balance, setBalance] = useState<string | null>(null)
+  const [currPage, setCurrPage] = useRecoilState(currPageAtom)
 
   const [loading, setLoading] = useState<boolean>(false)
 
@@ -31,6 +34,8 @@ const Home: NextPage = () => {
       const user = await authenticate({ 
         provider: "walletconnect", chainId: 56
     })
+
+      setCurrUser(user)
     }
   }
 
@@ -40,7 +45,9 @@ const Home: NextPage = () => {
 
       const user = await authenticate()
 
-      setCurrUser(Moralis.User.current())
+      setCurrUser(user)
+      
+      setLoading(false)
     }
   }
 
@@ -55,15 +62,22 @@ const Home: NextPage = () => {
   }
 
   useEffect(() => {
+    setCurrPage('Assets')
+    
     Moralis.start({ serverUrl: 'https://uub9lwbbgued.usemoralis.com:2053/server', appId: 'KJIRkUopo2HKK65pCzrRWTKHNCz5ZEyRU6jgKF1U' })
 
     getNFTS()
   }, [])
 
   return (
-    <div className='bg-blue'>
-      {!isAuthenticated && <button onClick={handleMetamaskLogin}>Connect with Metamask</button>}
-      {!isAuthenticated && <button onClick={handleGeneralLogin}>Connect</button>}
+    <div className='flex bg-blue'>
+      {!isAuthenticated &&
+      <>
+        <Image src='https://i.imgur.com/Ga5DEu3.png' height={logoSize} width={logoSize} />
+        <button onClick={handleMetamaskLogin} className='mx-10'>Connect with Metamask</button>
+      </>
+      }
+      {!isAuthenticated && <button onClick={handleGeneralLogin}>Connect with WalletConnect</button>}
       {isAuthenticated && <button onClick={handleLogout}>Logout</button>}
       {isAuthenticated && <h1>{currUser}</h1>}
     </div>

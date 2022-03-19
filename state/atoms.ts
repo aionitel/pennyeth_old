@@ -2,7 +2,7 @@ import { atom } from "recoil";
 
 export const currPageAtom = atom({
   key: 'currPage',
-  default: 'Home' as string
+  default: 'Assets' as string
 })
 
 export const currUserAtom = atom({

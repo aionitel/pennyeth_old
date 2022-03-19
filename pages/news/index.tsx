@@ -1,7 +1,13 @@
 import { NextPage } from 'next'
-import React from 'react'
+import React, { useEffect} from 'react'
+import { currPageAtom } from '../../state/atoms'
+import { useRecoilState } from 'recoil'
 
 const News: NextPage = () => {
+  const [currPage, setCurrPage] = useRecoilState(currPageAtom)
+
+  useEffect(() => setCurrPage('News'), [])
+
   return (
     <div>
       news page
