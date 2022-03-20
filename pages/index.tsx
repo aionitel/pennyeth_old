@@ -18,7 +18,7 @@ const Home: NextPage = () => {
   }, [])
 
   return (
-    <div className='flex'>
+    <div className='flex h-screen bg-black text-white'>
       Assets page
     </div>
   )
