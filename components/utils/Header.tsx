@@ -11,7 +11,7 @@ const Header = () => {
   
   if (!currUser) { // if user wallet is not connected
     return (
-      <div className='flex justify-between bg-black items-center text-white h-20'>
+      <div className='justify-between bg-black items-center text-white h-20 hidden sm:flex'>
         <h1 className='text-4xl ml-10'>{currPage}</h1>
         <div className='bg-blue rounded-xl'>
           <h1 className='p-2'>Connect</h1>

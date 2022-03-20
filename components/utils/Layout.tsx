@@ -5,7 +5,7 @@ import Header from './Header'
 
 const Layout: React.FC = ({ children }: any) => {
   return (
-    <div className='flex'>
+    <div className='flex font-inter'>
       <NavBar />
       <main className='w-screen'>
         <MobileNavBar />
