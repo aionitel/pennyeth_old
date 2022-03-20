@@ -20,6 +20,7 @@ module.exports = {
         'cyan': '#00ffff',
         'blue': '#1552F0',
         'gray': '#171717',
+        'lightgray': '#696969',
         "pink": '#FFCCCC',
         "black": '#000000'
       }

@@ -70,7 +70,7 @@ const Home: NextPage = () => {
   }, [])
 
   return (
-    <div className='flex bg-blue w-screen h-screen'>
+    <div className='flex bg-black'>
       {!isAuthenticated &&
       <>
         <Image src='https://i.imgur.com/Ga5DEu3.png' height={logoSize} width={logoSize} />

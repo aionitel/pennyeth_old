@@ -10,9 +10,11 @@ const Header: React.FC = () => {
   const currPage = useRecoilValue(currPageAtom)
 
   return (
-    <div className='flex h-20 w-screen'>
-      {currPage}
-      header
+    <div className='flex h-20 bg-black border-b border-lightgray'>
+      <h1 className='text-white text-4xl'>{currPage}</h1>
+      <div>
+        <h1 className='text-white'>Wallet Connected</h1>
+      </div>
     </div>
   )
 }
