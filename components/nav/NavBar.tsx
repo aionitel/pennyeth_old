@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
 import NavItem from './NavItem'
 import { BiCoin, BiNews } from 'react-icons/bi'
-import { GiTwoCoins } from 'react-icons/gi'
-import { VscThreeBars } from 'react-icons/vsc'
+import { RiHandCoinLine as HandIcon } from 'react-icons/ri'
 
 const NavBarItems = [
   {
     title: 'Assets',
     path: '/',
-    icon: BiCoin
+    icon: HandIcon
   },
   {
     title: 'News',
@@ -19,9 +18,9 @@ const NavBarItems = [
 
 const NavBar: React.FC = () => {
   return (
-    <div className="flex-row bg-black border border-r-lightgray h-screen hidden sm:block">
-      <div>
-        <GiTwoCoins className='text-white' />
+    <div className="bg-black border border-r-lightgray h-screen hidden sm:block">
+      <div className='flex my-8 items-center'>
+        <BiCoin className='text-white' />
         <h1 className='text-white'>Pennyeth</h1>
       </div>
       <ul>
