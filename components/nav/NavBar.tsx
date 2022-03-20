@@ -19,7 +19,7 @@ const NavBarItems = [
 
 const NavBar: React.FC = () => {
   return (
-    <div className="flex-row bg-black border border-r-lightgray h-screen">
+    <div className="flex-row bg-black border border-r-lightgray h-screen hidden sm:block">
       <div>
         <GiTwoCoins className='text-white' />
         <h1 className='text-white'>Pennyeth</h1>
