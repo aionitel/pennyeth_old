@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useMoralisWeb3Api } from 'react-moralis'
 import { useRecoilValue } from 'recoil'
 import { currUserAtom, currPageAtom } from '../../state/atoms'
+import ReactModal from 'react-modal'
 
 const Header = () => {
   const web3Api = useMoralisWeb3Api()
 
+  const [modalVisible, setModalVisible] = useState<boolean>(false)
   const currUser = useRecoilValue(currUserAtom)
   const currPage = useRecoilValue(currPageAtom)
   
@@ -13,9 +15,12 @@ const Header = () => {
     return (
       <div className='justify-between bg-black items-center text-white h-20 hidden sm:flex border-b border-lightgray'>
         <h1 className='text-4xl ml-10'>{currPage}</h1>
-        <button className='bg-blue rounded-xl'>
+        <button className='bg-blue rounded-xl' onClick={() => setModalVisible(true)}>
           <h1 className='p-2'>Connect</h1>
         </button>
+        <ReactModal 
+          isOpen={modalVisible}
+        />
       </div>
     )
   } else { // if user wallet is connected
