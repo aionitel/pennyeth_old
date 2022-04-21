@@ -3,6 +3,8 @@ import { useMoralisWeb3Api } from 'react-moralis'
 import { useRecoilValue } from 'recoil'
 import { currUserAtom, currPageAtom } from '../../state/atoms'
 import Modal from '../login/Modal'
+import Popup from 'reactjs-popup'
+import LoggedIn from '../user/LoggedIn'
 
 const Header = () => {
   const web3Api = useMoralisWeb3Api()
@@ -16,9 +18,15 @@ const Header = () => {
       <>
         <div className='justify-between bg-black items-center text-white h-20 hidden sm:flex border-b border-lightgray'>
           <h1 className='text-4xl ml-10'>{currPage}</h1>
-          <button>
-            <div className='border-white mr-8' data-event='click' data-tip='hello world`'>Press me</div>
-          </button>
+          <Popup
+            trigger={open => (
+              <button className="button">Trigger - {open ? 'Opened' : 'Closed'}</button>
+            )}
+            position="left top"
+            closeOnDocumentClick
+          >
+            <div>Press me!</div>
+          </Popup>
         </div>
         <Modal isOpen={modalVisible} />
       </>

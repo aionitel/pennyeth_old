@@ -5,6 +5,7 @@ import { useRecoilState } from 'recoil'
 import { currUserAtom, currPageAtom } from '../state/atoms'
 import { useMoralisWeb3Api } from 'react-moralis'
 import Image from 'next/image'
+import Head from 'next/head'
 
 const logoSize = 25;
 
@@ -18,9 +19,14 @@ const Home: NextPage = () => {
   }, [])
 
   return (
-    <div className='flex h-screen bg-black text-white'>
-      Assets page
-    </div>
+    <>
+      <Head>
+        <title>PennyETH</title>
+      </Head>
+      <div className='flex h-screen bg-black text-white'>
+        Assets page
+      </div>
+    </>
   )
 }
 
