@@ -22,7 +22,7 @@ const NavItem: React.FC<NavItemProps> = ({ title, path, Icon }) => {
               <Icon className={ currPage === title ? 'text-blue text-xl' : 'text-white text-xl'} />
             </div>
             <span>
-              <h1 className='text-white text-2xl ml-7'>{title}</h1>
+              <h1 className='text-white text-xl ml-7'>{title}</h1>
             </span>
           </a>
         </Link>

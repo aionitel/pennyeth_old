@@ -9,8 +9,8 @@ const News: NextPage = () => {
   useEffect(() => setCurrPage('News'), [])
 
   return (
-    <div className='h-screen'>
-      news page
+    <div className='h-screen bg-black'>
+      <h1 className='text-white'>News page</h1>
     </div>
   )
 }
