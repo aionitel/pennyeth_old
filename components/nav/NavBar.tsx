@@ -3,6 +3,7 @@ import NavItem from './NavItem'
 import { BiCoin, BiNews } from 'react-icons/bi'
 import { RiHandCoinLine as HandIcon } from 'react-icons/ri'
 import { FaRegCreditCard } from 'react-icons/fa'
+import { MdOutlineMarkunreadMailbox } from 'react-icons/md'
 
 const NavBarItems = [
   {
@@ -22,6 +23,12 @@ const NavBarItems = [
     navName: 'purchase',
     path: '/purchase',
     icon: FaRegCreditCard
+  },
+  {
+    title: 'Send / Receive',
+    navName: 'transfer',
+    path: '/transfer',
+    icon: MdOutlineMarkunreadMailbox
   }
 ]
 
