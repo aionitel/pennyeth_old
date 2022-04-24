@@ -7,7 +7,7 @@ import Head from 'next/head'
 const News: NextPage = () => {
   const [currPage, setCurrPage] = useRecoilState(currPageAtom)
 
-  useEffect(() => setCurrPage('News'), [])
+  useEffect(() => setCurrPage('news'), [])
 
   return (
     <>

@@ -7,16 +7,19 @@ import { FaRegCreditCard } from 'react-icons/fa'
 const NavBarItems = [
   {
     title: 'Assets',
+    navName: 'assets',
     path: '/',
     icon: HandIcon
   },
   {
     title: 'News',
+    navName: 'news',
     path: '/news',
     icon: BiNews
   },
   {
     title: 'Buy / Sell',
+    navName: 'purchase',
     path: '/purchase',
     icon: FaRegCreditCard
   }
@@ -31,7 +34,7 @@ const NavBar: React.FC = () => {
       </div>
       <ul>
         {NavBarItems.map(item => (
-          <NavItem title={item.title} path={item.path} Icon={item.icon} />
+          <NavItem title={item.title} navName={item.navName} path={item.path} Icon={item.icon} />
         ))}
       </ul>
     </div>

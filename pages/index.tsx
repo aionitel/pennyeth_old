@@ -18,7 +18,7 @@ const Home: NextPage = () => {
   }
 
   useEffect(() => {
-    setCurrPage('Assets')
+    setCurrPage('assets')
   }, [])
 
   return (

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useMoralisWeb3Api } from 'react-moralis'
 import { useRecoilValue } from 'recoil'
 import { currUserAtom, currPageAtom } from '../../state/atoms'
 import Modal from '../login/Modal'
@@ -7,8 +6,6 @@ import Popup from 'reactjs-popup'
 import LoggedIn from '../user/LoggedIn'
 
 const Header = () => {
-  const web3Api = useMoralisWeb3Api()
-
   const [modalVisible, setModalVisible] = useState<boolean>(false)
   const currUser = useRecoilValue(currUserAtom)
   const currPage = useRecoilValue(currPageAtom)

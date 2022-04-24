@@ -6,28 +6,29 @@ import { currPageAtom } from '../../state/atoms'
 
 interface NavItemProps {
   title: string,
+  navName: string,
   path: string,
   Icon: IconType,
 }
 
-const NavItem: React.FC<NavItemProps> = ({ title, path, Icon }) => {
+const NavItem: React.FC<NavItemProps> = ({ title, navName, path, Icon }) => {
   const currPage = useRecoilValue(currPageAtom)
 
   return (
-    <div className='flex w-72'>
-      <li className='hover:cursor-pointer'>
-        <Link href={path}>
+    <Link href={path} passHref>
+      <div className='flex w-72'>
+        <li className='hover:cursor-pointer'>
           <a className="flex items-center text-sm py-4 px-6 h-12 overflow-hidden my-4">
             <div className='bg-gray p-3 rounded-full'>
-              <Icon className={ currPage === title ? 'text-blue text-xl' : 'text-white text-xl'} />
+              <Icon className={ currPage === navName ? 'text-blue text-xl' : 'text-white text-xl'} />
             </div>
             <span>
               <h1 className='text-white text-xl ml-7'>{title}</h1>
             </span>
           </a>
-        </Link>
-      </li>
-    </div>
+        </li>
+      </div>
+    </Link>
   )
 }
 
