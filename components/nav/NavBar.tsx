@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import NavItem from './NavItem'
 import { BiCoin, BiNews } from 'react-icons/bi'
 import { RiHandCoinLine as HandIcon } from 'react-icons/ri'
-import { FaEthereum as EthIcon } from 'react-icons/fa'
+import { FaRegCreditCard } from 'react-icons/fa'
 
 const NavBarItems = [
   {
@@ -14,6 +14,11 @@ const NavBarItems = [
     title: 'News',
     path: '/news',
     icon: BiNews
+  },
+  {
+    title: 'Buy / Sell',
+    path: '/purchase',
+    icon: FaRegCreditCard
   }
 ]
 
