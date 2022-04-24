@@ -9,12 +9,12 @@ import Head from 'next/head'
 const logoSize = 25;
 
 const Home: NextPage = () => {
-  const { Moralis } = useMoralis()
+  const { Moralis } = useMoralis() // root component to Moralis
 
   const [currPage, setCurrPage] = useRecoilState(currPageAtom)
 
   const handleLogin = async () => {
-    const user = await Moralis.authenticate({ type: 'sol'})
+    const user = await Moralis.authenticate({ type: 'sol' })
   }
 
   useEffect(() => {
@@ -26,9 +26,13 @@ const Home: NextPage = () => {
       <Head>
         <title>PennyETH</title>
       </Head>
-      <div className='flex h-screen bg-black text-white'>
-        Assets page
-        <button onClick={() => handleLogin()}>Login</button>
+      <div className='flex justify-between'>
+        <div className='flex flex-col items-center'>
+          Assets Page
+        </div>
+        <div>
+          hello
+        </div>
       </div>
     </>
   )
