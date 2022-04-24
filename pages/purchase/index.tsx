@@ -7,7 +7,7 @@ import { currPageAtom } from '../../state/atoms'
 const Purchase = () => {
   const [currPage, setCurrPage] = useRecoilState(currPageAtom)
   
-  useEffect(() => setCurrPage('purchase'), [])
+  useEffect(() => setCurrPage('purchase'))
 
   return (
     <>
