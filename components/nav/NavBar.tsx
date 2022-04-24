@@ -4,8 +4,16 @@ import { BiCoin, BiNews } from 'react-icons/bi'
 import { RiHandCoinLine as HandIcon } from 'react-icons/ri'
 import { FaRegCreditCard } from 'react-icons/fa'
 import { MdOutlineMarkunreadMailbox } from 'react-icons/md'
+import { IconType } from 'react-icons'
 
-const NavBarItems = [
+interface NavBarItemsType{
+  title: string,
+  navName: string,
+  path: string,
+  icon: IconType
+}[]
+
+const NavBarItems: NavBarItemsType[] = [
   {
     title: 'Assets',
     navName: 'assets',
