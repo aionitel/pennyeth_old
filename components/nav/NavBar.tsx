@@ -2,10 +2,10 @@ import React from 'react'
 import NavItem from './NavItem'
 import { BiCoin, BiNews } from 'react-icons/bi'
 import { RiHandCoinLine as HandIcon } from 'react-icons/ri'
-import { FaRegCreditCard } from 'react-icons/fa'
 import { MdOutlineMarkunreadMailbox } from 'react-icons/md'
 import { IconType } from 'react-icons'
 import { AiOutlineAreaChart } from 'react-icons/ai'
+import { FaDollarSign } from 'react-icons/fa'
 
 interface NavBarItemsType{
   title: string,
@@ -31,7 +31,7 @@ const NavBarItems: NavBarItemsType[] = [
     title: 'Buy / Sell',
     navName: 'purchase',
     path: '/purchase',
-    icon: FaRegCreditCard
+    icon: FaDollarSign
   },
   {
     title: 'Send / Receive',
