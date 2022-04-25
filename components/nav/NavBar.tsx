@@ -5,6 +5,7 @@ import { RiHandCoinLine as HandIcon } from 'react-icons/ri'
 import { FaRegCreditCard } from 'react-icons/fa'
 import { MdOutlineMarkunreadMailbox } from 'react-icons/md'
 import { IconType } from 'react-icons'
+import { AiOutlineAreaChart } from 'react-icons/ai'
 
 interface NavBarItemsType{
   title: string,
@@ -37,6 +38,12 @@ const NavBarItems: NavBarItemsType[] = [
     navName: 'transfer',
     path: '/transfer',
     icon: MdOutlineMarkunreadMailbox
+  },
+  {
+    title: 'Prices',
+    navName: 'prices',
+    path: '/prices',
+    icon: AiOutlineAreaChart
   }
 ]
 
