@@ -2,8 +2,9 @@ import React, { useEffect } from 'react'
 import Head from 'next/head'
 import { useRecoilState } from 'recoil'
 import { currPageAtom } from '../../state/atoms'
+import { NextPage } from 'next'
 
-const Prices = () => {
+const Prices: NextPage = () => {
   const [currPage, setCurrPage] = useRecoilState(currPageAtom)
 
   useEffect(() => setCurrPage('Prices'))
