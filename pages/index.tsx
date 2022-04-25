@@ -9,7 +9,7 @@ import Head from 'next/head'
 const logoSize = 25;
 
 const Home: NextPage = () => {
-  const { Moralis } = useMoralis() // root component to Moralis
+  const { Moralis } = useMoralis() // root connection to Moralis
 
   const [currPage, setCurrPage] = useRecoilState(currPageAtom)
 
@@ -17,7 +17,7 @@ const Home: NextPage = () => {
     const user = await Moralis.authenticate({ type: 'sol' })
   }
 
-  useEffect(() => setCurrPage('Assets'))
+  useEffect(() => setCurrPage('Assets')) // set currPage on mount (this is on every other page aswell)
 
   return (
     <>

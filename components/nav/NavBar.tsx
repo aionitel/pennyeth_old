@@ -6,44 +6,44 @@ import { MdOutlineMarkunreadMailbox } from 'react-icons/md'
 import { IconType } from 'react-icons'
 import { AiOutlineAreaChart } from 'react-icons/ai'
 import { FaDollarSign } from 'react-icons/fa'
+import { AiFillPicture } from 'react-icons/ai'
 
 interface NavBarItemsType{
   title: string,
-  navName: string,
   path: string,
   icon: IconType
 }[]
 
-const NavBarItems: NavBarItemsType[] = [
+const NavBarItems: NavBarItemsType[] = [ // each clickable item in navbar, need different navName because of actual page names and endpoints: /transfer vs send / receive
   {
     title: 'Assets',
-    navName: 'assets',
     path: '/',
     icon: HandIcon
   },
   {
     title: 'News',
-    navName: 'news',
     path: '/news',
     icon: BiNews
   },
   {
     title: 'Buy / Sell',
-    navName: 'purchase',
     path: '/purchase',
     icon: FaDollarSign
   },
   {
     title: 'Send / Receive',
-    navName: 'transfer',
     path: '/transfer',
     icon: MdOutlineMarkunreadMailbox
   },
   {
     title: 'Prices',
-    navName: 'prices',
     path: '/prices',
     icon: AiOutlineAreaChart
+  },
+  {
+    title: 'NFTs',
+    path: '/nft',
+    icon: AiFillPicture
   }
 ]
 
@@ -56,7 +56,7 @@ const NavBar: React.FC = () => {
       </div>
       <ul>
         {NavBarItems.map(item => (
-          <NavItem key={1} title={item.title} navName={item.navName} path={item.path} Icon={item.icon} />
+          <NavItem key={1} title={item.title} path={item.path} Icon={item.icon} />
         ))}
       </ul>
     </nav>

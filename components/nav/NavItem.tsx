@@ -6,12 +6,11 @@ import { currPageAtom } from '../../state/atoms'
 
 interface NavItemProps {
   title: string,
-  navName: string,
   path: string,
   Icon: IconType,
 }
 
-const NavItem: React.FC<NavItemProps> = ({ title, navName, path, Icon }) => {
+const NavItem: React.FC<NavItemProps> = ({ title, path, Icon }) => {
   const currPage = useRecoilValue(currPageAtom)
 
   return (
