@@ -7,6 +7,7 @@ import { IconType } from 'react-icons'
 import { AiOutlineAreaChart } from 'react-icons/ai'
 import { FaDollarSign } from 'react-icons/fa'
 import { AiFillPicture } from 'react-icons/ai'
+import { GiTwoCoins } from 'react-icons/gi' 
 
 interface NavBarItemsType{
   title: string,
@@ -44,6 +45,11 @@ const NavBarItems: NavBarItemsType[] = [ // each clickable item in navbar, need 
     title: 'NFTs',
     path: '/nft',
     icon: AiFillPicture
+  },
+  {
+    title: 'About',
+    path: '/about',
+    icon: GiTwoCoins
   }
 ]
 

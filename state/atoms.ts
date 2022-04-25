@@ -5,11 +5,6 @@ export const currPageAtom = atom({
   default: 'Assets' as string
 })
 
-export const currNavPage = atom({
-  key: 'currNavPage',
-  default: 'assets' as string
-})
-
 export const currUserAtom = atom({
   key: 'currUser',
   default: null as string | null
