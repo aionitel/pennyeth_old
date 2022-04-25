@@ -24,7 +24,7 @@ const Home: NextPage = () => {
       <Head>
         <title>PennyETH</title>
       </Head>
-      <div className='flex justify-between'>
+      <div className='flex justify-between bg-black h-screen'>
         <div className='flex flex-col items-center'>
           Assets Page
         </div>

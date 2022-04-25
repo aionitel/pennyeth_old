@@ -14,7 +14,7 @@ const News: NextPage = () => {
       <Head>
         <title>PennyETH  •  News</title>
       </Head>
-      <div className='bg-black'>
+      <div className='bg-black h-screen'>
         <h1 className='text-white'>News page</h1>
       </div>
     </>

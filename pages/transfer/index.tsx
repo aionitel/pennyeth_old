@@ -14,7 +14,9 @@ const Transfer = () => {
       <Head>
         <title>PennyETH  •  Send / Recieve</title>
       </Head>
-      <div>Transfer Page</div>
+      <div className='h-screen bg-black'>
+        <h1>Transfer page</h1>
+      </div>
     </>
   )
 }

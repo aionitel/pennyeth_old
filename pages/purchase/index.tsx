@@ -14,7 +14,7 @@ const Purchase = () => {
       <Head>
         <title>PennyETH  •  Buy / Sell</title>
       </Head>
-      <div>Buy and Sell Page</div>
+      <div className='bg-black h-screen'>Buy and Sell Page</div>
     </>
   )
 }

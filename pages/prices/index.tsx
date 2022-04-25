@@ -13,7 +13,7 @@ const Prices = () => {
       <Head>
         <title>PennyETH  •  Prices</title>
       </Head>
-      <div>Prices Page</div>
+      <div className='bg-black h-screen'>Prices Page</div>
     </>
   )
 }
