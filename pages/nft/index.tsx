@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 const NFT = () => {
   const [currPage, setCurrPage] = useRecoilState(currPageAtom) 
 
-  useEffect(() => setCurrPage('nft'))
+  useEffect(() => setCurrPage('NFTs'))
 
   return (
     <div>NFT Page</div>
