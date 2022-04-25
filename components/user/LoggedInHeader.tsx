@@ -6,7 +6,7 @@ import Modal from '../login/Modal'
 import Popup from 'reactjs-popup'
 
 // when user has connected wallet, show wallet address in header
-const LoggedIn = () => {
+const LoggedInHeader = () => {
   const web3Api = useMoralisWeb3Api()
   
   return (
@@ -22,4 +22,4 @@ const LoggedIn = () => {
   )
 }
 
-export default LoggedIn
+export default LoggedInHeader
