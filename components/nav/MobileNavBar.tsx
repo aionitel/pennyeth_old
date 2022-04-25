@@ -6,7 +6,7 @@ const MobileNavBar: React.FC = () => {
   return (
     <nav 
       className='
-        sm:hidden 
+        md:hidden 
         flex 
         justify-between 
         px-5 

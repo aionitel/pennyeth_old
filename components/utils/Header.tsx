@@ -13,7 +13,7 @@ const Header = () => {
   if (!currUser) { // if user wallet is not connected
     return (
       <>
-        <header className='justify-between bg-black items-center text-white h-20 hidden sm:flex border-b border-lightgray'>
+        <header className='justify-between bg-black items-center text-white h-20 hidden md:flex border-b border-lightgray'>
           <h1 className='text-4xl ml-10'>{currPage}</h1>
           <Popup
             trigger={open => (
