@@ -1,5 +1,5 @@
 import React from 'react'
-import MobileNavBar from '../nav/MobileNavBar'
+import MobileNavBar from '../nav/mobile/MobileNavBar'
 import NavBar from '../nav/NavBar'
 import Header from './Header'
 
