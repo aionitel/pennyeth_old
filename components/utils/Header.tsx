@@ -13,7 +13,7 @@ const Header = () => {
   if (!currUser) { // if user wallet is not connected
     return (
       <>
-        <div className='justify-between bg-black items-center text-white h-20 hidden sm:flex border-b border-lightgray'>
+        <header className='justify-between bg-black items-center text-white h-20 hidden sm:flex border-b border-lightgray'>
           <h1 className='text-4xl ml-10'>{currPage}</h1>
           <Popup
             trigger={open => (
@@ -24,7 +24,7 @@ const Header = () => {
           >
             <div>Press me!</div>
           </Popup>
-        </div>
+        </header>
         <Modal isOpen={modalVisible} />
       </>
     )

@@ -49,17 +49,17 @@ const NavBarItems: NavBarItemsType[] = [
 
 const NavBar: React.FC = () => {
   return (
-    <div className="bg-black border-r border-r-lightgray h-screen hidden sm:block text-white">
+    <nav className="bg-black border-r border-r-lightgray h-screen hidden sm:block text-white">
       <div className='flex my-8 ml-7 text-3xl'>
         <BiCoin className='pt-1' />
         <h1 className='ml-1 text-md'>PennyETH</h1>
       </div>
       <ul>
         {NavBarItems.map(item => (
-          <NavItem title={item.title} navName={item.navName} path={item.path} Icon={item.icon} />
+          <NavItem key={1} title={item.title} navName={item.navName} path={item.path} Icon={item.icon} />
         ))}
       </ul>
-    </div>
+    </nav>
   )
 }
 

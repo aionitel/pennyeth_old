@@ -4,7 +4,7 @@ import { BiCoin as CoinIcon } from 'react-icons/bi'
 
 const MobileNavBar: React.FC = () => {
   return (
-    <div 
+    <nav 
       className='
         sm:hidden 
         flex 
@@ -25,7 +25,7 @@ const MobileNavBar: React.FC = () => {
       <ThreeBars />
       <h1 className='text-2xl'>PennyETH</h1>
       <CoinIcon />
-    </div>
+    </nav>
   )
 }
 
