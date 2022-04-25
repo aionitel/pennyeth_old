@@ -1,5 +1,5 @@
 import React from 'react'
-import { GoThreeBars as ThreeBars } from 'react-icons/go'
+import { RiBarChartHorizontalLine } from 'react-icons/ri'
 import { BiCoin as CoinIcon } from 'react-icons/bi'
 
 const MobileNavBar: React.FC = () => {
@@ -22,7 +22,7 @@ const MobileNavBar: React.FC = () => {
         z-[1000]
         '
     >
-      <ThreeBars />
+      <RiBarChartHorizontalLine size={37} />
       <h1 className='text-2xl'>PennyETH</h1>
       <CoinIcon />
     </nav>
