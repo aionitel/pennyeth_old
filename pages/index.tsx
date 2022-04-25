@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useMoralis } from 'react-moralis'
 import { useRecoilState } from 'recoil'
 import { currUserAtom, currPageAtom } from '../state/atoms'
-import Image from 'next/image'
+import { motion } from 'framer-motion'
 import Head from 'next/head'
 
 const logoSize = 25;
@@ -25,9 +25,14 @@ const Home: NextPage = () => {
         <title>PennyETH</title>
       </Head>
       <div className='flex justify-between bg-black h-screen'>
-        <div className='flex flex-col items-center'>
+        <motion.div 
+          className='flex flex-col items-center text-white'
+          exit={{ opacity:0 }}
+          initial={{ opacity:0 }}
+          animate={{ opacity:1 }}
+        >
           Assets Page
-        </div>
+        </motion.div>
         <div>
           hello
         </div>
