@@ -17,7 +17,7 @@ const Home: NextPage = () => {
     const user = await Moralis.authenticate({ type: 'sol' })
   }
 
-  useEffect(() => setCurrPage('assets'))
+  useEffect(() => setCurrPage('Assets'))
 
   return (
     <>

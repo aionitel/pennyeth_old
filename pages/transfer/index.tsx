@@ -7,7 +7,7 @@ import Head from 'next/head'
 const Transfer = () => {
   const [currPage, setCurrPage] = useRecoilState(currPageAtom)
 
-  useEffect(() => setCurrPage('transfer'))
+  useEffect(() => setCurrPage('Send / Receive'))
 
   return (
     <>
