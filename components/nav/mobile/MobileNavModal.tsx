@@ -1,6 +1,6 @@
 import React from 'react'
-import NavItem from './NavItem'
-import { BiCoin, BiNews } from 'react-icons/bi'
+import Modal from 'react-modal'
+import {  BiNews } from 'react-icons/bi'
 import { RiHandCoinLine as HandIcon } from 'react-icons/ri'
 import { MdOutlineMarkunreadMailbox } from 'react-icons/md'
 import { IconType } from 'react-icons'
@@ -15,7 +15,7 @@ interface NavBarItemsType{
   icon: IconType
 }
 
-const NavBarItems: NavBarItemsType[] = [ // each clickable item in navbar, need different navName because of actual page names and endpoints: /transfer vs send / receive
+const NavBarItems: NavBarItemsType[] = [ // also need data for each navItem on mobile navbar
   {
     title: 'Assets',
     path: '/',
@@ -53,20 +53,14 @@ const NavBarItems: NavBarItemsType[] = [ // each clickable item in navbar, need 
   }
 ]
 
-const NavBar: React.FC = () => {
+const MobileNavDrawer = ({ isOpen }: any) => {
   return (
-    <nav className="bg-black border-r border-r-lightgray h-[1] hidden md:block text-white">
-      <div className='flex my-8 ml-7 text-3xl'>
-        <BiCoin className='pt-1' />
-        <h1 className='ml-1 text-md'>PennyETH</h1>
+    <Modal>
+      <div>
+        
       </div>
-      <ul>
-        {NavBarItems.map(item => (
-          <NavItem key={1} title={item.title} path={item.path} Icon={item.icon} />
-        ))}
-      </ul>
-    </nav>
+    </Modal>
   )
 }
 
-export default NavBar
+export default MobileNavDrawer
