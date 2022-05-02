@@ -55,11 +55,9 @@ const NavBarItems: NavBarItemsType[] = [ // also need data for each navItem on m
 
 const MobileNavDrawer = ({ isOpen }: any) => {
   return (
-    <Modal>
-      <div>
-        
-      </div>
-    </Modal>
+    <button>
+      
+    </button>
   )
 }
 

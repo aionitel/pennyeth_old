@@ -24,7 +24,7 @@ const MobileNavBar: React.FC = () => {
         '
     >
       <RiBarChartHorizontalLine size={35} />
-      <h1 className='text-2xl'>PennyETH</h1>
+      <h1 className='text-2xl ml-10'>PennyETH</h1>
       <MobileNavDrawer />
       <CoinIcon />
     </nav>
