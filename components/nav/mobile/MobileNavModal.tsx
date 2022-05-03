@@ -38,11 +38,11 @@ const MobileNavModal: React.FC = () => { // main mobile navbar component that sl
           }
         }}
       >
-        {NavBarItems.map((item, index) => (
-          <div>
-            <MobileNavItem title={item.title} path={item.path} icon-={item.icon} />
-          </div>
-        )}
+        <div>
+          {NavBarItems.map(item => (
+            <MobileNavItem title={item.title} path={item.path} Icon={item.icon} />
+          ))}
+        </div>
       </Modal>
     </div>
   )
