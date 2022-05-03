@@ -5,8 +5,7 @@ import { currUserAtom, currPageAtom } from '../../state/atoms'
 import Modal from '../login/Modal'
 import Popup from 'reactjs-popup'
 
-// when user has connected wallet, show wallet address in header
-const LoggedInHeader = () => {
+const LoggedInHeader = () => { // when user has connected wallet, show wallet address in header
   const web3Api = useMoralisWeb3Api()
   
   return (
