@@ -1,7 +1,8 @@
 import React from 'react'
-import Modal from '../login/Modal'
 
-const LoggedOutHeader = () => { // Connect button that allows for user to connect eth or sol wallet with modal
+// Connect button that allows for user to connect eth or sol wallet with modal
+
+const LoggedOutHeader = () => {
   return (
     <div>Logged Out</div>
   )

@@ -10,7 +10,9 @@ interface NavItemProps {
   Icon: IconType,
 }
 
-const NavItem: React.FC<NavItemProps> = ({ title, path, Icon }) => { // desktop navitem
+// desktop navitem
+
+const NavItem: React.FC<NavItemProps> = ({ title, path, Icon }) => {
   const currPage = useRecoilValue(currPageAtom)
 
   return (

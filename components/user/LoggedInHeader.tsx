@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useMoralisWeb3Api } from 'react-moralis'
-import { useRecoilValue } from 'recoil'
-import { currUserAtom, currPageAtom } from '../../state/atoms'
-import Modal from '../login/Modal'
 import Popup from 'reactjs-popup'
 
-const LoggedInHeader = () => { // when user has connected wallet, show wallet address in header
+// when user has connected wallet, show wallet address in header
+
+const LoggedInHeader = () => {
   const web3Api = useMoralisWeb3Api()
   
   return (

@@ -5,7 +5,9 @@ import { useState } from 'react'
 import MobileNavItem from './MobileNavItem'
 import NavBarItemsData from '../NavItemData'
 
-const MobileNavModal: React.FC = () => { // main mobile navbar component that slides out when three bars are pressed
+// main mobile navbar component that slides out when three bars are pressed
+
+const MobileNavModal: React.FC = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
 
   return (

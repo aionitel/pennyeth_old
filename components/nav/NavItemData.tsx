@@ -15,7 +15,9 @@ interface NavBarItemsType{
   icon: IconType
 }
 
-const NavBarItemsData: NavBarItemsType[] = [ // each clickable item in navbar, need different navName because of actual page names and endpoints: /transfer vs send / receive
+// each clickable item in navbar, need different navName because of actual page names and endpoints: /transfer vs send / receive
+
+const NavBarItemsData: NavBarItemsType[] = [
   {
     title: 'Assets',
     path: '/',
