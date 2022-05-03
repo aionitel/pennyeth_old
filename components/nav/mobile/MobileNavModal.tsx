@@ -60,9 +60,10 @@ const MobileNavModal = () => {
 
   return (
     <div>
-      <RiBarChartHorizontalLine size={35} onClick={() => setModalOpen(true)} />
+      <RiBarChartHorizontalLine size={35} onClick={() => setModalOpen(!modalOpen)} />
       <Modal
         isOpen={modalOpen}
+        className='transition-all'
       >
         <div className='flex justify-center align-center text-center mt-20 pt-20'>
           <button onClick={() => setModalOpen(false)}>Close modal</button>

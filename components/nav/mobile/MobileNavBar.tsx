@@ -1,6 +1,7 @@
 import React from 'react'
 import { BiCoin as CoinIcon } from 'react-icons/bi'
 import MobileNavModal from './MobileNavModal'
+import Link from 'next/link'
 
 const MobileNavBar: React.FC = () => {
   return (
@@ -23,7 +24,9 @@ const MobileNavBar: React.FC = () => {
         '
     >
       <MobileNavModal />
-      <h1 className='text-2xl ml-10'>PennyETH</h1>
+      <Link href='/' passHref>
+        <h1 className='text-2xl'>PennyETH</h1>
+      </Link>
       <CoinIcon />
     </nav>
   )
