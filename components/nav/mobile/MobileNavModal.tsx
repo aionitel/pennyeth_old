@@ -11,13 +11,13 @@ import { GiTwoCoins } from 'react-icons/gi'
 import { RiBarChartHorizontalLine } from 'react-icons/ri'
 import { useState } from 'react'
 
-interface NavBarItemsType{
+interface MobileNavBarItemsType{
   title: string,
   path: string,
   icon: IconType
 }
 
-const NavBarItems: NavBarItemsType[] = [ // also need data for each navItem on mobile navbar
+const MobileNavBarItems: MobileNavBarItemsType[] = [ // also need data for each navItem on mobile navbar
   {
     title: 'Assets',
     path: '/',
@@ -55,7 +55,7 @@ const NavBarItems: NavBarItemsType[] = [ // also need data for each navItem on m
   }
 ]
 
-const MobileNavModal = () => {
+const MobileNavModal: React.FC = () => { // main mobile navbar component that slides out when three bars are pressed
   const [modalOpen, setModalOpen] = useState<boolean>(false)
 
   return (
@@ -63,10 +63,32 @@ const MobileNavModal = () => {
       <RiBarChartHorizontalLine size={35} onClick={() => setModalOpen(!modalOpen)} />
       <Modal
         isOpen={modalOpen}
-        className='transition-all'
+        style={{
+          overlay: {
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(255, 255, 255, 0.75)'
+          },
+          content: {
+            position: 'absolute',
+            top: '40px',
+            left: '0px',
+            right: '40px',
+            bottom: '0px',
+            border: '1px solid #ccc',
+            background: '#fff',
+            overflow: 'auto',
+            WebkitOverflowScrolling: 'touch',
+            borderRadius: '4px',
+            outline: 'none',
+            padding: '20px'
+          }
+        }}
       >
         <div className='flex justify-center align-center text-center mt-20 pt-20'>
-          <button onClick={() => setModalOpen(false)}>Close modal</button>
         </div>
       </Modal>
     </div>
