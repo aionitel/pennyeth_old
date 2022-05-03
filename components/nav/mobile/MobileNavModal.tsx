@@ -20,25 +20,22 @@ const MobileNavModal: React.FC = () => { // main mobile navbar component that sl
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: 'rgba(255, 255, 255, 0.75)'
+            backgroundColor: 'black'
           },
           content: {
             position: 'absolute',
             top: '40px',
             left: '0px',
-            right: '40px',
+            right: '50px',
             bottom: '0px',
-            border: '1px solid #ccc',
-            background: '#fff',
+            background: 'black',
             overflow: 'auto',
             WebkitOverflowScrolling: 'touch',
-            borderRadius: '4px',
             outline: 'none',
-            padding: '20px'
           }
         }}
       >
-        <div>
+        <div onClick={() => setModalOpen(false)}>
           {NavBarItems.map(item => (
             <MobileNavItem title={item.title} path={item.path} Icon={item.icon} />
           ))}
