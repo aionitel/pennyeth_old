@@ -1,21 +1,14 @@
 import type { NextPage } from 'next'
 import { useState, useEffect } from 'react'
-import { useMoralis } from 'react-moralis'
 import { useRecoilState } from 'recoil'
-import { currUserAtom, currPageAtom } from '../state/atoms'
+import { currPageAtom } from '../state/atoms'
 import { motion } from 'framer-motion'
 import Head from 'next/head'
 
 const logoSize = 25;
 
 const Home: NextPage = () => {
-  const { Moralis } = useMoralis() // root connection to Moralis
-
   const [currPage, setCurrPage] = useRecoilState(currPageAtom)
-
-  const handleLogin = async () => {
-    const user = await Moralis.authenticate({ type: 'sol' })
-  }
 
   useEffect(() => setCurrPage('Assets')) // set currPage on mount (this is on every other page aswell)
 

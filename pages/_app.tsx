@@ -4,13 +4,9 @@ import Layout from '../components/utils/Layout'
 import { MoralisProvider } from 'react-moralis'
 import { RecoilRoot } from 'recoil'
 
-// tokens and ids neccesary to connecting to Moralis stored in env
-const serverUrl = process.env.SERVER_URL as string
-const appId = process.env.APP_ID as string
-
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <MoralisProvider serverUrl='https://uub9lwbbgued.usemoralis.com:2053/server' appId='KJIRkUopo2HKK65pCzrRWTKHNCz5ZEyRU6jgKF1U'>
+    <MoralisProvider serverUrl={'https://unc22vmhpl7v.usemoralis.com:2053/server'} appId={'GWzlHLipAWp0w87Vm0hMCjEv98UOlrMTbn6gkTUC'}>
       <RecoilRoot>
         <Layout>
           <Component {...pageProps} /> 
