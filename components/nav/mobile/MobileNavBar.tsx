@@ -1,7 +1,6 @@
 import React from 'react'
-import { RiBarChartHorizontalLine } from 'react-icons/ri'
 import { BiCoin as CoinIcon } from 'react-icons/bi'
-import MobileNavDrawer from './MobileNavModal'
+import MobileNavModal from './MobileNavModal'
 
 const MobileNavBar: React.FC = () => {
   return (
@@ -23,9 +22,8 @@ const MobileNavBar: React.FC = () => {
         z-[1000]
         '
     >
-      <RiBarChartHorizontalLine size={35} />
+      <MobileNavModal />
       <h1 className='text-2xl ml-10'>PennyETH</h1>
-      <MobileNavDrawer />
       <CoinIcon />
     </nav>
   )

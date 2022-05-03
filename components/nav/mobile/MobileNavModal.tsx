@@ -7,7 +7,9 @@ import { IconType } from 'react-icons'
 import { AiOutlineAreaChart } from 'react-icons/ai'
 import { FaDollarSign } from 'react-icons/fa'
 import { AiFillPicture } from 'react-icons/ai'
-import { GiTwoCoins } from 'react-icons/gi' 
+import { GiTwoCoins } from 'react-icons/gi'
+import { RiBarChartHorizontalLine } from 'react-icons/ri'
+import { useState } from 'react'
 
 interface NavBarItemsType{
   title: string,
@@ -53,12 +55,21 @@ const NavBarItems: NavBarItemsType[] = [ // also need data for each navItem on m
   }
 ]
 
-const MobileNavDrawer = ({ isOpen }: any) => {
+const MobileNavModal = () => {
+  const [modalOpen, setModalOpen] = useState<boolean>(false)
+
   return (
-    <button>
-      
-    </button>
+    <div>
+      <RiBarChartHorizontalLine size={35} onClick={() => setModalOpen(true)} />
+      <Modal
+        isOpen={modalOpen}
+      >
+        <div className='flex justify-center align-center text-center mt-20 pt-20'>
+          <button onClick={() => setModalOpen(false)}>Close modal</button>
+        </div>
+      </Modal>
+    </div>
   )
 }
 
-export default MobileNavDrawer
+export default MobileNavModal
