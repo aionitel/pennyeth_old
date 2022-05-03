@@ -3,7 +3,7 @@ import Modal from 'react-modal'
 import { RiBarChartHorizontalLine } from 'react-icons/ri'
 import { useState } from 'react'
 import MobileNavItem from './MobileNavItem'
-import NavBarItems from '../NavItems'
+import NavBarItemsData from '../NavItemData'
 
 const MobileNavModal: React.FC = () => { // main mobile navbar component that slides out when three bars are pressed
   const [modalOpen, setModalOpen] = useState<boolean>(false)
@@ -36,7 +36,7 @@ const MobileNavModal: React.FC = () => { // main mobile navbar component that sl
         }}
       >
         <div onClick={() => setModalOpen(false)}>
-          {NavBarItems.map(item => (
+          {NavBarItemsData.map(item => (
             <MobileNavItem title={item.title} path={item.path} Icon={item.icon} />
           ))}
         </div>
