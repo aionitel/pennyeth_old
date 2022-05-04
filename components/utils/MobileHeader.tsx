@@ -6,10 +6,7 @@ import { motion } from 'framer-motion'
 const MobileHeader = () => {
   const currPage = useRecoilValue(currPageAtom)
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+    <div
       className='
         md:hidden
         flex-row
@@ -18,13 +15,15 @@ const MobileHeader = () => {
         top-0
         w-screen
         h-20
-        border-b
-        border-blue
         justify-center
       '
     >
-      <h1>{currPage}</h1>
-    </motion.div>    
+      <motion.h1
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >{currPage}</motion.h1>
+    </div>    
   )
 }
 

@@ -24,7 +24,7 @@ const MobileNavBar: React.FC = () => { // mainly top of screen, with three bars,
         '
     >
       <MobileNavModal />
-      <Link href='/' passHref>
+      <Link href='/secret' passHref>
         <h1 className='text-2xl hover:cursor-pointer'>PennyETH</h1>
       </Link>
       <CoinIcon className='hover:cursor-pointer' />
