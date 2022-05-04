@@ -8,7 +8,7 @@ import { NextPage } from 'next'
 const Purchase: NextPage = () => {
   const [currPage, setCurrPage] = useRecoilState(currPageAtom)
   
-  useEffect(() => setCurrPage('Buy / Sell'))
+  useEffect(() => setCurrPage('Purchase'))
 
   return (
     <>

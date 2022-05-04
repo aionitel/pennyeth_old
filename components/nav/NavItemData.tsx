@@ -29,12 +29,12 @@ const NavBarItemsData: NavBarItemsType[] = [
     icon: BiNews
   },
   {
-    title: 'Buy / Sell',
+    title: 'Purchase',
     path: '/purchase',
     icon: FaDollarSign
   },
   {
-    title: 'Send / Receive',
+    title: 'Transfer',
     path: '/transfer',
     icon: MdOutlineMarkunreadMailbox
   },

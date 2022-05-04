@@ -8,7 +8,7 @@ import { NextPage } from 'next'
 const Transfer: NextPage = () => {
   const [currPage, setCurrPage] = useRecoilState(currPageAtom)
 
-  useEffect(() => setCurrPage('Send / Receive'))
+  useEffect(() => setCurrPage('Transfer'))
 
   return (
     <>
