@@ -4,8 +4,7 @@ import { useRecoilState } from 'recoil'
 import { currPageAtom } from '../state/atoms'
 import { motion } from 'framer-motion'
 import Head from 'next/head'
-
-const logoSize = 25;
+import Chart from '../components/home/Chart'
 
 const Home: NextPage = () => {
   const [currPage, setCurrPage] = useRecoilState(currPageAtom)
@@ -24,11 +23,8 @@ const Home: NextPage = () => {
           initial={{ opacity:0 }}
           animate={{ opacity:1 }}
         >
-          Assets Page
+          <Chart />
         </motion.div>
-        <div>
-          hello
-        </div>
       </div>
     </>
   )
