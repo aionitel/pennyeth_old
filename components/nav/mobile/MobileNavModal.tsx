@@ -4,6 +4,8 @@ import { RiBarChartHorizontalLine } from 'react-icons/ri'
 import { useState } from 'react'
 import MobileNavItem from './MobileNavItem'
 import NavBarItemsData from '../NavItemData'
+import SlidingPane from "react-sliding-pane";
+import "react-sliding-pane/dist/react-sliding-pane.css";
 
 // main mobile navbar component that slides out when three bars are pressed
 
@@ -13,36 +15,17 @@ const MobileNavModal: React.FC = () => {
   return (
     <div>
       <RiBarChartHorizontalLine size={35} onClick={() => setModalOpen(!modalOpen)} className='hover:cursor-pointer' />
-      <Modal
+      <SlidingPane
         isOpen={modalOpen}
-        style={{
-          overlay: {
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'black'
-          },
-          content: {
-            position: 'absolute',
-            top: '40px',
-            left: '0px',
-            right: '50px',
-            bottom: '0px',
-            background: 'black',
-            overflow: 'auto',
-            WebkitOverflowScrolling: 'touch',
-            outline: 'none',
-          }
-        }}
+        onRequestClose={() => setModalOpen(false)}
+        from='left'
       >
         <div onClick={() => setModalOpen(false)}>
           {NavBarItemsData.map(item => (
             <MobileNavItem title={item.title} path={item.path} Icon={item.icon} />
           ))}
         </div>
-      </Modal>
+      </SlidingPane>
     </div>
   )
 }
