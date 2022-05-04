@@ -12,7 +12,7 @@ const MobileNavModal: React.FC = () => {
 
   return (
     <div>
-      <RiBarChartHorizontalLine size={35} onClick={() => setModalOpen(!modalOpen)} />
+      <RiBarChartHorizontalLine size={35} onClick={() => setModalOpen(!modalOpen)} className='hover:cursor-pointer' />
       <Modal
         isOpen={modalOpen}
         style={{
