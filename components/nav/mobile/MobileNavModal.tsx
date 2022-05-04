@@ -16,6 +16,7 @@ const MobileNavModal: React.FC = () => {
       <RiBarChartHorizontalLine size={35} onClick={() => setModalOpen(!modalOpen)} className='hover:cursor-pointer' />
       <CheeseburgerMenu
         isOpen={modalOpen}
+        closeCallback={() => setModalOpen(false)}
       >
         {NavBarItemsData.map(item => (
           <div key={1} onClick={() => setModalOpen(false)}>
