@@ -1,8 +1,8 @@
 import React from 'react'
 import MobileNavBar from '../nav/mobile/MobileNavBar'
 import NavBar from '../nav/NavBar'
-import Header from './Header'
-import MobileHeader from './MobileHeader'
+import Header from '../header/Header'
+import MobileHeader from '../header/MobileHeader'
 
 const Layout: React.FC = ({ children }: any) => {
   return (

@@ -10,9 +10,9 @@ const LoggedOutHeader = () => {
   }
 
   return (
-    <div>
-      <button onClick={() => handleLogin()}>Login</button>
-    </div>
+    <button className='bg-blue text-white mr-8 py-2 px-2 hover:scale-105 transition-all rounded-sm'>
+      <h1>Connect Wallet</h1>
+    </button>
   )
 }
 
