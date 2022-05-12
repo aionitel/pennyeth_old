@@ -1,7 +1,7 @@
 import { useRecoilValue } from 'recoil'
 import { currUserAtom, currPageAtom } from '../../state/atoms'
 import LoggedInHeader from '../user/LoggedInHeader'
-import LoggedOutHeader from '../user/LoggedOutHeader'
+import ConnectWallet from '../user/ConnectWallet'
 import { motion } from 'framer-motion'
 
 const Header: React.FC = () => {
@@ -16,7 +16,7 @@ const Header: React.FC = () => {
         initial={{ opacity:0 }}
         animate={{ opacity:1 }}
       >{currPage}</motion.h1>
-      {currUser ? <LoggedInHeader /> : <LoggedOutHeader />}
+      {currUser ? <LoggedInHeader /> : <ConnectWallet />}
     </header>
   )
 }

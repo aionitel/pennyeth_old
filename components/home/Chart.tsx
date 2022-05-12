@@ -60,10 +60,6 @@ const data = [
     "name": "Page F",
     "uv": 2390,
   },
-  {
-    "name": "Page G",
-    "value": 3490,
-  }
 ]
 
 export default Chart
