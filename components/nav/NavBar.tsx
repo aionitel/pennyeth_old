@@ -6,7 +6,7 @@ import Link from 'next/link'
 import ConnectWallet from '../connectWallet/ConnectWallet'
 import { useRecoilValue } from 'recoil'
 import { currUserAtom } from '../../state/atoms'
-import LoggedInHeader from '../header/LoggedInHeader'
+import LoggedInHeader from '../header/WalletAddress'
 
 // desktop side navbar
 
@@ -17,7 +17,7 @@ const NavBar: React.FC = () => {
     <nav className="bg-black border-r border-r-lightgray h-[1] hidden md:block text-white">
       <div className='flex-col my-8 ml-7 text-3xl'>
         <div className='flex my-5'>
-          <BiCoin className='pt-1' />
+          <BiCoin className='pt-1 ml-2' />
           <Link href='/secret' passHref>
             <h1 className='ml-1 text-md hover:cursor-pointer'>PennyETH</h1>
           </Link>
