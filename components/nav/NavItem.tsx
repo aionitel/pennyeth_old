@@ -17,7 +17,7 @@ const NavItem: React.FC<NavItemProps> = ({ title, path, Icon }) => {
 
   return (
     <Link href={path} passHref>
-      <div className='flex w-72 hover:cursor-pointer'>
+      <div className='flex w-72 hover:cursor-pointer hover:bg-gray rounded-full transition-all'>
         <li>
           <a className="flex items-center text-sm py-4 px-6 h-12 overflow-hidden my-5">
             <div className='bg-gray p-3 rounded-full'>
