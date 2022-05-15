@@ -1,14 +1,19 @@
 import Image from 'next/image'
 import React from 'react'
 import { useMoralis } from 'react-moralis'
+import { useRecoilState } from 'recoil'
+import { currUserAtom } from '../../state/atoms'
 
 const PhantomWallet: React.FC = () => {
   const { Moralis } = useMoralis()
+  const [user, setUser] = useRecoilState(currUserAtom)
 
   const logoSize = 30; // phantom wallet logo size
 
   const handleLogin = async () => {
     const user = await Moralis.authenticate({ type: 'sol' })
+
+    setUser(user?.get('solAddress')) // set user state to eth address
   }
 
   return (
