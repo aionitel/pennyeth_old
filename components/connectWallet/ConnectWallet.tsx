@@ -12,7 +12,7 @@ const ConnectWallet: React.FC = () => {
   return (
     <>
       <button 
-        className='bg-blue text-white text-center mt-5 py-5 px-7 hover:scale-105 transition-all rounded-2xl text-base ml-7'
+        className='bg-blue text-white text-center mt-5 py-5 px-7 hover:scale-105 transition-all rounded-2xl text-base ml-8 hover:rounded-none duration-200'
         onClick={() => setModalOpen(true)}
       >
         <h1>Connect Wallet</h1>
@@ -43,11 +43,10 @@ const ConnectWallet: React.FC = () => {
             WebkitOverflowScrolling: 'touch',
             borderRadius: '20px',
             outline: 'none',
-            padding: '20px'
           }
         }}
         >
-        <h1 className='mb-2'>Connect Wallet</h1>
+        <h1 className='mb-2 text-white text-center'>Connect Wallet</h1>
         <Metmask />
         <PhantomWallet />
         <WalletConnect />
