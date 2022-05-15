@@ -3,17 +3,31 @@ import React from 'react'
 import { useMoralis } from 'react-moralis'
 import { useRecoilState } from 'recoil'
 import { currUserAtom } from '../../state/atoms'
+import { useToasts } from 'react-toast-notifications'
 
 const PhantomWallet: React.FC = () => {
   const { Moralis } = useMoralis()
   const [user, setUser] = useRecoilState(currUserAtom)
+  const { addToast } = useToasts() // for showing notifications
 
   const logoSize = 30; // phantom wallet logo size
 
   const handleLogin = async () => {
     const user = await Moralis.authenticate({ type: 'sol' })
 
-    setUser(user?.get('solAddress')) // set user state to eth address
+    if (!user) { 
+      addToast("Couldn't login with Phantom Wallet", {
+        appearance: 'warning',
+        autoDismiss: true,
+      })
+    }
+
+    setUser(user?.get("ethAddress"))
+
+    addToast(`Logged in with Phantom Wallet, your wallet address: ${user?.get("ethAddress")}`, {
+      appearance: 'success',
+      autoDismiss: true,
+    })
   }
 
   return (

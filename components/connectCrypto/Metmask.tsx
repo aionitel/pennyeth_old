@@ -3,18 +3,32 @@ import { useMoralis } from 'react-moralis'
 import { useRecoilState } from 'recoil'
 import { currUserAtom } from '../../state/atoms'
 import Image from 'next/image'
+import { useToasts } from 'react-toast-notifications'
 
 const Metmask: React.FC = () => {
   const { Moralis, isAuthenticated, user: MoralisUser } = useMoralis()
 
   const [user, setUser] = useRecoilState(currUserAtom)
+  const { addToast } = useToasts() // for showing notifications
 
   const logoSize = 39; // metamask image size
 
   const handleLogin = async () => {
     const user = await Moralis.authenticate()
 
-    setUser(user?.get("ethAddress")) // set user state to eth address
+    if (!user) {
+      addToast("Couldn't login with Metamask", {
+        appearance: 'warning',
+        autoDismiss: true,
+      })
+    }
+
+    setUser(user?.get("ethAddress"))
+
+    addToast(`Logged in with Metamask, your wallet address: ${user?.get("ethAddress")}`, {
+      appearance: 'success',
+      autoDismiss: true,
+    })
   }
 
   return (
