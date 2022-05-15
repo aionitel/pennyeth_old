@@ -1,11 +1,17 @@
 import React from 'react'
 import { useMoralis } from 'react-moralis'
+import { useRecoilState } from 'recoil'
+import { currUserAtom } from '../../state/atoms'
 
 const WalletConnect: React.FC = () => {
   const { Moralis } = useMoralis()
 
+  const [user, setUser] = useRecoilState(currUserAtom)
+
   const handleLogin = async () => {
     const user = await Moralis.authenticate({ provider: 'walletconnect' })
+
+    setUser(user?.get("ethAddress"))
   }
 
   return (
