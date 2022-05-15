@@ -12,7 +12,7 @@ const ConnectWallet: React.FC = () => {
   return (
     <>
       <button 
-        className='bg-blue text-white mt-4 py-7 px-3 hover:scale-105 transition-all rounded-lg'
+        className='bg-blue text-white text-center mt-5 py-5 px-7 hover:scale-105 transition-all rounded-2xl text-base ml-7'
         onClick={() => setModalOpen(true)}
       >
         <h1>Connect Wallet</h1>
@@ -47,7 +47,7 @@ const ConnectWallet: React.FC = () => {
           }
         }}
         >
-        <h1 className='text-white text-center text-xl mb-2'>Connect Wallet</h1>
+        <h1 className='mb-2'>Connect Wallet</h1>
         <Metmask />
         <PhantomWallet />
         <WalletConnect />
