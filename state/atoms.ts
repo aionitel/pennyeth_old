@@ -5,7 +5,7 @@ const { persistAtom } = recoilPersist();
 
 export const currPageAtom = atom({ // keeping track of current page 
   key: 'currPage',
-  default: 'Assets' as string,
+  default: 'Home' as string,
   effects_UNSTABLE: [persistAtom]
 })
 

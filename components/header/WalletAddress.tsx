@@ -8,9 +8,9 @@ const LoggedInHeader = () => {
   const [user, setUser] = useRecoilState(currUserAtom)
   
   return (
-    <div className='flex-col text-center text-white border border-white rounded-3xl bg-green-400'>
-      <h1>Connected</h1>
-      <h2>{user}</h2>
+    <div className='flex-col text-base text-center text-white border border-white rounded-3xl bg-black'>
+      <h1 className='text-green-500'>Connected</h1>
+      <h1>{user.slice(0, 12)}...</h1>
       <button onClick={() => setUser("")}>
         <h1>Logout</h1>
       </button>

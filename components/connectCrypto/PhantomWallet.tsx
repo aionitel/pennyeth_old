@@ -20,19 +20,20 @@ const PhantomWallet: React.FC = () => {
     <button
       onClick={() => handleLogin()}
       className='
+      flex
       bg-gray 
-      text-white 
-      text-center 
+      text-white
       mx-14
       my-2
-      py-2 px-2 
+      px-2
+      py-2
       rounded-lg 
       hover:scale-110 
       transition-all
-      flex
+      justify-center
       '
     >
-      <h1>Connect with PhantomWallet</h1>
+      <h1 className='mr-2'>Connect with PhantomWallet</h1>
       <Image src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.yadawallets.com%2Fwp-content%2Fuploads%2F2021%2F06%2FPhantom-wallet-logo-200x200.png&f=1&nofb=1'
         width={logoSize}
         height={logoSize}
