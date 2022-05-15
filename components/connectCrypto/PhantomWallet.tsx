@@ -16,7 +16,7 @@ const PhantomWallet: React.FC = () => {
       text-white 
       text-center 
       mx-14
-      my-4
+      my-2
       py-2 px-2 
       rounded-lg 
       hover:scale-110 

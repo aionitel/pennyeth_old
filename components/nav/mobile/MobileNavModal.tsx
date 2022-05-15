@@ -4,10 +4,9 @@ import { useState } from 'react'
 import MobileNavItem from './MobileNavItem'
 import NavBarItemsData from '../NavItemData'
 import CheeseburgerMenu from 'cheeseburger-menu'
-import LoggedOutHeader from '../../user/ConnectWallet'
 import { navOpenAtom } from '../../../state/atoms'
 import { useRecoilState } from 'recoil'
-import ConnectWallet from '../../user/ConnectWallet'
+import MobileConnectWallet from '../../connectWallet/MobileConnectWallet'
 
 // main mobile navbar component that slides out when three bars are pressed
 
@@ -22,7 +21,7 @@ const MobileNavModal: React.FC = () => {
         closeCallback={() => setModalOpen(false)}
       >
         <div onClick={() => setModalOpen(false)}>
-          <ConnectWallet />
+          <MobileConnectWallet />
         </div>
         {NavBarItemsData.map(item => (
           <div key={1} onClick={() => setModalOpen(false)}>

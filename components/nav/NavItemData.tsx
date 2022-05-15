@@ -6,6 +6,7 @@ import { AiOutlineAreaChart } from 'react-icons/ai'
 import { FaDollarSign } from 'react-icons/fa'
 import { AiFillPicture } from 'react-icons/ai'
 import { GiTwoCoins } from 'react-icons/gi' 
+import { SiHomeadvisor } from 'react-icons/si'
 
 // universal navbar items (assets, about, etc...) to be used for both desktop and mobile navbars, and better modularity
 
@@ -15,12 +16,17 @@ interface NavBarItemsType{
   icon: IconType
 }
 
-// each clickable item in navbar, need different navName because of actual page names and endpoints: /transfer vs send / receive
+// data for each clickable item in navbar, need different navName because of actual page names and endpoints: /transfer vs send / receive
 
 const NavBarItemsData: NavBarItemsType[] = [
   {
-    title: 'Assets',
+    title: 'Home',
     path: '/',
+    icon: SiHomeadvisor
+  },
+  {
+    title: 'Assets',
+    path: '/assets',
     icon: HandIcon
   },
   {

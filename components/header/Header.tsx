@@ -1,7 +1,7 @@
 import { useRecoilValue } from 'recoil'
 import { currUserAtom, currPageAtom } from '../../state/atoms'
-import LoggedInHeader from '../user/LoggedInHeader'
-import ConnectWallet from '../user/ConnectWallet'
+import LoggedInHeader from './LoggedInHeader'
+import ConnectWallet from '../connectWallet/ConnectWallet'
 import { motion } from 'framer-motion'
 
 const Header: React.FC = () => {
