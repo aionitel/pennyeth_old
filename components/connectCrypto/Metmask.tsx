@@ -5,14 +5,16 @@ import { currUserAtom } from '../../state/atoms'
 import Image from 'next/image'
 
 const Metmask: React.FC = () => {
-  const { Moralis } = useMoralis()
+  const { Moralis, isAuthenticated, user: MoralisUser } = useMoralis()
 
   const [user, setUser] = useRecoilState(currUserAtom)
 
   const logoSize = 39; // metamask image size
 
   const handleLogin = async () => {
-    const user = await Moralis.authenticate().catch(err => console.log(err))
+    const user = await Moralis.authenticate()
+
+    setUser(user?.get("ethAddress")) // set user state to eth address
   }
 
   return (

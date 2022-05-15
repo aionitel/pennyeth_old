@@ -14,7 +14,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>PennyETH</title>
+        <title>PennyETH  •  Assets</title>
       </Head>
       <div className='flex justify-between bg-black h-screen'>
         <motion.div 

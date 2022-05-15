@@ -47,6 +47,7 @@ const ConnectWallet: React.FC = () => {
           }
         }}
         >
+        <h1 className='text-white text-center text-xl mb-2'>Connect Wallet</h1>
         <Metmask />
         <PhantomWallet />
         <WalletConnect />
