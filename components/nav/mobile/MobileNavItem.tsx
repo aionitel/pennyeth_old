@@ -16,7 +16,8 @@ const MobileNavItem: React.FC<MobileNavItemProps> = ({ title, path, Icon }) => {
         <li>
           <a className="flex items-center text-sm py-4 h-14 my-5">
             <div className='bg-gray p-3 rounded-full'>
-              <Icon className={ location.pathname === path ? 'text-blue text-xl' : 'text-white text-xl'} />
+            <Icon className={ typeof window === 'object' ? 
+              location.pathname === path ? 'text-blue text-xl' : 'text-white text-xl' : "text-white"} />
             </div>
             <span>
               <h1 className='text-white text-xl ml-7'>{title}</h1>
