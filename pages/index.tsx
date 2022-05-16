@@ -10,16 +10,8 @@ const Home: NextPage = () => {
         <title>PennyETH</title>
       </Head>
       <div
-        className='bg-black text-white flex justify-center h-screen'
+        className='bg-black flex-col text-end h-screen top-0'
       >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className='my-4 text-3xl'
-        >
-          <h1>A Crypto Dashboard for Everyone.</h1>
-        </motion.div>
       </div>
     </>
   )

@@ -14,7 +14,7 @@ const MobileNavModal: React.FC = () => {
   const [modalOpen, setModalOpen] = useRecoilState(navOpenAtom) // close navbar when pressing "Connect Wallet" button
 
   return (
-    <div className='bg-black md:hidden flex'>
+    <div className='bg-black flex'>
       <RiBarChartHorizontalLine size={35} onClick={() => setModalOpen(!modalOpen)} className='hover:cursor-pointer' />
       <CheeseburgerMenu
         isOpen={modalOpen}

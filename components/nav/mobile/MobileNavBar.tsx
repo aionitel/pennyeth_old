@@ -7,7 +7,7 @@ const MobileNavBar: React.FC = () => { // mainly top of screen, with three bars,
   return (
     <nav 
       className='
-        md:hidden 
+        lg:hidden 
         flex 
         justify-between 
         px-5 
