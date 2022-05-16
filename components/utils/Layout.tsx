@@ -1,7 +1,6 @@
 import React from 'react'
 import MobileNavBar from '../nav/mobile/MobileNavBar'
 import NavBar from '../nav/NavBar'
-import MobileHeader from '../header/MobileHeader'
 
 const Layout: React.FC = ({ children }: any) => {
   return (
@@ -9,7 +8,6 @@ const Layout: React.FC = ({ children }: any) => {
       <NavBar />
       <main className='w-screen'>
         <MobileNavBar />
-        <MobileHeader />
         {children}
       </main>
     </div>   
