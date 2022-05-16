@@ -1,10 +1,8 @@
 import React from 'react'
-import { currPageAtom } from '../../state/atoms'
 import { useRecoilValue } from 'recoil'
 import { motion } from 'framer-motion'
 
 const MobileHeader = () => {
-  const currPage = useRecoilValue(currPageAtom)
   return (
     <div
       className='
@@ -22,7 +20,7 @@ const MobileHeader = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-      >{currPage}</motion.h1>
+      >{location.pathname}</motion.h1>
     </div>    
   )
 }

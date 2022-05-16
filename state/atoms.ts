@@ -3,12 +3,6 @@ import { recoilPersist } from "recoil-persist";
 
 const { persistAtom } = recoilPersist();
 
-export const currPageAtom = atom({ // keeping track of current page 
-  key: 'currPage',
-  default: 'Home' as string,
-  effects_UNSTABLE: [persistAtom]
-})
-
 export const currUserAtom = atom({ // global user state
   key: 'currUser',
   default: '' as string ,

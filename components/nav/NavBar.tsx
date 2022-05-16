@@ -14,7 +14,7 @@ const NavBar: React.FC = () => {
   const user = useRecoilValue(currUserAtom)
 
   return (
-    <nav className="bg-black border-r border-r-lightgray h-[1] hidden md:block text-white">
+    <nav className="bg-black border-r border-r-lightgray hidden md:block text-white">
       <div className='flex-col my-8 ml-7 text-3xl'>
         <div className='flex my-5'>
           <BiCoin className='pt-1 ml-5' />
