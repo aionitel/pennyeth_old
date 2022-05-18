@@ -10,8 +10,9 @@ const Home: NextPage = () => {
         <title>PennyETH</title>
       </Head>
       <div
-        className='bg-black flex-col text-end h-screen top-0'
+        className='bg-black flex-col text-end h-screen text-white'
       >
+        <h1>Home page</h1>
       </div>
     </>
   )
