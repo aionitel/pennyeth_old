@@ -7,6 +7,7 @@ import ConnectWallet from '../connectWallet/ConnectWallet'
 import { useRecoilValue } from 'recoil'
 import { currUserAtom } from '../../state/atoms'
 import LoggedInHeader from '../header/WalletAddress'
+import { motion } from 'framer-motion'
 
 // desktop side navbar
 
@@ -14,14 +15,21 @@ const NavBar: React.FC = () => {
   const user = useRecoilValue(currUserAtom)
 
   return (
-    <nav className="bg-black border-r border-r-lightgray hidden lg:block text-white">
+    <nav 
+      className="bg-black border-r border-r-lightgray hidden lg:block text-white"
+    >
       <div className='flex-col my-8 ml-7 text-3xl'>
-        <div className='flex my-5'>
+        <motion.div 
+          className='flex my-5'
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           <BiCoin className='pt-1 ml-5' />
           <Link href='/' passHref>
             <h1 className='ml-1 text-md hover:cursor-pointer'>PennyETH</h1>
           </Link>
-        </div>
+        </motion.div>
         {user ? <LoggedInHeader /> : <ConnectWallet />}
       </div>
       <ul>

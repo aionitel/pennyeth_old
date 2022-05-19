@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { IconType } from 'react-icons'
+import { motion } from 'framer-motion'
 
 interface NavItemProps {
   title: string,
@@ -13,7 +14,11 @@ interface NavItemProps {
 const NavItem: React.FC<NavItemProps> = ({ title, path, Icon }) => {
   return (
     <Link href={path} passHref>
-      <div className='flex w-72 hover:cursor-pointer hover:bg-gray rounded-full transition-all mx-2'>
+      <motion.div className='flex w-72 hover:cursor-pointer hover:bg-gray rounded-full transition-all mx-2'
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
         <a className="flex items-center text-sm py-4 px-6 h-12 overflow-hidden my-6">
           <div className='bg-gray p-3 rounded-full'>
             <Icon style={{
@@ -25,7 +30,7 @@ const NavItem: React.FC<NavItemProps> = ({ title, path, Icon }) => {
             <h1 className='text-white text-xl ml-7'>{title}</h1>
           </span>
         </a>
-      </div>
+      </motion.div>
     </Link>
   )
 }

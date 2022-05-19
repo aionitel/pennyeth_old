@@ -5,6 +5,7 @@ import WalletConnect from '../connectCrypto/WalletConnect'
 import PhantomWallet from '../connectCrypto/PhantomWallet'
 import { AiOutlineQuestionCircle } from 'react-icons/ai'
 import Popup from 'reactjs-popup'
+import { motion } from 'framer-motion'
 
 // Connect button that allows for user to connect eth or sol wallet with modal
 
@@ -13,14 +14,19 @@ const ConnectWallet: React.FC = () => {
 
   return (
     <>
-      <div className='flex'>
+      <motion.div 
+        className='flex'
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
         <button 
           className='bg-blue text-white text-center mt-5 py-5 px-7 hover:scale-105 transition-all rounded-2xl text-base ml-8 hover:rounded-none duration-200'
           onClick={() => setModalOpen(true)}
         >
           <h1>Connect Wallet</h1>
         </button>
-      </div>
+      </motion.div>
       <Modal
         className='flex-col justify-center hidden lg:flex'
         isOpen={modalOpen}
