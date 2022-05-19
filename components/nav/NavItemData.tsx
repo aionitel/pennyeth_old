@@ -30,9 +30,9 @@ const NavBarItemsData: NavBarItemsType[] = [
     icon: HandIcon
   },
   {
-    title: 'News',
-    path: '/news',
-    icon: BiNews
+    title: 'Prices',
+    path: '/prices',
+    icon: AiOutlineAreaChart
   },
   {
     title: 'Transfer',
@@ -40,9 +40,9 @@ const NavBarItemsData: NavBarItemsType[] = [
     icon: MdOutlineMarkunreadMailbox
   },
   {
-    title: 'Prices',
-    path: '/prices',
-    icon: AiOutlineAreaChart
+    title: 'News',
+    path: '/news',
+    icon: BiNews
   },
   {
     title: 'NFTs',
