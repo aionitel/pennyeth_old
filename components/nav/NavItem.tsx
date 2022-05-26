@@ -14,12 +14,12 @@ interface NavItemProps {
 const NavItem: React.FC<NavItemProps> = ({ title, path, Icon }) => {
   return (
     <Link href={path} passHref>
-      <motion.div className='flex w-72 hover:cursor-pointer hover:bg-gray rounded-full transition-all mx-2'
+      <motion.div className='flex w-72 mx-2 hover:cursor-pointer hover:bg-gray rounded-3xl transition-all duration-300'
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <a className="flex items-center text-sm py-4 px-6 h-12 overflow-hidden my-6">
+        <a className="flex items-center text-sm px-6 h-12 overflow-hidden my-6">
           <div className='bg-gray p-3 rounded-full'>
             <Icon style={{
               fontSize: 20,
