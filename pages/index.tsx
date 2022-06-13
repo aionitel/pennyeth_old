@@ -10,7 +10,7 @@ const Home: NextPage = () => {
       <Head>
         <title>PennyETH</title>
       </Head>
-      <div className='h-screen bg-black text-white text-center flex justify-center'>
+      <div className='bg-black h-screen text-white text-center'>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
