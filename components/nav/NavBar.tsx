@@ -8,6 +8,7 @@ import { useRecoilValue } from 'recoil'
 import { currUserAtom } from '../../state/atoms'
 import LoggedInHeader from '../header/WalletAddress'
 import { motion } from 'framer-motion'
+import IntradayLogos from './IntradayLogos'
 
 // desktop side navbar
 
@@ -30,6 +31,7 @@ const NavBar: React.FC = () => {
             <h1 className='ml-1 text-md hover:cursor-pointer'>PennyETH</h1>
           </Link>
         </motion.div>
+        <IntradayLogos />
         {user ? <LoggedInHeader /> : <ConnectWallet />}
       </div>
       <ul>
