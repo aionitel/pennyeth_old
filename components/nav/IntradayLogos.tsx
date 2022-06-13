@@ -7,7 +7,7 @@ const IntradayLogos: React.FC = () => {
 
   return (
     <motion.div 
-      className='flex text-base justify-center my-2 ml-2'
+      className='flex text-base justify-center mb-5 mt-6 ml-2'
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
