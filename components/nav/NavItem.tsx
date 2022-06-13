@@ -14,7 +14,7 @@ interface NavItemProps {
 const NavItem: React.FC<NavItemProps> = ({ title, path, Icon }) => {
   return (
     <Link href={path} passHref>
-      <motion.div className='flex w-72 mx-2 hover:cursor-pointer hover:bg-gray rounded-3xl transition-all duration-300'
+      <motion.div className='flex w-72 mx-2 hover:cursor-pointer hover:bg-gray rounded-full transition-all duration-300'
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
