@@ -2,15 +2,23 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion';
 import axios from 'axios';
+import fetchIntradayPrices from '../../utils/fetchIntradayPrices';
 
 const IntradayLogos: React.FC = () => {
-  const [btcPrice, setBtcPrice] = useState<number>()
-  const [ethPrice, setEthPrice] = useState<number>()
-
   const logoSize = 30;
 
-  const btc_url = `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=BTC&to_currency=USD&apikey=${process.env.API_KEY}`;
-  const eth_url = `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=ETH&to_currency=USD&apikey=${process.env.API_KEY}`;
+  // prevBtcPrice needed for comparison with current price, and coloring it green or red
+  const [prevBtcPrice, setPrevBtcPrice] = useState<number>(20000);
+  const [btcPrice, setBtcPrice] = useState<number>(20000)
+  const [ethPrice, setEthPrice] = useState<number>()
+
+  const fetchPrices = () => {
+    setPrevBtcPrice(btcPrice);
+    fetchIntradayPrices().then(price => setBtcPrice(price))
+  }
+
+  // getting new price every 3 seconds for now
+  setInterval(fetchPrices, 10000);
 
   return (
     <motion.div 
@@ -25,7 +33,13 @@ const IntradayLogos: React.FC = () => {
           height={logoSize}
            width={logoSize} 
            alt='btc_logo'/>
-        <h1 className='text-red pt-1 mx-2'>${btcPrice}</h1>
+        <h1
+          style={{
+            color: prevBtcPrice > btcPrice ? '#ff0000' : '#00ff00',
+          }}
+        >
+          ${btcPrice.toFixed(2)}
+        </h1>
       </div>
       <div className='flex hover:cursor-pointer mr-10'>
         <Image 
