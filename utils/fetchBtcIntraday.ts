@@ -9,7 +9,11 @@ const fetchBtcIntraday = async () => {
   const btc_data = btc_response.data;
   const btc_price = btc_data.market_data.price_usd as number;
 
-  return btc_price
+  // format price
+  const btc_price_formatted = btc_price.toLocaleString();
+  const final_price = btc_price_formatted.slice(0, btc_price_formatted.length -1)
+
+  return final_price;
 }
 
 export default fetchBtcIntraday;

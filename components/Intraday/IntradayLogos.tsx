@@ -8,10 +8,10 @@ const IntradayLogos: React.FC = () => {
   const logoSize = 30;
 
   // prevBtcPrice needed for comparison with current price, and coloring it green or red
-  const [prevBtcPrice, setPrevBtcPrice] = useState<number>(20000);
-  const [prevEthPrice, setPrevEthPrice] = useState<number>(1000);
-  const [btcPrice, setBtcPrice] = useState<number>(20000)
-  const [ethPrice, setEthPrice] = useState<number>(1000)
+  const [prevBtcPrice, setPrevBtcPrice] = useState<string>('20000');
+  const [prevEthPrice, setPrevEthPrice] = useState<string>('1000');
+  const [btcPrice, setBtcPrice] = useState<string>('20000')
+  const [ethPrice, setEthPrice] = useState<string>('1000')
 
   const fetchAndSetPrices = () => {
     setPrevBtcPrice(btcPrice);
@@ -42,7 +42,7 @@ const IntradayLogos: React.FC = () => {
             color: prevBtcPrice > btcPrice ? '#ff0000' : '#00ff00',
           }}
         >
-          ${btcPrice.toFixed(2)}
+          ${btcPrice}
         </h1>
       </div>
       <div className='flex hover:cursor-pointer mr-10'>
@@ -51,7 +51,7 @@ const IntradayLogos: React.FC = () => {
           height={logoSize} 
           width={logoSize} 
           alt='eth_logo' />
-        <h1 className='text-red pt-1 mx-3'>${ethPrice.toFixed(2)}</h1>
+        <h1 className='text-red pt-1 mx-3'>${ethPrice}</h1>
       </div>
     </motion.div>
   )

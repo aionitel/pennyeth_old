@@ -8,8 +8,12 @@ const fetchEthIntraday = async () => {
   // actual currennt price is behind many layers of data
   const eth_data = eth_response.data;
   const eth_price = eth_data.market_data.price_usd as number;
+  
+  // format price
+  const eth_price_formatted = eth_price.toLocaleString();
+  const final_price = eth_price_formatted.slice(0, eth_price_formatted.length -1)
 
-  return eth_price 
+  return final_price;
 }
 
 export default fetchEthIntraday;
