@@ -1,24 +1,29 @@
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion';
-import axios from 'axios';
-import fetchIntradayPrices from '../../utils/fetchIntradayPrices';
+import fetchIntradayPrices from '../../utils/fetchEthIntraday';
+import fetchBtcIntraday from '../../utils/fetchBtcIntraday';
+import fetchEthIntraday from '../../utils/fetchEthIntraday';
 
 const IntradayLogos: React.FC = () => {
   const logoSize = 30;
 
   // prevBtcPrice needed for comparison with current price, and coloring it green or red
   const [prevBtcPrice, setPrevBtcPrice] = useState<number>(20000);
+  const [prevEthPrice, setPrevEthPrice] = useState<number>(1000);
   const [btcPrice, setBtcPrice] = useState<number>(20000)
-  const [ethPrice, setEthPrice] = useState<number>()
+  const [ethPrice, setEthPrice] = useState<number>(1000)
 
-  const fetchPrices = () => {
+  const fetchAndSetPrices = () => {
     setPrevBtcPrice(btcPrice);
-    fetchIntradayPrices().then(price => setBtcPrice(price))
+    setPrevEthPrice(ethPrice);
+    fetchBtcIntraday().then(btc => setBtcPrice(btc));
+    fetchEthIntraday().then(eth => setEthPrice(eth));
   }
 
   // getting new price every 3 seconds for now
-  setInterval(fetchPrices, 10000);
+  setTimeout(fetchAndSetPrices, 3000)
+
 
   return (
     <motion.div 
