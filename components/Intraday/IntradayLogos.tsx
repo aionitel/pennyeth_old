@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion';
-import fetchIntradayPrices from '../../utils/fetchEthIntraday';
 import fetchBtcIntraday from '../../utils/fetchBtcIntraday';
 import fetchEthIntraday from '../../utils/fetchEthIntraday';
 
@@ -19,11 +18,11 @@ const IntradayLogos: React.FC = () => {
     setPrevEthPrice(ethPrice);
     fetchBtcIntraday().then(btc => setBtcPrice(btc));
     fetchEthIntraday().then(eth => setEthPrice(eth));
+
+    setTimeout(fetchAndSetPrices, 3000);
   }
 
-  // getting new price every 3 seconds for now
-  setTimeout(fetchAndSetPrices, 3000)
-
+  useEffect(() => fetchAndSetPrices(), [prevBtcPrice, prevEthPrice]);
 
   return (
     <motion.div 
@@ -52,7 +51,7 @@ const IntradayLogos: React.FC = () => {
           height={logoSize} 
           width={logoSize} 
           alt='eth_logo' />
-        <h1 className='text-red pt-1 mx-3'>${ethPrice}</h1>
+        <h1 className='text-red pt-1 mx-3'>${ethPrice.toFixed(2)}</h1>
       </div>
     </motion.div>
   )
