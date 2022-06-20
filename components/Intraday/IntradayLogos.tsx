@@ -13,14 +13,16 @@ const IntradayLogos: React.FC = () => {
   const [currBtcPrice, setCurrBtcPrice] = useRecoilState(CurrBtcPrice);
   const [currEthPrice, setCurrEthPrice] = useRecoilState(CurrEthPrice);
 
-  const fetchAndSetPrices = () => {
-    fetchCurrBtc().then(btc => setCurrBtcPrice(btc));
-    fetchCurrEth().then(eth => setCurrEthPrice(eth));
+  const fetchAndSetPrices = async () => {
+    // fetch new prices every 10 seconds, wokrs decently well
+    await fetchCurrBtc().then(btc => setTimeout(() => setCurrBtcPrice(btc), 10000));
+    await fetchCurrEth().then(eth => setTimeout(() => setCurrEthPrice(eth), 10000));
+
     console.log("fetching prices again")
   }
 
   useEffect(() => {
-    setInterval(fetchAndSetPrices, 5000);
+    fetchAndSetPrices();
   })
 
   return (
