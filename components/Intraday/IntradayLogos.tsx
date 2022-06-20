@@ -1,28 +1,25 @@
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion';
-import fetchBtcIntraday from '../../utils/fetchBtcIntraday';
-import fetchEthIntraday from '../../utils/fetchEthIntraday';
+import { useRecoilState } from 'recoil';
+import { CurrBtcPrice } from '../../state/atoms';
+import { CurrEthPrice } from '../../state/atoms';
+import fetchCurrEth from '../../utils/fetchCurrEth';
+import fetchCurrBtc from '../../utils/fetchBtcIntraday';
 
 const IntradayLogos: React.FC = () => {
   const logoSize = 30;
-
-  // prevBtcPrice needed for comparison with current price, and coloring it green or red
-  const [prevBtcPrice, setPrevBtcPrice] = useState<string>('20000');
-  const [prevEthPrice, setPrevEthPrice] = useState<string>('1000');
-  const [btcPrice, setBtcPrice] = useState<string>('20000')
-  const [ethPrice, setEthPrice] = useState<string>('1000')
+  
+  const [currBtcPrice, setCurrBtcPrice] = useRecoilState(CurrBtcPrice);
+  const [currEthPrice, setCurrEthPrice] = useRecoilState(CurrEthPrice);
 
   const fetchAndSetPrices = () => {
-    setPrevBtcPrice(btcPrice);
-    setPrevEthPrice(ethPrice);
-    fetchBtcIntraday().then(btc => setBtcPrice(btc));
-    fetchEthIntraday().then(eth => setEthPrice(eth));
-
-    setTimeout(fetchAndSetPrices, 3000);
+    fetchCurrBtc().then(btc => setCurrBtcPrice(btc));
+    fetchCurrEth().then(eth => setCurrEthPrice(eth));
+    console.log("fetching prices again")
   }
 
-  useEffect(() => fetchAndSetPrices(), [prevBtcPrice, prevEthPrice]);
+  setInterval(fetchAndSetPrices, 5000);
 
   return (
     <motion.div 
@@ -37,13 +34,7 @@ const IntradayLogos: React.FC = () => {
           height={logoSize}
            width={logoSize} 
            alt='btc_logo'/>
-        <h1
-          style={{
-            color: prevBtcPrice > btcPrice ? '#ff0000' : '#00ff00',
-          }}
-        >
-          ${btcPrice}
-        </h1>
+        <h1>${currBtcPrice}</h1>
       </div>
       <div className='flex hover:cursor-pointer mr-10'>
         <Image 
@@ -51,7 +42,7 @@ const IntradayLogos: React.FC = () => {
           height={logoSize} 
           width={logoSize} 
           alt='eth_logo' />
-        <h1 className='text-red pt-1 mx-3'>${ethPrice}</h1>
+        <h1>${currEthPrice}</h1>
       </div>
     </motion.div>
   )

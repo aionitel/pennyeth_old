@@ -8,7 +8,7 @@ import { useRecoilValue } from 'recoil'
 import { currUserAtom } from '../../state/atoms'
 import LoggedInHeader from '../header/WalletAddress'
 import { motion } from 'framer-motion'
-import IntradayLogos from '../Intraday/IntradayLogos'
+import IntradayLogos from '../intraday/IntradayLogos'
 
 // desktop side navbar
 
