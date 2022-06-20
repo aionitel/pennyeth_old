@@ -14,3 +14,12 @@ export const navOpenAtom = atom({ // to close and open modal on certain events
   default: false as boolean,
   effects_UNSTABLE: [persistAtom]
 })
+
+export const IntradayDataAtom = atom({
+  key: 'IntradayData',
+  default: {
+    btc: "20000",
+    eth: "1000",
+  },
+  effects_UNSTABLE: [persistAtom]
+})

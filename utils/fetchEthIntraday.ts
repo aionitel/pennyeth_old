@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { useRecoilState } from 'recoil';
+import { IntradayDataAtom } from '../state/atoms';
 
 const fetchEthIntraday = async () => {
   const eth_url = 'https://data.messari.io/api/v1/assets/eth/metrics'
