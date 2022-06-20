@@ -13,6 +13,7 @@ const fetchCurrBtc = async () => {
   const btc_price_formatted = btc_price.toLocaleString();
   const final_price = btc_price_formatted.slice(0, btc_price_formatted.length -1)
 
+  console.log("fetched btc price: ", final_price);
   return final_price;
 }
 

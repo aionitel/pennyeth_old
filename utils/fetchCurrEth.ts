@@ -14,6 +14,7 @@ const fetchCurrEth = async () => {
   const eth_price_formatted = eth_price.toLocaleString();
   const final_price = eth_price_formatted.slice(0, eth_price_formatted.length -1)
 
+  console.log("fetched eth price: ", final_price);
   return final_price;
 }
 

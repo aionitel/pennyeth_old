@@ -5,7 +5,7 @@ import { useRecoilState } from 'recoil';
 import { CurrBtcPrice } from '../../state/atoms';
 import { CurrEthPrice } from '../../state/atoms';
 import fetchCurrEth from '../../utils/fetchCurrEth';
-import fetchCurrBtc from '../../utils/fetchBtcIntraday';
+import fetchCurrBtc from '../../utils/fetchCurrBtc';
 
 const IntradayLogos: React.FC = () => {
   const logoSize = 30;
@@ -19,7 +19,9 @@ const IntradayLogos: React.FC = () => {
     console.log("fetching prices again")
   }
 
-  setInterval(fetchAndSetPrices, 5000);
+  useEffect(() => {
+    setInterval(fetchAndSetPrices, 5000);
+  })
 
   return (
     <motion.div 
