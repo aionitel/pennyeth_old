@@ -5,17 +5,7 @@ import { motion } from 'framer-motion'
 import Chart from '../components/home/Chart'
 import fetchDailyBtc from '../utils/fetchDailyBtc'
 
-const Home: NextPage = () => {
-  const [dailyBtc, setDailyBtc] = useState<string>();
-
-  const fetchBtcPercent = async () => {
-    await fetchDailyBtc().then(btc => setDailyBtc(btc));
-  }
-
-  useEffect(() => {
-    fetchBtcPercent();
-  })
-
+const Home: NextPage = ({ dailyBtc }: any) => {
   return (
     <>
       <Head>
@@ -28,12 +18,27 @@ const Home: NextPage = () => {
           transition={{ duration: 1 }}
         >
           <h1 className='pt-10 text-5xl'>Welcome to the Best Crypto Platform.</h1>
-          <h1>Bitcoin is up {dailyBtc}% today.</h1>
+          <div className='flex'>
+            <h1>Bitcoin is    </h1>
+            {dailyBtc < 0 ? <h1 className='text-red'>down %{dailyBtc}</h1> : <h1 className='text-green-500'>up %{dailyBtc}</h1>}
+            <h1>today.</h1>
+          </div>
           <Chart />
         </motion.div>
       </div>
     </>
   )
+}
+
+export const getServerSideProps = async () => {
+  const dailyBtc = await fetchDailyBtc();
+  console.log("getServerSideProps hit, dailyBtc: " + dailyBtc)
+
+  return {
+    props: {
+      dailyBtc
+    }
+  }
 }
 
 export default Home
