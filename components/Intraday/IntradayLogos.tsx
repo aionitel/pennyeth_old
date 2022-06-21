@@ -1,23 +1,12 @@
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion';
-import { useRecoilState } from 'recoil';
-import { CurrBtcPrice } from '../../state/atoms';
-import { CurrEthPrice } from '../../state/atoms';
-import fetchCurrEth from '../../utils/fetchCurrEth';
-import fetchCurrBtc from '../../utils/fetchCurrBtc';
-import { GetServerSideProps, NextPage } from 'next';
+import { useRecoilValue } from 'recoil';
+import { CurrBtcAtom } from '../../state/atoms';
+import { CurrEthAtom } from '../../state/atoms';
 
-interface IntradayProps {
-  fetchedBtcPrice: string,
-  fetchedEthPrice: string
-}
-
-const IntradayLogos: NextPage <IntradayProps> = (props) => {
+const IntradayLogos: React.FC = () => {
   const logoSize = 30;
-  
-  const [currBtcPrice, setCurrBtcPrice] = useRecoilState(CurrBtcPrice);
-  const [currEthPrice, setCurrEthPrice] = useRecoilState(CurrEthPrice);
 
   return (
     <motion.div 
@@ -32,7 +21,7 @@ const IntradayLogos: NextPage <IntradayProps> = (props) => {
           height={logoSize}
            width={logoSize} 
            alt='btc_logo'/>
-        <h1 className='mt-1 ml-2'>${props.fetchedBtcPrice}</h1>
+        <h1 className='mt-1 ml-2'>${fetchedBtcPrice}</h1>
       </div>
       <div className='flex pl-4'>
         <Image 
@@ -41,7 +30,7 @@ const IntradayLogos: NextPage <IntradayProps> = (props) => {
           width={logoSize} 
           alt='eth_logo'
           />
-        <h1 className='mt-1 ml-2'>${props.fetchedEthPrice}</h1>
+        <h1 className='mt-1 ml-2'>${fetchedEthPrice}</h1>
       </div>
     </motion.div>
   )

@@ -4,8 +4,14 @@ import Head from 'next/head'
 import { motion } from 'framer-motion'
 import Chart from '../components/home/Chart'
 import fetchDailyBtc from '../utils/fetchDailyBtc'
+import fetchCurrEth from '../utils/fetchCurrEth'
+import fetchCurrBtc from '../utils/fetchCurrBtc'
+import { useRecoilState } from 'recoil'
+import { CurrBtcAtom } from '../state/atoms'
+import { CurrEthAtom } from '../state/atoms'
 
-const Home: NextPage = ({ dailyBtc }: any) => {
+const Home: NextPage = ({ dailyBtc, fetchedBtcPrice, fetchedEthPrice }: any) => {
+  const [currEthPrice, setCurrEthPrice] = useRecoilState()
   return (
     <>
       <Head>
@@ -32,11 +38,14 @@ const Home: NextPage = ({ dailyBtc }: any) => {
 
 export const getServerSideProps = async () => {
   const dailyBtc = await fetchDailyBtc();
-  console.log("getServerSideProps hit, dailyBtc: " + dailyBtc)
+  const fetchedEthPrice = await fetchCurrEth();
+  const fetchedBtcPrice = await fetchCurrBtc();
 
   return {
     props: {
-      dailyBtc
+      dailyBtc,
+      fetchedBtcPrice,
+      fetchedEthPrice
     }
   }
 }
