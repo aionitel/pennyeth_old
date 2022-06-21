@@ -1,15 +1,30 @@
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { CurrBtcAtom } from '../../state/atoms';
 import { CurrEthAtom } from '../../state/atoms';
+import axios from 'axios'
+import fetchCurrBtc from '../../utils/fetchCurrBtc';
+import fetchCurrEth from '../../utils/fetchCurrEth';
 
 const IntradayLogos: React.FC = () => {
   const logoSize = 30;
 
-  const currBtcPrice = useRecoilValue(CurrBtcAtom)
-  const currEthPrice = useRecoilValue(CurrEthAtom)
+  const [currBtcPrice, setCurrBtcPrice] = useRecoilState(CurrBtcAtom);
+  const [currEthPrice, setCurrEthPrice] = useRecoilState(CurrEthAtom);
+
+  const fetchAndSetPrice = async () => {
+    const btcPrice = await fetchCurrBtc();
+    const ethPrice = await fetchCurrEth();
+
+    setCurrBtcPrice(btcPrice);
+    setCurrEthPrice(ethPrice);
+
+    console.log("Fetched and set current prices: " + btcPrice + ethPrice)
+  }
+
+  useEffect(() => fetchAndSetPrice(), [])
 
   return (
     <motion.div 

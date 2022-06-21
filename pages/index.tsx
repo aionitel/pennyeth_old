@@ -4,34 +4,24 @@ import Head from 'next/head'
 import { motion } from 'framer-motion'
 import Chart from '../components/home/Chart'
 import fetchDailyBtc from '../utils/fetchDailyBtc'
-import fetchCurrEth from '../utils/fetchCurrEth'
-import fetchCurrBtc from '../utils/fetchCurrBtc'
-import { useRecoilState } from 'recoil'
-import { CurrBtcAtom } from '../state/atoms'
-import { CurrEthAtom } from '../state/atoms'
+import Image from 'next/image'
 
-const Home: NextPage = ({ dailyBtc, fetchedBtcPrice, fetchedEthPrice }: any) => {
-  const [currBtcPrice, setCurrBtcPrice] = useRecoilState(CurrBtcAtom)
-  const [currEthPrice, setCurrEthPrice] = useRecoilState(CurrEthAtom)
-
-  useEffect(() => {
-    setCurrBtcPrice(fetchedBtcPrice)
-    setCurrEthPrice(fetchedEthPrice)
-  })
+const Home: NextPage = ({ dailyBtc }: any) => {
 
   return (
     <>
       <Head>
         <title>PennyETH</title>
       </Head>
-      <div className='bg-black h-screen text-white text-center'>
+      <div className='flex justify-center bg-black h-screen w-screen text-white'>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <h1 className='pt-10 text-5xl'>Welcome to the Best Crypto Platform.</h1>
+          <h1 className='mt-10 lg:text-5xl text-xl my-2 mx-2'>Welcome to the Best Crypto Platform.</h1>
           <div className='flex'>
+            <Image src='https://i.imgur.com/wbZ6UVD.png' height={20} width={20} alt='main-btc' />
             <h1>Bitcoin is    </h1>
             {dailyBtc < 0 ? <h1 className='text-red'>down %{dailyBtc}</h1> : <h1 className='text-green-500'>up %{dailyBtc}</h1>}
             <h1>today.</h1>
@@ -45,14 +35,10 @@ const Home: NextPage = ({ dailyBtc, fetchedBtcPrice, fetchedEthPrice }: any) => 
 
 export const getServerSideProps = async () => {
   const dailyBtc = await fetchDailyBtc();
-  const fetchedEthPrice = await fetchCurrEth();
-  const fetchedBtcPrice = await fetchCurrBtc();
 
   return {
     props: {
-      dailyBtc,
-      fetchedBtcPrice,
-      fetchedEthPrice
+      dailyBtc
     }
   }
 }
