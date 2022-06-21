@@ -3,21 +3,9 @@ import { AreaChart, Area, CartesianGrid, YAxis, XAxis, Tooltip } from 'recharts'
 
 const Chart: React.FC = () => {
 
-  const handleChartSize = () => {
-    if (typeof window !== "undefined") {
-      const width = screen.width;
-
-      if (width <= 200) {
-        return 350
-      } else {
-        return 800
-      }
-    }
-  }
-
   return (
     <div>
-      <AreaChart width={handleChartSize()} height={250} data={data}
+      <AreaChart width={350} height={200} data={data}
         margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
