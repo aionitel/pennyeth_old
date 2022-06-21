@@ -11,7 +11,14 @@ import { CurrBtcAtom } from '../state/atoms'
 import { CurrEthAtom } from '../state/atoms'
 
 const Home: NextPage = ({ dailyBtc, fetchedBtcPrice, fetchedEthPrice }: any) => {
-  const [currEthPrice, setCurrEthPrice] = useRecoilState()
+  const [currBtcPrice, setCurrBtcPrice] = useRecoilState(CurrBtcAtom)
+  const [currEthPrice, setCurrEthPrice] = useRecoilState(CurrEthAtom)
+
+  useEffect(() => {
+    setCurrBtcPrice(fetchedBtcPrice)
+    setCurrEthPrice(fetchedEthPrice)
+  })
+
   return (
     <>
       <Head>

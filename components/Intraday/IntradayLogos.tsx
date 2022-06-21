@@ -8,6 +8,9 @@ import { CurrEthAtom } from '../../state/atoms';
 const IntradayLogos: React.FC = () => {
   const logoSize = 30;
 
+  const currBtcPrice = useRecoilValue(CurrBtcAtom)
+  const currEthPrice = useRecoilValue(CurrEthAtom)
+
   return (
     <motion.div 
       className='flex text-base mb-5 mt-6'
@@ -21,7 +24,7 @@ const IntradayLogos: React.FC = () => {
           height={logoSize}
            width={logoSize} 
            alt='btc_logo'/>
-        <h1 className='mt-1 ml-2'>${fetchedBtcPrice}</h1>
+        <h1 className='mt-1 ml-2'>${currBtcPrice}</h1>
       </div>
       <div className='flex pl-4'>
         <Image 
@@ -30,7 +33,7 @@ const IntradayLogos: React.FC = () => {
           width={logoSize} 
           alt='eth_logo'
           />
-        <h1 className='mt-1 ml-2'>${fetchedEthPrice}</h1>
+        <h1 className='mt-1 ml-2'>${currEthPrice}</h1>
       </div>
     </motion.div>
   )
