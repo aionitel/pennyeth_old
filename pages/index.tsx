@@ -7,6 +7,7 @@ import fetchDailyBtc from '../utils/fetchDailyBtc'
 import Image from 'next/image'
 
 const Home: NextPage = ({ dailyBtc }: any) => {
+  const btcIconSize = 32;
 
   return (
     <>
@@ -20,11 +21,15 @@ const Home: NextPage = ({ dailyBtc }: any) => {
           transition={{ duration: 1 }}
         >
           <h1 className='mt-10 lg:text-5xl text-xl my-2 mx-2'>Welcome to the Best Crypto Platform.</h1>
-          <div className='flex'>
-            <Image src='https://i.imgur.com/wbZ6UVD.png' height={20} width={20} alt='main-btc' />
-            <h1>Bitcoin is    </h1>
-            {dailyBtc < 0 ? <h1 className='text-red'>down %{dailyBtc}</h1> : <h1 className='text-green-500'>up %{dailyBtc}</h1>}
-            <h1>today.</h1>
+          <div className='flex justify-center'>
+            <Image src='https://i.imgur.com/wbZ6UVD.png' height={btcIconSize} width={btcIconSize} alt='main-btc' />
+            <span className='flex'>
+              <h1 className='mt-1 mx-1'>Bitcoin is</h1>
+              {
+                dailyBtc < 0 ? <h1 className='mt-1 mr-1'>down</h1> : <h1 className='mt-1 mr-1'>up</h1>
+              }
+              <h1 className='mt-1'> {dailyBtc}% today.</h1>
+            </span>
           </div>
           <Chart />
         </motion.div>
