@@ -26,7 +26,7 @@ const Home: NextPage = ({ dailyBtc }: any) => {
             <span className='flex'>
               <h1 className='mt-1 mx-1'>Bitcoin is</h1>
               {
-                dailyBtc < 0 ? <h1 className='mt-1 mr-1'>down</h1> : <h1 className='mt-1 mr-1'>up</h1>
+                dailyBtc < 0 ? <h1 className='mt-1 mr-1 text-red'>down</h1> : <h1 className='mt-1 mr-1 text-green-400'>up</h1>
               }
               <h1 className='mt-1'> {dailyBtc}% today.</h1>
             </span>
