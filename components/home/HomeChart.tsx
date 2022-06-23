@@ -1,7 +1,7 @@
 import React from 'react'
 import { AreaChart, Area, CartesianGrid, YAxis, XAxis, Tooltip } from 'recharts'
 
-const Chart: React.FC = () => {
+const HomeChart: React.FC = () => {
 
   return (
     <div>
@@ -50,4 +50,4 @@ const data = [
   },
 ]
 
-export default Chart
+export default HomeChart;

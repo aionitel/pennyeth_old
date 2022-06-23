@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
-import Chart from '../components/home/Chart'
+import HomeChart from '../components/home/HomeChart'
 import fetchDailyBtc from '../utils/fetchDailyBtc'
 import Image from 'next/image'
 
@@ -31,7 +31,7 @@ const Home: NextPage = ({ dailyBtc }: any) => {
               <h1 className='mt-1'> today.</h1>
             </span>
           </div>
-          <Chart />
+          <HomeChart />
         </motion.div>
       </div>
     </>
