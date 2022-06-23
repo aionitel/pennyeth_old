@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { AreaChart, Area, CartesianGrid, YAxis, XAxis, Tooltip } from 'recharts'
+import axios from 'axios'
 
-const HomeChart: React.FC = () => {
+interface HomeChartProps {
+  weeklyBtc: any
+}
 
+const HomeChart: React.FC<HomeChartProps> = ({ weeklyBtc }) => {
   return (
     <div>
       <AreaChart width={350} height={200} data={data}

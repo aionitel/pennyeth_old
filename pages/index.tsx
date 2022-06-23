@@ -5,9 +5,12 @@ import { motion } from 'framer-motion'
 import HomeChart from '../components/home/HomeChart'
 import fetchDailyBtc from '../utils/fetchDailyBtc'
 import Image from 'next/image'
+import fetchWeeklyBtc from '../utils/fetchWeeklyBtc'
 
-const Home: NextPage = ({ dailyBtc }: any) => {
+const Home: NextPage = ({ dailyBtc, weeklyBtc }: any) => {
   const btcIconSize = 32;
+
+  console.log(weeklyBtc)
 
   return (
     <>
@@ -31,7 +34,7 @@ const Home: NextPage = ({ dailyBtc }: any) => {
               <h1 className='mt-1'> today.</h1>
             </span>
           </div>
-          <HomeChart />
+          <HomeChart weeklyBtc={weeklyBtc} />
         </motion.div>
       </div>
     </>
@@ -40,10 +43,12 @@ const Home: NextPage = ({ dailyBtc }: any) => {
 
 export const getServerSideProps = async () => {
   const dailyBtc = await fetchDailyBtc();
+  const weeklyBtc = await fetchWeeklyBtc();
 
   return {
     props: {
-      dailyBtc
+      dailyBtc,
+      weeklyBtc
     }
   }
 }
