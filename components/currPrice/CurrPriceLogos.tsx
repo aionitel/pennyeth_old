@@ -8,7 +8,7 @@ import axios from 'axios'
 import fetchCurrBtc from '../../utils/fetchCurrBtc';
 import fetchCurrEth from '../../utils/fetchCurrEth';
 
-const IntradayLogos: React.FC = () => {
+const CurrPriceLogos: React.FC = () => {
   const logoSize = 30;
 
   const [currBtcPrice, setCurrBtcPrice] = useRecoilState(CurrBtcAtom);
@@ -54,4 +54,4 @@ const IntradayLogos: React.FC = () => {
   )
 }
 
-export default IntradayLogos
+export default CurrPriceLogos;

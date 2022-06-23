@@ -2,7 +2,6 @@ import React from 'react'
 import { BiCoin as CoinIcon } from 'react-icons/bi'
 import MobileNavModal from './MobileNavModal'
 import Link from 'next/link'
-import IntradayLogos from '../../intraday/IntradayLogos'
 
 const MobileNavBar: React.FC = () => { // mainly top of screen, with three bars, logo, and name
   return (
