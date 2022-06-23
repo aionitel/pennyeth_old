@@ -3,13 +3,22 @@ import { AreaChart, Area, CartesianGrid, YAxis, XAxis, Tooltip } from 'recharts'
 import axios from 'axios'
 
 interface HomeChartProps {
-  weeklyBtc: any
+  weeklyBtc: number[]
+}
+
+interface PriceData {
+  date: string,
+  price: number,
 }
 
 const HomeChart: React.FC<HomeChartProps> = ({ weeklyBtc }) => {
+  const data: PriceData[] = []
+
+  
+
   return (
     <div>
-      <AreaChart width={350} height={200} data={data}
+      <AreaChart width={350} height={200}
         margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -26,32 +35,5 @@ const HomeChart: React.FC<HomeChartProps> = ({ weeklyBtc }) => {
     </div>
   )
 }
-
-const data = [
-  {
-    "name": "Page A",
-    "uv": 4000,
-  },
-  {
-    "name": "Page B",
-    "uv": 3000,
-  },
-  {
-    "name": "Page C",
-    "uv": 2000,
-  },
-  {
-    "name": "Page D",
-    "uv": 2780,
-  },
-  {
-    "name": "Page E",
-    "uv": 1890,
-  },
-  {
-    "name": "Page F",
-    "uv": 2390,
-  },
-]
 
 export default HomeChart;

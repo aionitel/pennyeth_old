@@ -10,8 +10,6 @@ import fetchWeeklyBtc from '../utils/fetchWeeklyBtc'
 const Home: NextPage = ({ dailyBtc, weeklyBtc }: any) => {
   const btcIconSize = 32;
 
-  console.log(weeklyBtc)
-
   return (
     <>
       <Head>
