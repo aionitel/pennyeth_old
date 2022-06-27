@@ -1,12 +1,11 @@
-import { BiCoin, BiNews } from 'react-icons/bi'
+import { BiNews } from 'react-icons/bi'
 import { RiHandCoinLine as HandIcon } from 'react-icons/ri'
 import { MdOutlineMarkunreadMailbox } from 'react-icons/md'
 import { IconType } from 'react-icons'
 import { AiOutlineAreaChart } from 'react-icons/ai'
-import { FaDollarSign } from 'react-icons/fa'
-import { AiFillPicture } from 'react-icons/ai'
 import { GiTwoCoins } from 'react-icons/gi' 
 import { SiHomeadvisor } from 'react-icons/si'
+import { CgSmileMouthOpen } from 'react-icons/cg'
 
 // universal navbar items (assets, about, etc...) to be used for both desktop and mobile navbars, and better modularity
 
@@ -47,7 +46,7 @@ const NavBarItemsData: NavBarItemsType[] = [
   {
     title: 'NFTs',
     path: '/nft',
-    icon: AiFillPicture
+    icon: CgSmileMouthOpen
   },
   {
     title: 'About',

@@ -6,19 +6,10 @@ interface HomeChartProps {
   weeklyBtc: number[]
 }
 
-interface PriceData {
-  date: string,
-  price: number,
-}
-
 const HomeChart: React.FC<HomeChartProps> = ({ weeklyBtc }) => {
-  const data: PriceData[] = []
-
-  
-
   return (
     <div>
-      <AreaChart width={350} height={200}
+      <AreaChart width={350} height={200} data={weeklyBtc}
         margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
