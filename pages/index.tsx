@@ -6,9 +6,13 @@ import HomeChart from '../components/home/HomeChart'
 import fetchDailyBtc from '../utils/fetchDailyBtc'
 import Image from 'next/image'
 import fetchWeeklyBtc from '../utils/fetchWeeklyBtc'
+import { useRecoilValue } from 'recoil'
+import { CurrBtcAtom } from '../state/atoms'
 
 const Home: NextPage = ({ dailyBtc, weeklyBtc }: any) => {
   const btcIconSize = 32;
+
+  const currBtcPrice = useRecoilValue(CurrBtcAtom);
 
   return (
     <>
@@ -32,6 +36,7 @@ const Home: NextPage = ({ dailyBtc, weeklyBtc }: any) => {
               <h1 className='mt-1'> today.</h1>
             </span>
           </div>
+          <h1 className='visible lg:hidden text-center'>At a current trading price of ${currBtcPrice}.</h1>
           <HomeChart weeklyBtc={weeklyBtc} />
         </motion.div>
       </div>
