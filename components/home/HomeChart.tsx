@@ -3,8 +3,7 @@ import { AreaChart, Area, CartesianGrid, YAxis, XAxis, Tooltip } from 'recharts'
 
 interface WeeklyDataProps {
   name: string,
-  BTC: number,
-  ETH: number
+  BTC: number
 }
 
 const HomeChart: React.FC<WeeklyDataProps> = ({ weeklyBtc }) => {
@@ -18,7 +17,7 @@ const HomeChart: React.FC<WeeklyDataProps> = ({ weeklyBtc }) => {
             <stop offset="95%" stopColor="#1552F0" stopOpacity={0}/>
           </linearGradient>
         </defs>
-        <XAxis dataKey="name" />
+        <XAxis dataKey="date" />
         <YAxis />
         <Tooltip />
         <Area type="monotone" dataKey="BTC" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
