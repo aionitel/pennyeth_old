@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { AreaChart, Area, CartesianGrid, YAxis, XAxis, Tooltip } from 'recharts'
-import axios from 'axios'
 
-interface HomeChartProps {
-  weeklyBtc: number[]
+interface WeeklyDataProps {
+  name: string,
+  BTC: number,
+  ETH: number
 }
 
-const HomeChart: React.FC<HomeChartProps> = ({ weeklyBtc }) => {
+const HomeChart: React.FC<WeeklyDataProps> = ({ weeklyBtc }) => {
   return (
     <div>
-      <AreaChart width={350} height={200} data={weeklyBtc}
+      <AreaChart width={1000} height={400} data={weeklyBtc}
         margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -20,8 +21,7 @@ const HomeChart: React.FC<HomeChartProps> = ({ weeklyBtc }) => {
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
-        <Area type="monotone" dataKey="uv" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
-        <Area type="monotone" dataKey="pv" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
+        <Area type="monotone" dataKey="BTC" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
       </AreaChart>
     </div>
   )

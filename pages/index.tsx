@@ -5,14 +5,24 @@ import { motion } from 'framer-motion'
 import HomeChart from '../components/home/HomeChart'
 import fetchDailyBtc from '../utils/fetchDailyBtc'
 import Image from 'next/image'
-import fetchWeeklyBtc from '../utils/fetchWeeklyBtc'
 import { useRecoilValue } from 'recoil'
 import { CurrBtcAtom } from '../state/atoms'
+import fetchWeeklyBtc from '../utils/fetchWeeklyBtc'
 
-const Home: NextPage = ({ dailyBtc, weeklyBtc }: any) => {
+interface HomeProps {
+  dailyBtc: number,
+  weeklyBtc: {
+    name: string,
+    BTC: number
+  }
+}
+
+const Home: NextPage<HomeProps> = ({ dailyBtc, weeklyBtc }) => {
   const btcIconSize = 32;
 
   const currBtcPrice = useRecoilValue(CurrBtcAtom);
+
+  console.log(weeklyBtc);
 
   return (
     <>
