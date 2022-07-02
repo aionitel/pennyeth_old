@@ -2,8 +2,10 @@ import { useEffect } from 'react'
 import { AreaChart, Area, CartesianGrid, YAxis, XAxis, Tooltip } from 'recharts'
 
 interface WeeklyDataProps {
-  name: string,
-  BTC: number
+  weeklyBtc: {
+    date: string,
+    BTC: number,
+  }
 }
 
 const HomeChart: React.FC<WeeklyDataProps> = ({ weeklyBtc }) => {

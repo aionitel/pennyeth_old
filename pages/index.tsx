@@ -12,7 +12,7 @@ import fetchWeeklyBtc from '../utils/fetchWeeklyBtc'
 interface HomeProps {
   dailyBtc: number,
   weeklyBtc: {
-    name: string,
+    date: string,
     BTC: number
   }
 }
