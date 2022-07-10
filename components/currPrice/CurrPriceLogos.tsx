@@ -5,8 +5,8 @@ import { useRecoilState } from 'recoil';
 import { CurrBtcAtom } from '../../state/atoms';
 import { CurrEthAtom } from '../../state/atoms';
 import axios from 'axios'
-import fetchCurrBtc from '../../utils/fetchCurrBtc';
-import fetchCurrEth from '../../utils/fetchCurrEth';
+import fetchCurrBtc from '../../prices/btc/fetchCurrBtc';
+import fetchCurrEth from '../../prices/eth/fetchCurrEth';
 
 const CurrPriceLogos: React.FC = () => {
   const logoSize = 30;
