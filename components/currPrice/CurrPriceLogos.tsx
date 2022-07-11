@@ -2,8 +2,7 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion';
 import { useRecoilState } from 'recoil';
-import { CurrBtcAtom } from '../../state/atoms';
-import { CurrEthAtom } from '../../state/atoms';
+import { CurrBtcAtom, CurrEthAtom } from '../../state/atoms';
 import axios from 'axios'
 import fetchCurrBtc from '../../prices/btc/fetchCurrBtc';
 import fetchCurrEth from '../../prices/eth/fetchCurrEth';

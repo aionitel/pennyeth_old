@@ -3,26 +3,37 @@ import { recoilPersist } from "recoil-persist";
 
 const { persistAtom } = recoilPersist();
 
-export const currUserAtom = atom({ // global user state
+// curr user's eth address
+export const currUserAtom = atom({
   key: 'currUser',
   default: '' as string ,
   effects_UNSTABLE: [persistAtom]
 })
 
-export const navOpenAtom = atom({ // to close and open modal on certain events
+// to close and open modal on certain events
+export const navOpenAtom = atom({ 
   key: 'modalOpen',
   default: false as boolean,
   effects_UNSTABLE: [persistAtom]
 })
 
+// latest btc/usd price
 export const CurrBtcAtom = atom({
   key: 'IntradayBtcPrice',
-  default: NaN,
+  default: 0 as number,
   effects_UNSTABLE: [persistAtom]
 })
 
+// latest eth/usd price
+export const CurrEthAtom = atom({
+  key: 'IntradayEthPrice',
+  default: 0 as number,
+  effects_UNSTABLE: [persistAtom]
+})
+
+// weekly
 export const WeeklyBtcAtom  = atom({
-  key: "WeeklyBtc",
+  key: "weeklyBtc",
   default: [],
   effects_UNSTABLE: [persistAtom]
 })

@@ -3,24 +3,29 @@ import React, { useEffect } from 'react'
 import fetchWeeklyBtc from '../../prices/btc/fetchWeeklyBtc'
 import fetchDailyBtc from '../../prices/btc/fetchDailyBtc'
 import { useRecoilState } from 'recoil'
-import { CurrBtcAtom, WeeklyBtcAtom } from '../../state/atoms'
+import { CurrBtcAtom, CurrEthAtom, WeeklyBtcAtom } from '../../state/atoms'
+import fetchCurrEth from '../../prices/eth/fetchCurrEth'
+import fetchCurrBtc from '../../prices/btc/fetchCurrBtc'
 
 /*
-  secret page for only fetching certain data on initial page load
+  secret page for only fetching and setting certain data only on initial load
   component will not render again, so performance is better
 */
 
 interface SecretProps {
-  dailyBtc: number | typeof NaN,
+  fetchedCurrBtc: number | typeof NaN,
+  fetchedCurrEth: number | typeof NaN,
   weeklyBtc: number | typeof NaN,
 }
 
-const Secret: NextPage<SecretProps> = ({ dailyBtc, weeklyBtc }) => {
+const Secret: NextPage<SecretProps> = ({ fetchedCurrBtc, fetchedCurrEth, weeklyBtc }) => {
   const [currBtc, setCurrBtc] = useRecoilState(CurrBtcAtom);
+  const [currEth, setCurrEth] = useRecoilState(CurrEthAtom);
   const [currWeeklyBtc, setCurrWeeklyBtc] = useRecoilState(WeeklyBtcAtom);
 
   useEffect(() => {
-    setCurrBtc(dailyBtc);
+    setCurrBtc(fetchedCurrBtc);
+    setCurrEth(fetchedCurrEth);
     setCurrWeeklyBtc(weeklyBtc);
   })
 
@@ -32,12 +37,14 @@ const Secret: NextPage<SecretProps> = ({ dailyBtc, weeklyBtc }) => {
 }
 
 export const getServerSideProps = async () => {
-  const dailyBtc = await fetchDailyBtc();
+  const fetchedCurrBtc = await fetchCurrBtc();
+  const fetchedCurrEth = await fetchCurrEth();
   const weeklyBtc = await fetchWeeklyBtc();
 
   return {
     props: {
-      dailyBtc,
+      fetchedCurrBtc,
+      fetchedCurrEth,
       weeklyBtc
     }
   }

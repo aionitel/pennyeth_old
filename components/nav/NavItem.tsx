@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { IconType } from 'react-icons'
 import { motion } from 'framer-motion'
@@ -12,6 +12,11 @@ interface NavItemProps {
 // desktop navitem
 
 const NavItem: React.FC<NavItemProps> = ({ title, path, Icon }) => {
+  const [urlPathname, setUrlPathname] = useState<string>('/');
+
+  // set current pathname everytime user changes path (goes to new page), initially / (home)
+  useEffect(() => setUrlPathname(location.pathname), [location.pathname])
+
   return (
     <Link href={path} passHref>
       <motion.div className='flex w-72 mx-2 hover:cursor-pointer hover:bg-gray rounded-full transition-all duration-300'
@@ -23,7 +28,7 @@ const NavItem: React.FC<NavItemProps> = ({ title, path, Icon }) => {
           <div className='bg-gray p-3 rounded-full'>
             <Icon style={{
               fontSize: 20,
-              color: typeof window !== 'undefined' && location.pathname === path ? '#1552F0' : 'white',
+              color: urlPathname === path ? '#1552F0' : 'white',
             }}/>
           </div>
           <span>
