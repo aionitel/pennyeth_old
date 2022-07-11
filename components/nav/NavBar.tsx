@@ -9,8 +9,12 @@ import { currUserAtom } from '../../state/atoms'
 import LoggedInHeader from '../header/WalletAddress'
 import { motion } from 'framer-motion'
 import CurrPriceLogos from '../currPrice/CurrPriceLogos'
+import dynamic from 'next/dynamic'
 
 // desktop side navbar
+
+// dynamically turn ssr off for NavItem, to avoid 'location is not defined' errors
+const DynamicNavItem = dynamic(() => import('./NavItem'), {ssr: false})
 
 const NavBar: React.FC = () => {
   const user = useRecoilValue(currUserAtom)
@@ -36,7 +40,7 @@ const NavBar: React.FC = () => {
       </div>
       <ul>
         {NavBarItemsData.map(item => (
-          <NavItem key={1} title={item.title} path={item.path} Icon={item.icon} />
+          <DynamicNavItem key={1} title={item.title} path={item.path} Icon={item.icon} />
         ))}
       </ul>
     </nav>

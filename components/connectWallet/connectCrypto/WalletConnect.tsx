@@ -1,23 +1,20 @@
 import React from 'react'
 import { useMoralis } from 'react-moralis'
 import { useRecoilState } from 'recoil'
-import { currUserAtom } from '../../state/atoms'
-import Image from 'next/image'
+import { currUserAtom } from '../../../state/atoms'
 import { useToasts } from 'react-toast-notifications'
 
-const Metmask: React.FC = () => {
-  const { Moralis, isAuthenticated, user: MoralisUser } = useMoralis()
+const WalletConnect: React.FC = () => {
+  const { Moralis } = useMoralis()
 
   const [user, setUser] = useRecoilState(currUserAtom)
   const { addToast } = useToasts() // for showing notifications
 
-  const logoSize = 39; // metamask image size
-
   const handleLogin = async () => {
-    const user = await Moralis.authenticate()
+    const user = await Moralis.authenticate({ provider: 'walletconnect' })
 
     if (!user) {
-      addToast("Couldn't login with Metamask", {
+      addToast("Couldn't login with WalletConnect", {
         appearance: 'warning',
         autoDismiss: true,
       })
@@ -25,7 +22,7 @@ const Metmask: React.FC = () => {
 
     setUser(user?.get("ethAddress"))
 
-    addToast(`Logged in with Metamask, your wallet address: ${user?.get("ethAddress")}`, {
+    addToast(`Logged in with WalletConnect, your wallet address: ${user?.get("ethAddress")}`, {
       appearance: 'success',
       autoDismiss: true,
     })
@@ -35,23 +32,19 @@ const Metmask: React.FC = () => {
     <button
       onClick={() => handleLogin()}
       className='
-      flex
       bg-gray 
       text-white 
       text-center 
       mx-14
+      py-2 px-2
       my-2
-      py-2 px-2 
       rounded-lg 
       hover:scale-110 
-      transition-all
-      justify-center
-      '
+      transition-all'
     >
-      <h1 className='text-center mr-2'>Connect with Metamask</h1>
-      <Image src='https://i.imgur.com/Ga5DEu3.png' width={logoSize} height={logoSize} alt='' />
+      <h1>Connect with WalletConnect</h1>
     </button>
   )
 }
 
-export default Metmask
+export default WalletConnect

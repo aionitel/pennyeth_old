@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import { useMoralis } from 'react-moralis'
 import { useRecoilState } from 'recoil'
-import { currUserAtom } from '../../state/atoms'
+import { currUserAtom } from '../../../state/atoms'
 import { useToasts } from 'react-toast-notifications'
 
 const PhantomWallet: React.FC = () => {
