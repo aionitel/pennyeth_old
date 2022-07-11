@@ -2,35 +2,18 @@ import { NextPage } from 'next'
 import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
-import fetchDailyBtc from '../prices/btc/fetchDailyBtc'
 import Image from 'next/image'
-import { useRecoilValue } from 'recoil'
-import { CurrBtcAtom } from '../state/atoms'
-import fetchWeeklyBtc from '../prices/btc/fetchWeeklyBtc'
 import BitcoinChart from '../components/chart/BitcoinChart'
-import EthChart from '../components/chart/EthChart'
 
-interface HomeProps {
-  dailyBtc: number,
-  weeklyBtc: {
-    date: string,
-    BTC: number
-  }
-}
-
-const Home: NextPage<HomeProps> = ({ dailyBtc, weeklyBtc }) => {
+const Home: NextPage = () => {
   const btcIconSize = 32;
-
-  const currBtcPrice = useRecoilValue(CurrBtcAtom);
-
-  console.log(weeklyBtc);
 
   return (
     <>
       <Head>
         <title>PennyETH</title>
       </Head>
-      <div className='flex justify-center bg-black h-screen w-screen text-white'>
+      <div className='flex bg-black h-screen text-white'>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -48,26 +31,13 @@ const Home: NextPage<HomeProps> = ({ dailyBtc, weeklyBtc }) => {
             </span>
           </div>
           <h1 className='visible lg:hidden text-center'>At a current trading price of ${currBtcPrice}.</h1>
-          <div className='flex justify-between'>
-            <BitcoinChart weeklyBtc={weeklyBtc} />
-            <EthChart />
+          <div className='flex'>
+            <BitcoinChart />
           </div>
         </motion.div>
       </div>
     </>
   )
-}
-
-export const getServerSideProps = async () => {
-  const dailyBtc = await fetchDailyBtc();
-  const weeklyBtc = await fetchWeeklyBtc();
-
-  return {
-    props: {
-      dailyBtc,
-      weeklyBtc
-    }
-  }
 }
 
 export default Home

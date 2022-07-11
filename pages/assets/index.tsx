@@ -2,7 +2,6 @@ import type { NextPage } from 'next'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Head from 'next/head'
-import HomeChart from '../../components/home/HomeChart'
 
 const Home: NextPage = () => {
   return (
@@ -17,7 +16,6 @@ const Home: NextPage = () => {
           initial={{ opacity:0 }}
           animate={{ opacity:1 }}
         >
-          <HomeChart />
         </motion.div>
       </div>
     </>
