@@ -31,6 +31,13 @@ export const CurrEthAtom = atom({
   effects_UNSTABLE: [persistAtom]
 })
 
+// latest daily percent change btc
+export const DailyBtcAtom = atom({
+  key: 'dailyBtc',
+  default: NaN as number | typeof NaN,
+  effects_UNSTABLE: [persistAtom]
+})
+
 // weekly
 export const WeeklyBtcAtom  = atom({
   key: "weeklyBtc",

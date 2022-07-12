@@ -3,15 +3,15 @@ import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import BitcoinChart from '../components/chart/BitcoinChart'
 import { useRecoilValue } from 'recoil'
-import { CurrBtcAtom } from '../state/atoms'
+import { CurrBtcAtom, DailyBtcAtom } from '../state/atoms'
 
 const Home: NextPage = () => {
   const btcIconSize = 32;
 
-  // global latest current btc price
+  // latest btc/usd price and daily percent change
   const currBtcPrice = useRecoilValue(CurrBtcAtom);
+  const dailyBtc = useRecoilValue(DailyBtcAtom);
 
   return (
     <>
@@ -30,7 +30,7 @@ const Home: NextPage = () => {
             <span className='flex'>
               <h1 className='mt-1 mx-1'>Bitcoin is</h1>
               {
-                currBtcPrice < 0 ? <h1 className='mt-1 mr-1 text-red'>down {currBtcPrice}%</h1> : <h1 className='mt-1 mr-1 text-green-400'>up {currBtcPrice}%</h1>
+                dailyBtc < 0 ? <h1 className='mt-1 mr-1 text-red'>down {dailyBtc}%</h1> : <h1 className='mt-1 mr-1 text-green-400'>up {dailyBtc}%</h1>
               }
               <h1 className='mt-1'> today.</h1>
             </span>
