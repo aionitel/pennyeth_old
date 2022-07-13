@@ -1,16 +1,14 @@
 import { AreaChart, Area, CartesianGrid, YAxis, XAxis, Tooltip } from 'recharts'
+import { useRecoilValue } from 'recoil';
+import { WeeklyBtcAtom } from '../../state/atoms';
 
-interface WeeklyDataProps {
-  weeklyBtc: {
-    date: string,
-    BTC: number,
-  }
-}
+const BitcoinChart: React.FC = () => {
 
-const BitcoinChart: React.FC<WeeklyDataProps> = ({ weeklyBtc }) => {
+  const weeklyBtc = useRecoilValue(WeeklyBtcAtom);
+  
   return (
     <div>
-      <AreaChart width={500} height={300} data={weeklyBtc}
+      <AreaChart width={1050} height={300} data={weeklyBtc}
         margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -18,10 +16,9 @@ const BitcoinChart: React.FC<WeeklyDataProps> = ({ weeklyBtc }) => {
             <stop offset="95%" stopColor="#1552F0" stopOpacity={0}/>
           </linearGradient>
         </defs>
-        <XAxis dataKey="date" />
         <YAxis />
         <Tooltip />
-        <Area type="monotone" dataKey="BTC" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+        <Area dataKey="BTC" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
       </AreaChart>
     </div>
   )

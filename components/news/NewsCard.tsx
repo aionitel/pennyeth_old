@@ -1,11 +1,11 @@
 import React from 'react'
 
-const EthChart = () => {
+const NewsCard = () => {
   return (
     <div>
-      eth chart
+      News card
     </div>
   )
 }
 
-export default EthChart
+export default NewsCard

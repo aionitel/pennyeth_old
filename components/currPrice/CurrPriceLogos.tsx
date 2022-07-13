@@ -18,7 +18,7 @@ const CurrPriceLogos: React.FC = () => {
   const [dailyBtc, setDailyBtc] = useRecoilState(DailyBtcAtom);
   const [currWeeklyBtc, setCurrWeeklyBtc] = useRecoilState(WeeklyBtcAtom);
 
-  const fetchAndSetPrice = async () => {
+  const fetchAndSetPrices = async () => {
     const btcPrice = await fetchCurrBtc();
     const ethPrice = await fetchCurrEth();
     const fetchedDailyBtc = await fetchDailyBtc();
@@ -32,7 +32,7 @@ const CurrPriceLogos: React.FC = () => {
     console.log("Fetched and set current prices: " + btcPrice + ethPrice)
   }
 
-  useEffect(() => fetchAndSetPrice(), [])
+  useEffect(() => fetchAndSetPrices(), [])
 
   return (
     <motion.div 
