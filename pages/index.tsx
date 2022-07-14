@@ -14,7 +14,6 @@ const Home: NextPage = () => {
   // latest btc/usd price and daily percent change
   const currBtcPrice = useRecoilValue(CurrBtcAtom);
   const dailyBtc = useRecoilValue(DailyBtcAtom);
-
   return (
     <>
       <Head>
@@ -41,8 +40,9 @@ const Home: NextPage = () => {
           <div className='flex m-6'>
             <BitcoinChart />
             <div className='flex-row'>
-              <NewsCard />
-              <NewsCard />
+              {articles.map(item => (
+                <NewsCard key='' title={item.title} authors={item.authors} image={item.image} date={item.date} url={item.url} />
+              ))}
             </div>
           </div>
         </motion.div>

@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion';
 import { useRecoilState } from 'recoil';
 import { CurrBtcAtom, CurrEthAtom } from '../../state/atoms';
-import fetchCurrBtc from '../../prices/btc/fetchCurrBtc';
-import fetchCurrEth from '../../prices/eth/fetchCurrEth';
+import fetchCurrBtc from '../../data/prices/btc/fetchCurrBtc';
+import fetchCurrEth from '../../data/prices/eth/fetchCurrEth';
 import { DailyBtcAtom } from '../../state/atoms';
 import { WeeklyBtcAtom } from '../../state/atoms';
-import fetchWeeklyBtc from '../../prices/btc/fetchWeeklyBtc';
-import fetchDailyBtc from '../../prices/btc/fetchDailyBtc';
+import fetchWeeklyBtc from '../../data/prices/btc/fetchWeeklyBtc';
+import fetchDailyBtc from '../../data/prices/btc/fetchDailyBtc';
 
 const CurrPriceLogos: React.FC = () => {
   const logoSize = 30;
