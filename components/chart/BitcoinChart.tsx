@@ -16,10 +16,13 @@ const BitcoinChart: React.FC = () => {
             <stop offset="95%" stopColor="#1552F0" stopOpacity={0}/>
           </linearGradient>
         </defs>
+        <XAxis dataKey='date' />
         <YAxis />
-        <Tooltip formatter={value => new Intl.NumberFormat('en-US',
-                        { style: 'currency', currency: 'USD',
-                          minimumFractionDigits: 2 }).format(value)} />
+        <Tooltip 
+          labelStyle={{ color: '#8884d8' }} 
+          formatter={value => new Intl.NumberFormat('en-US',
+                    { style: 'currency', currency: 'USD',
+                      minimumFractionDigits: 2 }).format(value)} />
         <Area dataKey="BTC" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
       </AreaChart>
     </div>
