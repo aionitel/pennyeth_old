@@ -17,7 +17,9 @@ const BitcoinChart: React.FC = () => {
           </linearGradient>
         </defs>
         <YAxis />
-        <Tooltip />
+        <Tooltip formatter={value => new Intl.NumberFormat('en-US',
+                        { style: 'currency', currency: 'USD',
+                          minimumFractionDigits: 2 }).format(value)} />
         <Area dataKey="BTC" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
       </AreaChart>
     </div>

@@ -7,6 +7,7 @@ import { useRecoilValue } from 'recoil'
 import { CurrBtcAtom, DailyBtcAtom } from '../state/atoms'
 import BitcoinChart from '../components/chart/BitcoinChart'
 import NewsCard from '../components/news/NewsCard'
+import fetchBtcNews from '../data/news/btc/fetchBtcNews'
 
 const Home: NextPage = () => {
   const btcIconSize = 32;
@@ -14,6 +15,20 @@ const Home: NextPage = () => {
   // latest btc/usd price and daily percent change
   const currBtcPrice = useRecoilValue(CurrBtcAtom);
   const dailyBtc = useRecoilValue(DailyBtcAtom);
+
+  // news articles
+  const [articles, setArticles] = useState<any>([]);
+
+  const fetchNews = async () => {
+    const fetched_articles = await fetchBtcNews();
+
+    setArticles(fetched_articles);
+  }
+
+  useEffect(() => {
+    fetchNews();
+  }, [])
+
   return (
     <>
       <Head>

@@ -18,7 +18,7 @@ const fetchBtcNews = async () => {
   const { data: res } = await axios.get(url);
 
   // fetched array of articles is too big, only get five
-  const data = res.data.slice(0, 5);
+  const data = res.data.slice(0, 2);
 
   const btc_news: NewsProps[] = data.map(item => {
     const newsPoster = bitcoin_images[Math.floor(Math.random()*bitcoin_images.length)];
