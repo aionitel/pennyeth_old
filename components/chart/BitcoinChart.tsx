@@ -1,15 +1,18 @@
 import { AreaChart, Area, CartesianGrid, YAxis, XAxis, Tooltip } from 'recharts'
 import { useRecoilValue } from 'recoil';
 import { WeeklyBtcAtom } from '../../state/atoms';
+import { useState } from 'react';
 
 const BitcoinChart: React.FC = () => {
-
   const weeklyBtc = useRecoilValue(WeeklyBtcAtom);
   
   return (
-    <div>
-      <AreaChart width={1050} height={300} data={weeklyBtc}
-        margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
+    <div className='flex mx-5 border border-lightgray rounded-2xl'>
+      <AreaChart
+        height={ screen.width <= 400 ? 300 : 1050}
+        width={ screen.width <= 400 ? 100 : 300}
+        data={weeklyBtc}
+        margin={{ top: 30, right: 25, left: 20, bottom: 0 }}>
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
             <stop offset="5%" stopColor="#1552F0" stopOpacity={0.8}/>

@@ -8,6 +8,10 @@ import { CurrBtcAtom, DailyBtcAtom } from '../state/atoms'
 import BitcoinChart from '../components/chart/BitcoinChart'
 import NewsCard from '../components/news/NewsCard'
 import fetchBtcNews from '../data/news/btc/fetchBtcNews'
+import dynamic from 'next/dynamic'
+
+// dynamically import bitcoin chart to avoid 'screen is not defined' errors
+const DynamicBtcChart = dynamic(() => import('../components/chart/BitcoinChart'), {ssr: false})
 
 const Home: NextPage = () => {
   const btcIconSize = 32;
@@ -41,7 +45,7 @@ const Home: NextPage = () => {
           transition={{ duration: 1 }}
         >
           <h1 className='mt-10 lg:text-5xl text-xl my-8 ml-20 pl-20'>Welcome to your crypto portfolio.</h1>
-          <div className='flex justify-center my-5'>
+          <div className='flex my-5 text-xl justify-center mr-20'>
             <Image src='https://i.imgur.com/wbZ6UVD.png' height={btcIconSize} width={btcIconSize} alt='main-btc' />
             <span className='flex'>
               <h1 className='mt-1 mx-1'>Bitcoin is</h1>
@@ -52,8 +56,8 @@ const Home: NextPage = () => {
             </span>
           </div>
           <h1 className='visible lg:hidden text-center'>At a current trading price of ${currBtcPrice}.</h1>
-          <div className='flex m-6'>
-            <BitcoinChart />
+          <div className='flex'>
+            <DynamicBtcChart />
             <div className='flex-row'>
               {articles.map(item => (
                 <NewsCard key='' title={item.title} authors={item.authors} image={item.image} date={item.date} url={item.url} />
