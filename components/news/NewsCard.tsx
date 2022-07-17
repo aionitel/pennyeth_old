@@ -4,7 +4,7 @@ import React from 'react'
 
 interface NewsProps {
   title: string,
-  authors: string[],
+  authors: string,
   image: string,
   date: string,
   url: string,

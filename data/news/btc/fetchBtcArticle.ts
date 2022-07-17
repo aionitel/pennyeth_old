@@ -5,7 +5,7 @@ import { bitcoin_images } from '../../images';
 
 interface NewsArticleProps {
   title: string,
-  authors: string[],
+  authors: string,
   image: string,
   date: string,
   url: string,
@@ -17,22 +17,23 @@ const fetchBtcArticle = async () => {
   // will return array of various articles with relevant data
   const { data: res } = await axios.get(url);
 
-  // fetched array of articles is too big, only get five
-  const data = res.data.slice(0, 1);
+  // get array of articles from res
+  const data = res.data;
 
-  const btc_news: NewsArticleProps[] = data.map((item: any) => {
-    const newsPoster = bitcoin_images[Math.floor(Math.random()*bitcoin_images.length)];
+  // select random article from returned array
+  const article = data[Math.floor(Math.random()*data.length)];
 
-    return {
-      title: item.title,
-      authors: item.author.name,
-      image: newsPoster,
-      date: item.published_at,
-      url: item.url
-    }
-  })
+  const newsPoster = bitcoin_images[Math.floor(Math.random()*bitcoin_images.length)];
 
-  return btc_news;
+  const btc_article: NewsArticleProps = {
+    title: article.title,
+    authors: article.author.name,
+    image: newsPoster,
+    date: article.published_at,
+    url: article.url
+  }
+
+  return btc_article;
 }
 
 export default fetchBtcArticle;

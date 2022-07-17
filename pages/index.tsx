@@ -8,17 +8,18 @@ import BitcoinChart from '../components/chart/BitcoinChart'
 import NewsCard from '../components/news/NewsCard'
 import fetchBtcArticle from '../data/news/btc/fetchBtcArticle'
 import dynamic from 'next/dynamic'
+import { bitcoin_images } from '../data/images'
 
 // dynamically import bitcoin chart to avoid 'screen is not defined' errors
 const DynamicBtcChart = dynamic(() => import('../components/chart/BitcoinChart'), {ssr: false})
 
-// bitcoin logo in header size
+// size of bitcoin logo in header 
 const btcIconSize = 42;
 
 // type for news article that will be displayed
-interface NewsArticle {
+interface NewsArticleProps {
   title: string,
-  authors: string[],
+  authors: string,
   image: string,
   date: string,
   url: string,
@@ -26,16 +27,24 @@ interface NewsArticle {
 
 const Home: NextPage = () => {
   // articles that are returned from fetchNews()
-  const [articles, setArticles] = useState<any>([]);
+  const [article, setArticle] = useState<NewsArticleProps>({
+    title: "",
+    authors: "",
+    image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F65%2FBlack_screen_of_the_camera_2014-04-24_19-20.jpg%2F1280px-Black_screen_of_the_camera_2014-04-24_19-20.jpg&f=1&nofb=1",
+    date: "",
+    url: "",
+  });
+
+  const [articleCover, setArticleCover] = useState<string>("");
 
   // latest btc/usd price and daily percent change
   const currBtcPrice = useRecoilValue(CurrBtcAtom);
   const dailyBtc = useRecoilValue(DailyBtcAtom);
 
   const fetchNews = async () => {
-    const fetched_articles = await fetchBtcArticle();
+    const fetched_article = await fetchBtcArticle();
 
-    setArticles(fetched_articles);
+    setArticle(fetched_article);
   }
 
   useEffect(() => {
@@ -67,9 +76,7 @@ const Home: NextPage = () => {
           <div className='flex lg:mt-4'>
             <DynamicBtcChart />
             <div className='flex-row hidden lg:inline'>
-              {articles.map((item: NewsArticle) => (
-                <NewsCard key='' title={item.title} authors={item.authors} image={item.image} date={item.date} url={item.url} />
-              ))}
+              <NewsCard key='' title={article.title} authors={article.authors} image={article.image} date={article.date} url={article.url} />
             </div>
           </div>
         </motion.div>
