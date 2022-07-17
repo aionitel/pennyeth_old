@@ -7,10 +7,10 @@ const BitcoinChart: React.FC = () => {
   const weeklyBtc = useRecoilValue(WeeklyBtcAtom);
   
   return (
-    <div className='flex mx-5 border border-lightgray rounded-2xl'>
+    <div className='flex lg:mx-5 lg:border lg:border-lightgray lg:rounded-2xl'>
       <AreaChart
-        height={ screen.width <= 400 ? 300 : 1050}
-        width={ screen.width <= 400 ? 100 : 300}
+        height={ screen.width <= 400 ? 300 : 350}
+        width={ screen.width <= 400 ? 350 : 1050}
         data={weeklyBtc}
         margin={{ top: 30, right: 25, left: 20, bottom: 0 }}>
         <defs>
@@ -20,7 +20,6 @@ const BitcoinChart: React.FC = () => {
           </linearGradient>
         </defs>
         <XAxis dataKey='date' />
-        <YAxis />
         <Tooltip 
           labelStyle={{ color: '#8884d8' }} 
           formatter={value => new Intl.NumberFormat('en-US',

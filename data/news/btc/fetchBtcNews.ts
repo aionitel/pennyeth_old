@@ -3,7 +3,7 @@ import { bitcoin_images } from '../../images';
 
 // fetch latest news articles for bitcoin and return object with relevant data
 
-interface NewsProps {
+interface NewsArticleProps {
   title: string,
   authors: string[],
   image: string,
