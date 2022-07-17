@@ -6,7 +6,7 @@ import { useRecoilValue } from 'recoil'
 import { CurrBtcAtom, DailyBtcAtom } from '../state/atoms'
 import BitcoinChart from '../components/chart/BitcoinChart'
 import NewsCard from '../components/news/NewsCard'
-import fetchBtcNews from '../data/news/btc/fetchBtcNews'
+import fetchBtcArticle from '../data/news/btc/fetchBtcArticle'
 import dynamic from 'next/dynamic'
 
 // dynamically import bitcoin chart to avoid 'screen is not defined' errors
@@ -33,7 +33,7 @@ const Home: NextPage = () => {
   const dailyBtc = useRecoilValue(DailyBtcAtom);
 
   const fetchNews = async () => {
-    const fetched_articles = await fetchBtcNews();
+    const fetched_articles = await fetchBtcArticle();
 
     setArticles(fetched_articles);
   }
@@ -53,14 +53,16 @@ const Home: NextPage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <h1 className='lg:mt-10 lg:ml-20 lg:pl-20 text-6xl my-16 mx-8 lg:mb-2'>Welcome to your crypto portfolio.</h1>
-          <div className='text-xl lg:text-lg text-center lg:text-left'>
-            <img src='https://i.imgur.com/wbZ6UVD.png' height={btcIconSize} width={btcIconSize} alt='main-btc' className='inline mb-1' />
-            <h2 className='inline mr-1 ml-2'>Bitcoin is</h2>
-            {
-              dailyBtc < 0 ? <h2 className='inline text-red'>down {dailyBtc}%</h2> : <h2 className='inline text-green-400'>up {dailyBtc}%</h2>
-            }
-            <h2 className='inline'> today.</h2>
+          <h1 className='lg:mt-10 lg:pl-8 text-6xl mt-8 mb-14 mx-8 lg:mb-8'>Welcome to your crypto portfolio.</h1>
+          <div className='lg:mr-20 lg:pr-20'>
+            <div className='text-xl lg:text-lg text-center lg:mb-8 lg:mr-20 lg:pr-20'>
+              <img src='https://i.imgur.com/wbZ6UVD.png' height={btcIconSize} width={btcIconSize} alt='main-btc' className='inline mb-1' />
+              <h2 className='inline mr-1 ml-2'>Bitcoin is</h2>
+              {
+                dailyBtc < 0 ? <h2 className='inline text-red'>down {dailyBtc}%</h2> : <h2 className='inline text-green-400'>up {dailyBtc}%</h2>
+              }
+              <h2 className='inline'> today.</h2>
+            </div>
           </div>
           <div className='flex lg:mt-4'>
             <DynamicBtcChart />

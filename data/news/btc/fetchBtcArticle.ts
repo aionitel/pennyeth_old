@@ -11,16 +11,16 @@ interface NewsArticleProps {
   url: string,
 }
 
-const fetchBtcNews = async () => {
+const fetchBtcArticle = async () => {
   const url = 'https://data.messari.io/api/v1/news/btc';
 
   // will return array of various articles with relevant data
   const { data: res } = await axios.get(url);
 
   // fetched array of articles is too big, only get five
-  const data = res.data.slice(0, 2);
+  const data = res.data.slice(0, 1);
 
-  const btc_news: NewsProps[] = data.map(item => {
+  const btc_news: NewsArticleProps[] = data.map((item: any) => {
     const newsPoster = bitcoin_images[Math.floor(Math.random()*bitcoin_images.length)];
 
     return {
@@ -35,4 +35,4 @@ const fetchBtcNews = async () => {
   return btc_news;
 }
 
-export default fetchBtcNews;
+export default fetchBtcArticle;
