@@ -19,9 +19,8 @@ const fetchBtcArticle = async () => {
   // get array of articles from res
   const data = res.results;
   
-  // filter out all articles that do not have a cover image
-  // get latest article out of resulting array
-  const articles = data.filter((article: any) => article.image_url !== null)
+  // get latest article that has image
+  const articles = data.filter((article: any) => article["image_url"] !== null);
   const article = articles[0];
 
   const btc_article: NewsArticleProps = {

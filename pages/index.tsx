@@ -8,13 +8,12 @@ import BitcoinChart from '../components/chart/BitcoinChart'
 import NewsCard from '../components/news/NewsCard'
 import fetchBtcArticle from '../data/news/btc/fetchBtcArticle'
 import dynamic from 'next/dynamic'
-import { bitcoin_images } from '../data/images'
 
 // dynamically import bitcoin chart to avoid 'screen is not defined' errors
 const DynamicBtcChart = dynamic(() => import('../components/chart/BitcoinChart'), {ssr: false})
 
 // size of bitcoin logo in header 
-const btcIconSize = 42;
+const btcIconSize = 55;
 
 // type for news article that will be displayed
 interface NewsArticleProps {
@@ -46,9 +45,13 @@ const Home: NextPage = () => {
     setArticle(fetched_article);
   }
 
-  useEffect(() => {
-    fetchNews();
-  }, [])
+  const NewsData: NewsArticleProps = {
+    title: "Texas bitcoin miners back online after power surge caused curtailments",
+    authors: ["Jamie Redman"],
+    image: "https://s.yimg.com/uu/api/res/1.2/xXYF4FFhrTtMRAjWFWaRhw--~B/aD01MjY7dz04MDA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/reuters.com/a56bb3178474ee2d6766f403c5216f9a",
+    date: "2022-07-19",
+    url: "https://news.yahoo.com/texas-bitcoin-miners-back-online-203424037.html"
+  }
 
   return (
     <>
@@ -61,22 +64,21 @@ const Home: NextPage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <h1 className='lg:mt-10 lg:pl-16 text-6xl mt-8 mb-14 mx-8 lg:mb-8'>Welcome to your crypto portfolio.</h1>
           <div className='lg:mr-20 lg:pr-20'>
-            <div className='text-xl lg:text-lg text-center lg:mb-8 lg:mr-20 lg:pr-20'>
-              <img src='https://i.imgur.com/wbZ6UVD.png' height={btcIconSize} width={btcIconSize} alt='main-btc' className='inline mb-1' />
-              <h2 className='inline mr-1 ml-2'>Bitcoin is</h2>
+            <div className='text-4xl text-center mt-8 lg:mb-8 lg:mr-20 lg:pr-20'>
+              <img src='https://i.imgur.com/wbZ6UVD.png' height={btcIconSize} width={btcIconSize} alt='main-btc' className='inline mb-2' />
+              <h1 className='inline mr-1 ml-2'>Bitcoin is</h1>
               {
-                dailyBtc < 0 ? <h2 className='inline text-red'>down {dailyBtc}%</h2> : <h2 className='inline text-green-400'>up {dailyBtc}%</h2>
+                dailyBtc < 0 ? <h1 className='inline text-red'>down {dailyBtc}%</h1> : <h1 className='inline text-green-400'>up {dailyBtc}%</h1>
               }
-              <h2 className='inline'> today.</h2>
+              <h1 className='inline'> today.</h1>
             </div>
           </div>
           <div className='lg:flex lg:mt-4 mt-10'>
             <DynamicBtcChart />
             <div className='flex-row hidden lg:inline'>
               <h1 className='text-xl font-bold mb-1'>Latest BTC News</h1>
-              <NewsCard key='' title={article.title} authors={article.authors} image={article.image} date={article.date} url={article.url} />
+              <NewsCard key='' title={NewsData.title} authors={NewsData.authors} image={NewsData.image} date={NewsData.date} url={NewsData.url} />
             </div>
           </div>
         </motion.div>

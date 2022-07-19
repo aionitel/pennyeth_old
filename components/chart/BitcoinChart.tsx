@@ -5,12 +5,32 @@ import { useState } from 'react';
 
 const BitcoinChart: React.FC = () => {
   const weeklyBtc = useRecoilValue(WeeklyBtcAtom);
+
+  const getChartWidth = () => {
+    if (screen.width <= 400) { // 400 around mobile phone width
+      return 390
+    } else if (screen.width <= 3000 ) { // 3000 or less laptop or small monitor
+      return 800
+    } else { // for really large monitors and displays
+      return 1200
+    }
+  }
+
+  const getChartHeight = () => {
+    if (screen.width <= 400) {
+      return 150
+    } else if (screen.width <= 3000 ) {
+      return 300
+    } else {
+      return 375
+    }
+  }
   
   return (
     <div className='flex'>
       <AreaChart
-        height={ screen.width <= 400 ? 150 : 375}
-        width={ screen.width <= 400 ? 390 : 1200}
+        height={getChartHeight()}
+        width={getChartWidth()}
         data={weeklyBtc}
         margin={{ top: 0, right: 25, left: 25, bottom: 0 }}>
         <defs>
