@@ -18,8 +18,9 @@ const NewsCard: React.FC<NewsProps> = ({ title, authors, image, date, url }) => 
         <div className='flex-row hover:cursor-pointer hover:underline mr-4 overflow-hidden'>
           <motion.img src={image} alt='' className='hover:scale-105 transition-all duration-500 mb-2' />
           <h1>{title}</h1>
-          <h1>{authors}</h1>
-          <h1>{date.slice(0, 10)}</h1>
+          <div>
+            <h2>{authors}</h2>
+          </div>
         </div>
       </a>
     </Link>

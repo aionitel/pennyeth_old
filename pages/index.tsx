@@ -43,7 +43,6 @@ const Home: NextPage = () => {
 
   const fetchNews = async () => {
     const fetched_article = await fetchBtcArticle();
-
     setArticle(fetched_article);
   }
 
@@ -76,7 +75,7 @@ const Home: NextPage = () => {
           <div className='lg:flex lg:mt-4 mt-10'>
             <DynamicBtcChart />
             <div className='flex-row hidden lg:inline'>
-              <h1 className='text-xl font-bold mb-1'>Latest Bitcoin News</h1>
+              <h1 className='text-xl font-bold mb-1'>Latest BTC News</h1>
               <NewsCard key='' title={article.title} authors={article.authors} image={article.image} date={article.date} url={article.url} />
             </div>
           </div>
