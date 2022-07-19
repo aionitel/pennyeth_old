@@ -9,8 +9,8 @@ const BitcoinChart: React.FC = () => {
   return (
     <div className='flex'>
       <AreaChart
-        height={ screen.width <= 400 ? 300 : 375}
-        width={ screen.width <= 400 ? 350 : 1050}
+        height={ screen.width <= 400 ? 150 : 375}
+        width={ screen.width <= 400 ? 390 : 1200}
         data={weeklyBtc}
         margin={{ top: 0, right: 25, left: 25, bottom: 0 }}>
         <defs>
@@ -24,7 +24,7 @@ const BitcoinChart: React.FC = () => {
           ticks={["jan", "feb"]}
           domain={["jan", "feb"]}
         />
-        <CartesianGrid strokeDasharray="3 3" className='hidden lg:block' />
+        <CartesianGrid strokeDasharray="3 3" />
         <Tooltip 
           labelStyle={{ color: '#8884d8' }} 
           formatter={value => new Intl.NumberFormat('en-US',

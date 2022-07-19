@@ -1,36 +1,33 @@
 import axios from 'axios'
-import { bitcoin_images } from '../../images';
 
 // fetch latest news articles for bitcoin and return object with relevant data
 
 interface NewsArticleProps {
   title: string,
-  authors: string,
+  authors: string[],
   image: string,
   date: string,
   url: string,
 }
 
 const fetchBtcArticle = async () => {
-  const url = 'https://data.messari.io/api/v1/news/btc';
+  const url = `https://newsdata.io/api/1/news?apikey=${process.env.NEXT_PUBLIC_API_KEY}&country=us&q=bitcoin`
 
   // will return array of various articles with relevant data
   const { data: res } = await axios.get(url);
 
   // get array of articles from res
-  const data = res.data;
+  const data = res.results;
 
-  // select random article from returned array
-  const article = data[Math.floor(Math.random()*data.length)];
-
-  const newsPoster = bitcoin_images[Math.floor(Math.random()*bitcoin_images.length)];
+  // select random article from latest 20 articles
+  const article = data[1]
 
   const btc_article: NewsArticleProps = {
     title: article.title,
-    authors: article.author.name,
-    image: newsPoster,
-    date: article.published_at,
-    url: article.url
+    authors: article.creator,
+    image: article.image_url,
+    date: article.pubDate,
+    url: article.link
   }
 
   return btc_article;

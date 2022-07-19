@@ -8,22 +8,6 @@ interface Data {
 
 // fetching ytd data for btc
 const fetchWeeklyBtc = async () => {
-  
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec"
-  ]
-
   const today = new Date();
   const year_start = new Date(2021, 0, 0);
 

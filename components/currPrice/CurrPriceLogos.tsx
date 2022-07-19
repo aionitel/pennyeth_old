@@ -11,7 +11,8 @@ import fetchWeeklyBtc from '../../data/prices/btc/fetchWeeklyBtc';
 import fetchDailyBtc from '../../data/prices/btc/fetchDailyBtc';
 
 const CurrPriceLogos: React.FC = () => {
-  const logoSize = 30;
+  const btcLogoSize = 30;
+  const ethLogoSize = 28;
 
   const [currBtcPrice, setCurrBtcPrice] = useRecoilState(CurrBtcAtom);
   const [currEthPrice, setCurrEthPrice] = useRecoilState(CurrEthAtom);
@@ -44,16 +45,16 @@ const CurrPriceLogos: React.FC = () => {
       <div className='flex'>
         <Image 
           src='https://i.imgur.com/wbZ6UVD.png' 
-          height={logoSize}
-           width={logoSize} 
+          height={btcLogoSize}
+           width={btcLogoSize} 
            alt='btc_logo'/>
         <h1 className='mt-1 ml-2'>${currBtcPrice}</h1>
       </div>
       <div className='flex pl-4'>
         <Image 
           src='https://i.imgur.com/izIV4k9.png' 
-          height={logoSize} 
-          width={logoSize} 
+          height={ethLogoSize} 
+          width={ethLogoSize} 
           alt='eth_logo'
           />
         <h1 className='mt-1 ml-2'>${currEthPrice}</h1>

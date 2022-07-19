@@ -19,7 +19,7 @@ const btcIconSize = 42;
 // type for news article that will be displayed
 interface NewsArticleProps {
   title: string,
-  authors: string,
+  authors: string[],
   image: string,
   date: string,
   url: string,
@@ -29,7 +29,7 @@ const Home: NextPage = () => {
   // articles that are returned from fetchNews()
   const [article, setArticle] = useState<NewsArticleProps>({
     title: "",
-    authors: "",
+    authors: [],
     image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F65%2FBlack_screen_of_the_camera_2014-04-24_19-20.jpg%2F1280px-Black_screen_of_the_camera_2014-04-24_19-20.jpg&f=1&nofb=1",
     date: "",
     url: "",
@@ -56,13 +56,13 @@ const Home: NextPage = () => {
       <Head>
         <title>PennyETH</title>
       </Head>
-      <div className='lg:flex bg-black h-screen text-white'>
+      <div className='flex bg-black h-screen text-white'>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <h1 className='lg:mt-10 lg:pl-8 text-6xl mt-8 mb-14 mx-8 lg:mb-8'>Welcome to your crypto portfolio.</h1>
+          <h1 className='lg:mt-10 lg:pl-16 text-6xl mt-8 mb-14 mx-8 lg:mb-8'>Welcome to your crypto portfolio.</h1>
           <div className='lg:mr-20 lg:pr-20'>
             <div className='text-xl lg:text-lg text-center lg:mb-8 lg:mr-20 lg:pr-20'>
               <img src='https://i.imgur.com/wbZ6UVD.png' height={btcIconSize} width={btcIconSize} alt='main-btc' className='inline mb-1' />
@@ -73,9 +73,10 @@ const Home: NextPage = () => {
               <h2 className='inline'> today.</h2>
             </div>
           </div>
-          <div className='flex lg:mt-4'>
+          <div className='lg:flex lg:mt-4 mt-10'>
             <DynamicBtcChart />
             <div className='flex-row hidden lg:inline'>
+              <h1 className='text-xl font-bold mb-1'>Latest Bitcoin News</h1>
               <NewsCard key='' title={article.title} authors={article.authors} image={article.image} date={article.date} url={article.url} />
             </div>
           </div>
