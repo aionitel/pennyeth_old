@@ -1,27 +1,26 @@
 import { AreaChart, Area, CartesianGrid, YAxis, XAxis, Tooltip } from 'recharts'
 import { useRecoilValue } from 'recoil';
 import { WeeklyBtcAtom } from '../../state/atoms';
-import { useState } from 'react';
 
 const BitcoinChart: React.FC = () => {
   const weeklyBtc = useRecoilValue(WeeklyBtcAtom);
 
   const getChartWidth = () => {
-    if (screen.width <= 400) { // 400 around mobile phone width
+    if (screen.height <= 800) { // 400 around mobile phone width
       return 390
-    } else if (screen.width <= 3000 ) { // 3000 or less laptop or small monitor
+    } else if (screen.height <= 900 ) { // laptops and small screens
       return 800
-    } else { // for really large monitors and displays
+    } else if (screen.height <= 1100) { // large monitors and displays
       return 1200
     }
   }
 
   const getChartHeight = () => {
-    if (screen.width <= 400) {
+    if (screen.height <= 800) {
       return 150
-    } else if (screen.width <= 3000 ) {
+    } else if (screen.height <= 900 ) {
       return 300
-    } else {
+    } else if (screen.height <= 1100) {
       return 375
     }
   }
