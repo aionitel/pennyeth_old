@@ -1,12 +1,11 @@
 import React from 'react'
-import NavItem from './NavItem'
 import { BiCoin } from 'react-icons/bi'
 import NavBarItemsData from './NavItemData'
 import Link from 'next/link'
 import ConnectWallet from '../connectWallet/ConnectWallet'
 import { useRecoilValue } from 'recoil'
 import { currUserAtom } from '../../state/atoms'
-import LoggedInHeader from '../header/WalletAddress'
+import LoggedInHeader from '../header/LoggedInHeader'
 import { motion } from 'framer-motion'
 import CurrPriceLogos from '../currPrice/CurrPriceLogos'
 import dynamic from 'next/dynamic'
@@ -23,16 +22,18 @@ const NavBar: React.FC = () => {
     <nav 
       className="bg-black border-r border-r-lightgray hidden lg:block text-white"
     >
-      <div className='flex-col my-8 ml-7 text-3xl'>
+      <div className='flex-row my-8 ml-7'>
         <motion.div 
           className='flex my-5'
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <BiCoin className='pt-1 ml-5' />
           <Link href='/' passHref>
-            <h1 className='ml-1 text-md hover:cursor-pointer'>PennyETH</h1>
+            <>
+              <BiCoin className='pt-1 ml-5 text-3xl hover:cursor-pointer' />
+              <h1 className='ml-1 text-3xl hover:cursor-pointer'>PennyETH</h1>
+            </>
           </Link>
         </motion.div>
         <CurrPriceLogos />

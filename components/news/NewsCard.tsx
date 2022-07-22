@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 import { motion } from 'framer-motion'
@@ -15,7 +14,7 @@ const NewsCard: React.FC<NewsProps> = ({ title, authors, image, date, url }) => 
   return (
     <Link href={url} passHref >
       <a target='_blank' rel="noopener noreferrer">
-        <div className='flex-row hover:cursor-pointer hover:underline mr-4 overflow-hidden border border-dashed border-lightgray'>
+        <div className='flex-row hover:cursor-pointer hover:underline mx-2 overflow-hidden border border-dashed py-2'>
           <motion.img src={image} alt='' className='hover:scale-105 transition-all duration-500 mb-2' />
           <h1 className='my-2'>{title}</h1>
           <div className='flex justify-between'>

@@ -77,7 +77,7 @@ const Home: NextPage = () => {
           <div className='lg:flex lg:mt-4 mt-10'>
             <DynamicBtcChart />
             <div className='flex-row hidden lg:inline'>
-              <h1 className='text-xl font-bold mb-1'>Latest BTC News</h1>
+              <h1 className='text-xl font-bold ml-2'>Latest BTC News</h1>
               <NewsCard key='' title={NewsData.title} authors={NewsData.authors} image={NewsData.image} date={NewsData.date} url={NewsData.url} />
             </div>
           </div>

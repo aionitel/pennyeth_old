@@ -11,7 +11,7 @@ const BitcoinChart: React.FC = () => {
     } else if (screen.height <= 900 ) { // laptops and small screens
       return 800
     } else if (screen.height <= 1100) { // large monitors and displays
-      return 1200
+      return 1250
     }
   }
 
@@ -21,7 +21,7 @@ const BitcoinChart: React.FC = () => {
     } else if (screen.height <= 900 ) {
       return 300
     } else if (screen.height <= 1100) {
-      return 375
+      return 365
     }
   }
   
@@ -31,7 +31,7 @@ const BitcoinChart: React.FC = () => {
         height={getChartHeight()}
         width={getChartWidth()}
         data={weeklyBtc}
-        margin={{ top: 0, right: 25, left: 25, bottom: 0 }}>
+        margin={{ top: 0, right: 0, left: 25, bottom: 0 }}>
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
             <stop offset="5%" stopColor="#1552F0" stopOpacity={0.8}/>
