@@ -3,8 +3,7 @@ import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { useRecoilValue } from 'recoil'
-import { CurrBtcAtom, DailyBtcAtom } from '../state/atoms'
-import BitcoinChart from '../components/chart/BitcoinChart'
+import { DailyBtcAtom } from '../state/atoms'
 import NewsCard from '../components/news/NewsCard'
 import fetchBtcArticle from '../data/news/btc/fetchBtcArticle'
 import dynamic from 'next/dynamic'
@@ -34,10 +33,7 @@ const Home: NextPage = () => {
     url: "",
   });
 
-  const [articleCover, setArticleCover] = useState<string>("");
-
   // latest btc/usd price and daily percent change
-  const currBtcPrice = useRecoilValue(CurrBtcAtom);
   const dailyBtc = useRecoilValue(DailyBtcAtom);
 
   const fetchNews = async () => {
