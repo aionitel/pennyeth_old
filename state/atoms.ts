@@ -38,6 +38,12 @@ export const DailyBtcAtom = atom({
   effects_UNSTABLE: [persistAtom]
 })
 
+export const DailyEthAtom = atom({
+  key: "dailyEth",
+  default: NaN as number | typeof NaN,
+  effects_UNSTABLE: [persistAtom]
+})
+
 // weekly
 export const WeeklyBtcAtom  = atom({
   key: "weeklyBtc",

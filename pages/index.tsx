@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { useRecoilValue } from 'recoil'
-import { DailyBtcAtom } from '../state/atoms'
+import { DailyBtcAtom, DailyEthAtom } from '../state/atoms'
 import NewsCard from '../components/news/NewsCard'
 import fetchBtcArticle from '../data/news/btc/fetchBtcArticle'
 import dynamic from 'next/dynamic'
@@ -33,8 +33,9 @@ const Home: NextPage = () => {
     url: "",
   });
 
-  // latest btc/usd price and daily percent change
+  // latest btc and eth daily percent change
   const dailyBtc = useRecoilValue(DailyBtcAtom);
+  const dailyEth = useRecoilValue(DailyEthAtom);
 
   const fetchNews = async () => {
     const fetched_article = await fetchBtcArticle();
@@ -63,7 +64,7 @@ const Home: NextPage = () => {
           <div className='lg:mr-20 lg:pr-20'>
             <div className='text-4xl text-center mt-8 lg:mb-8 lg:mr-20 lg:pr-20'>
               <img src='https://i.imgur.com/wbZ6UVD.png' height={btcIconSize} width={btcIconSize} alt='main-btc' className='inline mb-2' />
-              <h1 className='inline mr-1 ml-2'>Bitcoin is</h1>
+              <h1 className='inline mr-2 ml-2'>Bitcoin is</h1>
               {
                 dailyBtc < 0 ? <h1 className='inline text-red'>down {dailyBtc}%</h1> : <h1 className='inline text-green-400'>up {dailyBtc}%</h1>
               }
@@ -76,6 +77,13 @@ const Home: NextPage = () => {
               <h1 className='text-xl font-bold ml-2'>Latest BTC News</h1>
               <NewsCard key='' title={NewsData.title} authors={NewsData.authors} image={NewsData.image} date={NewsData.date} url={NewsData.url} />
             </div>
+          </div>
+          <div className='flex justify-center text-4xl'>
+            <img src='https://i.imgur.com/izIV4k9.png' height={btcIconSize} width={btcIconSize} alt='main-eth' className='inline pb-2' />
+            <h1 className='inline mr-2 mt-2'>Ethereum is</h1>
+            {
+                dailyEth < 0 ? <h1 className='inline text-red mt-2'>down {dailyEth}%</h1> : <h1 className='inline text-green-400 mt-2'>up {dailyEth}%</h1>
+            }
           </div>
         </motion.div>
       </div>
