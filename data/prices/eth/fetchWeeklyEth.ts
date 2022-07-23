@@ -3,7 +3,7 @@ import axios from 'axios'
 // need to parse res data into price data that recharts can use
 interface Data {
   date: string,
-  BTC: number,
+  ETH: number,
 }
 
 // fetching ytd data for btc
@@ -21,7 +21,7 @@ const fetchWeeklyEth = async () => {
 
     return {
       "date": date,
-      "BTC": item[4].toFixed(2)
+      "ETH": item[4].toFixed(2)
     }
   })
 

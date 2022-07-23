@@ -1,36 +1,17 @@
 import { AreaChart, Area, CartesianGrid, YAxis, XAxis, Tooltip } from 'recharts'
 import { useRecoilValue } from 'recoil';
 import { WeeklyBtcAtom } from '../../state/atoms';
+import { getChartHeight, getChartWidth } from '../../data/utils/getDimensions';
 
 const BitcoinChart: React.FC = () => {
-  const weeklyBtc = useRecoilValue(WeeklyBtcAtom);
-
-  const getChartWidth = () => {
-    if (screen.height <= 800) { // 400 around mobile phone width
-      return 390
-    } else if (screen.height <= 900 ) { // laptops and small screens
-      return 800
-    } else if (screen.height <= 1100) { // large monitors and displays
-      return 1250
-    }
-  }
-
-  const getChartHeight = () => {
-    if (screen.height <= 800) {
-      return 150
-    } else if (screen.height <= 900 ) {
-      return 300
-    } else if (screen.height <= 1100) {
-      return 365
-    }
-  }
+  const data = useRecoilValue(WeeklyBtcAtom);
   
-  return (
+ return (
     <div className='flex'>
       <AreaChart
         height={getChartHeight()}
         width={getChartWidth()}
-        data={weeklyBtc}
+        data={data}
         margin={{ top: 6, right: 0, left: 25, bottom: 0 }}>
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">

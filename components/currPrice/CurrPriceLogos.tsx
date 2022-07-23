@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion';
 import { useRecoilState } from 'recoil';
-import { CurrBtcAtom, CurrEthAtom, DailyEthAtom } from '../../state/atoms';
+import { CurrBtcAtom, CurrEthAtom, DailyEthAtom, WeeklyEthAtom } from '../../state/atoms';
 import fetchCurrBtc from '../../data/prices/btc/fetchCurrBtc';
 import fetchCurrEth from '../../data/prices/eth/fetchCurrEth';
 import { DailyBtcAtom } from '../../state/atoms';
@@ -10,6 +10,7 @@ import { WeeklyBtcAtom } from '../../state/atoms';
 import fetchWeeklyBtc from '../../data/prices/btc/fetchWeeklyBtc';
 import fetchDailyBtc from '../../data/prices/btc/fetchDailyBtc';
 import fetchDailyEth from '../../data/prices/eth/fetchDailyEth';
+import fetchWeeklyEth from '../../data/prices/eth/fetchWeeklyEth';
 
 const CurrPriceLogos: React.FC = () => {
   const btcLogoSize = 30;
@@ -20,6 +21,7 @@ const CurrPriceLogos: React.FC = () => {
   const [dailyBtc, setDailyBtc] = useRecoilState(DailyBtcAtom);
   const [dailyEth, setDailyEth] = useRecoilState(DailyEthAtom);
   const [currWeeklyBtc, setCurrWeeklyBtc] = useRecoilState(WeeklyBtcAtom);
+  const [currWeeklyEth, setCurrWeeklyEth] = useRecoilState(WeeklyEthAtom);
 
   const fetchAndSetPrices = async () => {
     const btcPrice = await fetchCurrBtc();
@@ -27,12 +29,14 @@ const CurrPriceLogos: React.FC = () => {
     const fetchedDailyBtc = await fetchDailyBtc();
     const fetchedDailyEth = await fetchDailyEth();
     const weeklyBtc = await fetchWeeklyBtc();
+    const weeklyEth = await fetchWeeklyEth();
 
     setCurrBtcPrice(btcPrice);
     setCurrEthPrice(ethPrice);
     setDailyBtc(fetchedDailyBtc);
     setDailyEth(fetchedDailyEth);
     setCurrWeeklyBtc(weeklyBtc);
+    setCurrWeeklyEth(weeklyEth);
 
     console.log("Fetched and set current prices: " + btcPrice + ethPrice)
   }
@@ -61,7 +65,7 @@ const CurrPriceLogos: React.FC = () => {
           width={ethLogoSize} 
           alt='eth_logo'
           />
-        <h1 className='mt-1 ml-2'>${currEthPrice}</h1>
+          <h1 className='mt-1 ml-2'>{currEthPrice}</h1>
       </div>
     </motion.div>
   )
