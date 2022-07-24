@@ -100,20 +100,4 @@ const Home: NextPage<HomePageProps> = ({ fetchedDailyBtc, fetchedDailyEth, weekl
   )
 }
 
-export async function getServerSideProps() {
-  const fetchedDailyBtc = await fetchDailyBtc();
-  const fetchedDailyEth = await fetchDailyEth();
-  const weeklyBtc = await fetchWeeklyBtc();
-  const weeklyEth = await fetchWeeklyEth();
-
-  return {
-    props: {
-      fetchedDailyBtc,
-      fetchedDailyEth,
-      weeklyBtc,
-      weeklyEth
-    }
-  }
-}
-
 export default Home
