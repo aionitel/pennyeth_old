@@ -6,10 +6,7 @@ import { useRecoilValue } from 'recoil'
 import NewsCard from '../components/news/NewsCard'
 import BitcoinChart from '../components/chart/BitcoinChart'
 import EthChart from '../components/chart/EthChart'
-import fetchDailyBtc from '../data/prices/btc/fetchDailyBtc'
-import fetchDailyEth from '../data/prices/eth/fetchDailyEth'
-import fetchWeeklyBtc from '../data/prices/btc/fetchWeeklyBtc'
-import fetchWeeklyEth from '../data/prices/eth/fetchWeeklyEth'
+import { DailyBtcAtom, DailyEthAtom, WeeklyBtcAtom, WeeklyEthAtom } from '../state/atoms'
 
 // test data
 const NewsData: NewsArticleProps = {
@@ -23,13 +20,6 @@ const NewsData: NewsArticleProps = {
 // size of bitcoin logo in header 
 const btcIconSize = 55;
 
-interface HomePageProps {
-  fetchedDailyBtc: number,
-  fetchedDailyEth: number,
-  weeklyBtc: [],
-  weeklyEth: []
-}
-
 // type for news article that will be displayed
 interface NewsArticleProps {
   title: string,
@@ -39,7 +29,7 @@ interface NewsArticleProps {
   url: string,
 }
 
-const Home: NextPage<HomePageProps> = ({ fetchedDailyBtc, fetchedDailyEth, weeklyBtc, weeklyEth }) => {
+const Home: NextPage = () => {
   // articles that are returned from fetchNews()
   const [article, setArticle] = useState<NewsArticleProps>({
     title: "",
@@ -48,6 +38,11 @@ const Home: NextPage<HomePageProps> = ({ fetchedDailyBtc, fetchedDailyEth, weekl
     date: "",
     url: "",
   });
+
+  const dailyBtc = useRecoilValue(DailyBtcAtom);
+  const dailyEth = useRecoilValue(DailyEthAtom);
+  const weeklyBtc = useRecoilValue(WeeklyBtcAtom);
+  const weeklyEth = useRecoilValue(WeeklyEthAtom);
 
   return (
     <>
@@ -68,7 +63,7 @@ const Home: NextPage<HomePageProps> = ({ fetchedDailyBtc, fetchedDailyEth, weekl
               </a>
               <h1 className='inline lg:ml-2 lg:mr-2 ml-1 mr-1'>is</h1>
               {
-                fetchedDailyBtc < 0 ? <h1 className='inline text-red'>down {fetchedDailyBtc}%</h1> : <h1 className='inline text-green-400'>up {fetchedDailyBtc}%</h1>
+                dailyBtc < 0 ? <h1 className='inline text-red'>down {dailyBtc}%</h1> : <h1 className='inline text-green-400'>up {dailyBtc}%</h1>
               }
               <h1 className='inline'> today.</h1>
             </div>
@@ -87,7 +82,7 @@ const Home: NextPage<HomePageProps> = ({ fetchedDailyBtc, fetchedDailyEth, weekl
             </a>
             <h1 className='mr-1 lg:mr-2 mt-2 inline'>is</h1>
             {
-                fetchedDailyEth < 0 ? <h1 className='inline text-red mt-2'>down {fetchedDailyEth}%</h1> : <h1 className='inline text-green-400 mt-2'>up {fetchedDailyEth}%</h1>
+                dailyEth < 0 ? <h1 className='inline text-red mt-2'>down {dailyEth}%</h1> : <h1 className='inline text-green-400 mt-2'>up {dailyEth}%</h1>
             }
             <h1 className='inline mt-2 lg:ml-2 ml-1'>today.</h1>
           </div>
