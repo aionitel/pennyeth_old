@@ -30,29 +30,3 @@ export const CurrEthAtom = atom({
   default: 0 as number,
   effects_UNSTABLE: [persistAtom]
 })
-
-// latest daily percent change btc and eth
-export const DailyBtcAtom = atom({
-  key: 'dailyBtc',
-  default: NaN as number | typeof NaN,
-  effects_UNSTABLE: [persistAtom]
-})
-
-export const DailyEthAtom = atom({
-  key: "dailyEth",
-  default: NaN as number | typeof NaN,
-  effects_UNSTABLE: [persistAtom]
-})
-
-// weekly btc and eth ytd data
-export const WeeklyBtcAtom  = atom({
-  key: "weeklyBtc",
-  default: [],
-  effects_UNSTABLE: [persistAtom]
-})
-
-export const WeeklyEthAtom = atom({
-  key: 'weeklyEth',
-  default: [],
-  effects_UNSTABLE: [persistAtom]
-})

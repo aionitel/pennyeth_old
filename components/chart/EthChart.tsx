@@ -1,11 +1,7 @@
 import { AreaChart, Area, CartesianGrid, YAxis, XAxis, Tooltip } from 'recharts'
-import { useRecoilValue } from 'recoil';
 import { getChartHeight, getChartWidth } from '../../data/utils/getDimensions';
-import { WeeklyEthAtom } from '../../state/atoms';
 
-const EthChart: React.FC = () => {
-  const data = useRecoilValue(WeeklyEthAtom);
-
+const EthChart: React.FC = ({ data }: any) => {
   return (
     <div className='flex'>
       <AreaChart
@@ -30,7 +26,7 @@ const EthChart: React.FC = () => {
           formatter={value => new Intl.NumberFormat('en-US',
                     { style: 'currency', currency: 'USD',
                       minimumFractionDigits: 2 }).format(value)} />
-        <Area dataKey="BTC" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+        <Area dataKey="ETH" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
       </AreaChart>
     </div>
   )

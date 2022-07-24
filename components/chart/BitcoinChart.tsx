@@ -1,11 +1,7 @@
 import { AreaChart, Area, CartesianGrid, YAxis, XAxis, Tooltip } from 'recharts'
-import { useRecoilValue } from 'recoil';
-import { WeeklyBtcAtom } from '../../state/atoms';
 import { getChartHeight, getChartWidth } from '../../data/utils/getDimensions';
 
-const BitcoinChart: React.FC = () => {
-  const data = useRecoilValue(WeeklyBtcAtom);
-  
+const BitcoinChart: React.FC = ({ data }: any) => {
  return (
     <div className='flex'>
       <AreaChart
