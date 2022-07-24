@@ -1,7 +1,11 @@
 import { AreaChart, Area, CartesianGrid, YAxis, XAxis, Tooltip } from 'recharts'
 import { getChartHeight, getChartWidth } from '../../data/utils/getDimensions';
 
-const EthChart: React.FC = ({ data }: any) => {
+interface EthChartProps {
+  data: any[]
+}
+
+const EthChart: React.FC<EthChartProps> = ({ data }) => {
   return (
     <div className='flex'>
       <AreaChart

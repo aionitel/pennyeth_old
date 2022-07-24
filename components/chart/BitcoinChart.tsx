@@ -1,7 +1,11 @@
 import { AreaChart, Area, CartesianGrid, YAxis, XAxis, Tooltip } from 'recharts'
 import { getChartHeight, getChartWidth } from '../../data/utils/getDimensions';
 
-const BitcoinChart: React.FC = ({ data }: any) => {
+interface BitcoinChartProps {
+  data: any[]
+}
+
+const BitcoinChart: React.FC<BitcoinChartProps> = ({ data }) => {
  return (
     <div className='flex'>
       <AreaChart

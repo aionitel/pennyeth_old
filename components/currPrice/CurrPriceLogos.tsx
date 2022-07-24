@@ -13,17 +13,19 @@ const CurrPriceLogos: React.FC = () => {
   const [currBtcPrice, setCurrBtcPrice] = useRecoilState(CurrBtcAtom);
   const [currEthPrice, setCurrEthPrice] = useRecoilState(CurrEthAtom);
 
-  const fetchAndSetPrices = async () => {
-    const btcPrice = await fetchCurrBtc();
-    const ethPrice = await fetchCurrEth();
+  useEffect(() => {
+    const fetchAndSetPrices = async () => {
+      const btcPrice = await fetchCurrBtc();
+      const ethPrice = await fetchCurrEth();
+  
+      setCurrBtcPrice(btcPrice);
+      setCurrEthPrice(ethPrice);
+  
+      console.log("Fetched and set current prices: " + btcPrice + ethPrice)
+    }
 
-    setCurrBtcPrice(btcPrice);
-    setCurrEthPrice(ethPrice);
-
-    console.log("Fetched and set current prices: " + btcPrice + ethPrice)
-  }
-
-  useEffect(() => fetchAndSetPrices(), [])
+    fetchAndSetPrices();
+  }, [])
 
   return (
     <motion.div 
