@@ -1,7 +1,5 @@
 import axios from 'axios'
 
-// fetch latest news articles for bitcoin and return object with relevant data
-
 interface NewsArticleProps {
   title: string,
   authors: string[],
@@ -10,8 +8,8 @@ interface NewsArticleProps {
   url: string,
 }
 
-const fetchBtcArticle = async () => {
-  const url = `https://newsdata.io/api/1/news?apikey=${process.env.NEXT_PUBLIC_API_KEY}&country=us&q=bitcoin`
+const fetchEthArticle = async () => {
+  const url = `https://newsdata.io/api/1/news?apikey=${process.env.NEXT_PUBLIC_API_KEY}&country=us&q=eth`
 
   // will return array of various articles with relevant data
   const { data: res } = await axios.get(url);
@@ -20,9 +18,9 @@ const fetchBtcArticle = async () => {
   const data = res.results;
   
   // get latest article that has image
-  const article = data[0]
+  const article = data[1];
 
-  const btc_article: NewsArticleProps = {
+  const eth_article: NewsArticleProps = {
     title: article.title,
     authors: article.creator,
     image: article.image_url,
@@ -30,7 +28,7 @@ const fetchBtcArticle = async () => {
     url: article.link
   }
 
-  return btc_article;
+  return eth_article;
 }
 
-export default fetchBtcArticle;
+export default fetchEthArticle

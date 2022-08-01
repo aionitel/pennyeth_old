@@ -1,11 +1,12 @@
 import { AreaChart, Area, CartesianGrid, YAxis, XAxis, Tooltip } from 'recharts'
 import { getChartHeight, getChartWidth } from '../../data/utils/getDimensions';
 
-interface BitcoinChartProps {
-  data: any[]
+interface HomeChartProps {
+  data: any[],
+  type: string
 }
 
-const BitcoinChart: React.FC<BitcoinChartProps> = ({ data }) => {
+const HomeChart: React.FC<HomeChartProps> = ({ data, type }) => {
  return (
     <div className='flex'>
       <AreaChart
@@ -30,10 +31,10 @@ const BitcoinChart: React.FC<BitcoinChartProps> = ({ data }) => {
           formatter={value => new Intl.NumberFormat('en-US',
                     { style: 'currency', currency: 'USD',
                       minimumFractionDigits: 2 }).format(value)} />
-        <Area dataKey="BTC" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+        <Area dataKey={type} stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
       </AreaChart>
     </div>
   )
 }
 
-export default BitcoinChart;
+export default HomeChart;

@@ -4,9 +4,8 @@ import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { useRecoilValue } from 'recoil'
 import NewsCard from '../components/news/NewsCard'
-import BitcoinChart from '../components/chart/BitcoinChart'
-import EthChart from '../components/chart/EthChart'
 import { DailyBtcAtom, DailyEthAtom, WeeklyBtcAtom, WeeklyEthAtom } from '../state/atoms'
+import HomeChart from '../components/chart/HomeChart'
 
 // test data
 const NewsData: NewsArticleProps = {
@@ -31,7 +30,15 @@ interface NewsArticleProps {
 
 const Home: NextPage = () => {
   // articles that are returned from fetchNews()
-  const [article, setArticle] = useState<NewsArticleProps>({
+  const [btcArticle, setBtcArticle] = useState<NewsArticleProps>({
+    title: "",
+    authors: [],
+    image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F65%2FBlack_screen_of_the_camera_2014-04-24_19-20.jpg%2F1280px-Black_screen_of_the_camera_2014-04-24_19-20.jpg&f=1&nofb=1",
+    date: "",
+    url: "",
+  });
+
+  const [ethArticle, setEthArticle] = useState<NewsArticleProps>({
     title: "",
     authors: [],
     image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F65%2FBlack_screen_of_the_camera_2014-04-24_19-20.jpg%2F1280px-Black_screen_of_the_camera_2014-04-24_19-20.jpg&f=1&nofb=1",
@@ -44,12 +51,37 @@ const Home: NextPage = () => {
   const weeklyBtc = useRecoilValue(WeeklyBtcAtom);
   const weeklyEth = useRecoilValue(WeeklyEthAtom);
 
+  // fetch news articles
+  /* useEffect(() => {
+    const fetchNews = async () => {
+      const btc_article = await fetchBtcArticle();
+      const eth_article = await fetchEthArticle()
+
+      setBtcArticle({
+        title: btc_article.title,
+        authors: btc_article.authors,
+        image: btc_article.image ? btc_article.image : 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.quoteinspector.com%2Fmedia%2Fbitcoin%2Fbitcoin-34569.jpg&f=1&nofb=1',
+        date: btc_article.date,
+        url: btc_article.url
+      })
+      setEthArticle({
+        title: eth_article.title,
+        authors: eth_article.authors,
+        image: eth_article.image ? btc_article.image : 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.quoteinspector.com%2Fmedia%2Fbitcoin%2Fethereum-coin-blue-candlesticks-wo.jpg&f=1&nofb=1',
+        date: eth_article.date,
+        url: eth_article.url
+      })
+    }
+
+    fetchNews();
+  }, []) */
+
   return (
     <>
       <Head>
         <title>PennyETH</title>
       </Head>
-      <div className='flex bg-black h-screen text-white'>
+      <div className='flex bg-black h-max text-white'>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -69,7 +101,7 @@ const Home: NextPage = () => {
             </div>
           </div>
           <div className='lg:flex lg:mt-4 mt-10'>
-            <BitcoinChart data={weeklyBtc} />
+            <HomeChart data={weeklyBtc} type='BTC' />
             <div className='flex-row hidden lg:inline'>
               <h1 className='text-xl font-bold ml-2'>Latest BTC News</h1>
               <NewsCard key='' title={NewsData.title} authors={NewsData.authors} image={NewsData.image} date={NewsData.date} url={NewsData.url} />
@@ -87,7 +119,11 @@ const Home: NextPage = () => {
             <h1 className='inline mt-2 lg:ml-2 ml-1'>today.</h1>
           </div>
           <div className='lg:flex lg:mt-4 mt-10'>
-            <EthChart data={weeklyEth} />
+            <HomeChart data={weeklyEth} type='ETH' />
+            <div className='flex-row hidden lg:block'>
+              <h1>Latest ETH News</h1>
+              <NewsCard key='' title={NewsData.title} authors={NewsData.authors} image={NewsData.image} date={NewsData.date} url={NewsData.url} />
+            </div>
           </div>
         </motion.div>
       </div>
