@@ -4,11 +4,9 @@ import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { useRecoilValue } from 'recoil'
 import NewsCard from '../components/news/NewsCard'
-import { WeeklyBtcAtom, WeeklyEthAtom } from '../state/atoms'
+import { DailyBtcAtom, DailyEthAtom, WeeklyBtcAtom, WeeklyEthAtom } from '../state/atoms'
 import HomeChart from '../components/chart/HomeChart'
 import dynamic from 'next/dynamic'
-
-const DynamicDailyText = dynamic(() => import('../components/price/DailyText'), {ssr: false});
 
 // test data
 const NewsData: NewsArticleProps = {
@@ -49,6 +47,8 @@ const Home: NextPage = () => {
     url: "",
   });
 
+  const dailyBtc = useRecoilValue(DailyBtcAtom);
+  const dailyEth = useRecoilValue(DailyEthAtom);
   const weeklyBtc = useRecoilValue(WeeklyBtcAtom);
   const weeklyEth = useRecoilValue(WeeklyEthAtom);
 
@@ -89,13 +89,15 @@ const Home: NextPage = () => {
           transition={{ duration: 1 }}
         >
           <div className='lg:mr-20 lg:pr-20'>
-            <div className='lg:text-4xl text-center mt-8 lg:mb-8 lg:mr-20 lg:pr-20 text-2xl'>
+            <div className='text-2xl lg:text-4xl text-center lg:text-left lg:ml-6 my-8'>
               <a href='https://bitcoin.org/bitcoin.pdf' rel="noopener noreferrer" target='_blank'>
                 <img src='https://i.imgur.com/wbZ6UVD.png' height={btcIconSize} width={btcIconSize} alt='main-btc' className='inline mb-2' />
                 <h1 className='inline ml-2'>Bitcoin</h1>
               </a>
               <h1 className='inline lg:ml-2 lg:mr-2 ml-1 mr-1'>is</h1>
-              <DynamicDailyText type='BTC' />
+              {
+                dailyBtc < 0 ? <h1 className='inline text-red'>down {dailyBtc}%</h1> : <h1 className='inline text-green-400'>up {dailyBtc}%</h1>
+              }
               <h1 className='inline'> today.</h1>
             </div>
           </div>
@@ -106,13 +108,15 @@ const Home: NextPage = () => {
               <NewsCard key='' title={NewsData.title} authors={NewsData.authors} image={NewsData.image} date={NewsData.date} url={NewsData.url} />
             </div>
           </div>
-          <div className='lg:text-4xl lg:ml-20 text-center lg:mr-20 lg:pr-20'>
+          <div className='lg:text-4xl text-center lg:text-left lg:ml-6 my-4'>
             <a href='https://ethereum.org/669c9e2e2027310b6b3cdce6e1c52962/Ethereum_Whitepaper_-_Buterin_2014.pdf' rel="noopener noreferrer" target='_blank'>
               <img src='https://i.imgur.com/izIV4k9.png' height={btcIconSize} width={btcIconSize} alt='main-eth' className='inline pb-2' />
               <h1 className='inline mr-1 ml-2 lg:mr-2'>Ethereum</h1>
             </a>
             <h1 className='mr-1 lg:mr-2 mt-2 inline'>is</h1>
-            <DynamicDailyText type='ETH' />
+            {
+              dailyEth < 0 ? <h1 className='inline text-red'>down {dailyEth}%</h1> : <h1 className='inline text-green-400'>up {dailyEth}%</h1>
+            }
             <h1 className='inline mt-2 lg:ml-2 ml-1'>today.</h1>
           </div>
           <div className='lg:flex lg:mt-4 mt-10'>

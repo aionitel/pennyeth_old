@@ -26,5 +26,10 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  purge: {
+    safelist: [
+      'text-green-400',
+      'text-red'
+    ]
+  }
 }

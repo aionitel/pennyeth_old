@@ -20,6 +20,10 @@ const HomeChart: React.FC<HomeChartProps> = ({ data, type }) => {
             <stop offset="95%" stopColor="#1552F0" stopOpacity={0}/>
           </linearGradient>
         </defs>
+        <XAxis
+          type='category'
+          ticks={["jan", "feb"]}
+        />
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip 
           labelStyle={{ color: '#8884d8' }} 
