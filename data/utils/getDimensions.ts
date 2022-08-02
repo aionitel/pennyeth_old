@@ -14,6 +14,6 @@ export const getChartHeight = () => {
   } else if (typeof window !== 'undefined' && screen.height <= 900 ) {
     return 300
   } else if (typeof window !== 'undefined' && screen.height <= 1100) {
-    return 365
+    return 340
   }
 }

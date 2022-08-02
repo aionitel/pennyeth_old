@@ -7,7 +7,7 @@ import { useRecoilValue } from 'recoil'
 import { currUserAtom } from '../../state/atoms'
 import LoggedInHeader from '../header/LoggedInHeader'
 import { motion } from 'framer-motion'
-import CurrPriceLogos from '../currPrice/CurrPriceLogos'
+import CurrPriceLogos from '../price/CurrPriceLogos'
 import dynamic from 'next/dynamic'
 
 // desktop side navbar
