@@ -23,11 +23,13 @@ const ConnectWallet: React.FC = () => {
           >
             <h1>Connect Wallet</h1>
           </button>
-          <div className='flex pl-4 pt-4 text-3xl decoration-red'  data-tip={(<div>this is a tip</div>)}>
-            <AiFillQuestionCircle  />
+          <div className='flex pl-5 pt-4 text-2xl decoration-red'  data-tip={(<div>this is a tip</div>)}>
+            <AiFillQuestionCircle className='text-lightgray'  />
           </div>
           <ReactTooltip place='right'>
-            test
+            <h1>
+              Connect your <br /> Ethereum or Solana <br /> wallet to have full <br /> functionality.
+            </h1>
           </ReactTooltip>
         </div>
       </motion.div>

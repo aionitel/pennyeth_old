@@ -19,7 +19,7 @@ const NewsData: NewsArticleProps = {
 }
 
 // size of bitcoin logo in header 
-const btcIconSize = 55;
+const btcIconSize = 45;
 
 // type for news article that will be displayed
 interface NewsArticleProps {
@@ -49,9 +49,7 @@ const Home: NextPage = () => {
   });
 
   const dailyBtc = useRecoilValue(DailyBtcAtom);
-  const dailyEth = useRecoilValue(DailyEthAtom);
   const weeklyBtc = useRecoilValue(WeeklyBtcAtom);
-  const weeklyEth = useRecoilValue(WeeklyEthAtom);
 
   // fetch news articles
   /* useEffect(() => {
@@ -90,7 +88,7 @@ const Home: NextPage = () => {
           transition={{ duration: 1 }}
         >
           <div className='lg:mr-20 lg:pr-20'>
-            <div className='text-2xl lg:text-4xl text-center lg:text-left lg:ml-6 my-8'>
+            <div className='text-2xl lg:text-2xl text-center lg:text-left lg:ml-6 my-8'>
               <a href='https://bitcoin.org/bitcoin.pdf' rel="noopener noreferrer" target='_blank'>
                 <img src='https://i.imgur.com/wbZ6UVD.png' height={btcIconSize} width={btcIconSize} alt='main-btc' className='inline mb-2' />
               </a>
@@ -105,23 +103,6 @@ const Home: NextPage = () => {
             <HomeChart data={weeklyBtc} type='BTC' />
             <div className='flex-row hidden lg:inline'>
               <h1 className='text-xl font-bold'>Latest Bitcoin News</h1>
-              <NewsCard key='' title={NewsData.title} authors={NewsData.authors} image={NewsData.image} date={NewsData.date} url={NewsData.url} />
-            </div>
-          </div>
-          <div className='lg:text-4xl text-center lg:text-left lg:ml-6 my-4'>
-            <a href='https://ethereum.org/669c9e2e2027310b6b3cdce6e1c52962/Ethereum_Whitepaper_-_Buterin_2014.pdf' rel="noopener noreferrer" target='_blank'>
-              <img src='https://i.imgur.com/izIV4k9.png' height={btcIconSize} width={btcIconSize} alt='main-eth' className='inline pb-2' />
-            </a>
-            <h1 className='mr-1 lg:ml-2 lg:mr-2 mt-2 inline'>is</h1>
-            {
-              dailyEth < 0 ? <h1 className='inline text-red'>down {dailyEth}%</h1> : <h1 className='inline text-green-400'>up {dailyEth}%</h1>
-            }
-            <h1 className='inline mt-2 lg:ml-2 ml-1'>today.</h1>
-          </div>
-          <div className='lg:flex'>
-            <EthChart data={weeklyEth} type='ETH' />
-            <div className='flex-row hidden lg:block'>
-              <h1 className='text-xl font-bold'>Latest Ethereum News</h1>
               <NewsCard key='' title={NewsData.title} authors={NewsData.authors} image={NewsData.image} date={NewsData.date} url={NewsData.url} />
             </div>
           </div>
