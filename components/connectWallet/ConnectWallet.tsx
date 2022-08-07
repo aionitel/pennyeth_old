@@ -1,28 +1,34 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Modal from 'react-modal'
 import Metmask from './connectCrypto/Metmask'
 import WalletConnect from './connectCrypto/WalletConnect'
 import PhantomWallet from './connectCrypto/PhantomWallet'
-import { AiOutlineQuestionCircle } from 'react-icons/ai'
-import Popup from 'reactjs-popup'
 import { motion } from 'framer-motion'
+import { AiFillQuestionCircle } from 'react-icons/ai'
+import ReactTooltip from 'react-tooltip'
 
 // Connect button that allows for user to connect eth or sol wallet with modal
 
 const ConnectWallet: React.FC = () => {
-  const [modalOpen, setModalOpen] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <>
       <motion.div
       >
-          <div className='flex'>
+        <div className='flex items-center'>
           <button 
             className='bg-blue text-white text-center mt-5 py-5 px-7 hover:scale-105 transition-all rounded-2xl text-base ml-8 hover:rounded-none duration-200'
             onClick={() => setModalOpen(true)}
           >
             <h1>Connect Wallet</h1>
           </button>
+          <div className='flex pl-4 pt-4 text-3xl decoration-red'  data-tip={(<div>this is a tip</div>)}>
+            <AiFillQuestionCircle  />
+          </div>
+          <ReactTooltip place='right'>
+            test
+          </ReactTooltip>
         </div>
       </motion.div>
       <Modal
