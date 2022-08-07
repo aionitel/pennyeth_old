@@ -7,7 +7,7 @@ import { ToastProvider } from 'react-toast-notifications'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <MoralisProvider serverUrl={'https://unc22vmhpl7v.usemoralis.com:2053/server'} appId={'GWzlHLipAWp0w87Vm0hMCjEv98UOlrMTbn6gkTUC'}>
+    <MoralisProvider serverUrl={process.env.NEXT_PUBLIC_DAPP_URL as string} appId={process.env.NEXT_PUBLIC_APP_ID as string}>
       <RecoilRoot>
         <ToastProvider>
           <Layout>
