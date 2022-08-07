@@ -58,6 +58,7 @@ const CurrPriceLogos: React.FC = () => {
           height={btcLogoSize}
            width={btcLogoSize} 
            alt='btc_logo'/>
+        <h1 className='mt-1 ml-2'>${currAssetMetrics[0].price.toLocaleString().slice(0, 9)}</h1>
       </div>
       <div className='flex pl-4'>
         <Image 
@@ -66,6 +67,7 @@ const CurrPriceLogos: React.FC = () => {
           width={28} 
           alt='eth_logo'
           />
+        <h1 className='mt-1 ml-2'>${currAssetMetrics[1].price.toLocaleString().slice(0, 8)}</h1>
       </div>
     </motion.div>
   )
