@@ -4,7 +4,7 @@ import NavBar from '../nav/NavBar'
 
 const Layout: React.FC = ({ children }: any) => {
   return (
-    <div className='flex font-inter w-screen bg-black'>
+    <div className='flex font-inter bg-black'>
       <NavBar />
       <main>
         <MobileNavBar />

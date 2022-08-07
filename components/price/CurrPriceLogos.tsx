@@ -12,7 +12,6 @@ import fetchWeeklyEth from '../../data/prices/eth/fetchWeeklyEth';
 
 const CurrPriceLogos: React.FC = () => {
   const btcLogoSize = 30;
-  const ethLogoSize = 28;
 
   const [currBtcPrice, setCurrBtcPrice] = useRecoilState(CurrBtcAtom);
   const [currEthPrice, setCurrEthPrice] = useRecoilState(CurrEthAtom);
@@ -61,8 +60,8 @@ const CurrPriceLogos: React.FC = () => {
       <div className='flex pl-4'>
         <Image 
           src='https://i.imgur.com/izIV4k9.png' 
-          height={ethLogoSize} 
-          width={ethLogoSize} 
+          height={20}
+          width={28} 
           alt='eth_logo'
           />
           <h1 className='mt-1 ml-2'>{currEthPrice}</h1>

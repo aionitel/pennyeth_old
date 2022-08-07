@@ -7,6 +7,7 @@ import NewsCard from '../components/news/NewsCard'
 import { DailyBtcAtom, DailyEthAtom, WeeklyBtcAtom, WeeklyEthAtom } from '../state/atoms'
 import HomeChart from '../components/chart/HomeChart'
 import dynamic from 'next/dynamic'
+import EthChart from '../components/chart/EthChart'
 
 // test data
 const NewsData: NewsArticleProps = {
@@ -82,7 +83,7 @@ const Home: NextPage = () => {
       <Head>
         <title>PennyETH</title>
       </Head>
-      <div className='flex bg-black h-max text-white'>
+      <div className='flex bg-black text-white'>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -92,7 +93,6 @@ const Home: NextPage = () => {
             <div className='text-2xl lg:text-4xl text-center lg:text-left lg:ml-6 my-8'>
               <a href='https://bitcoin.org/bitcoin.pdf' rel="noopener noreferrer" target='_blank'>
                 <img src='https://i.imgur.com/wbZ6UVD.png' height={btcIconSize} width={btcIconSize} alt='main-btc' className='inline mb-2' />
-                <h1 className='inline ml-2'>Bitcoin</h1>
               </a>
               <h1 className='inline lg:ml-2 lg:mr-2 ml-1 mr-1'>is</h1>
               {
@@ -104,25 +104,24 @@ const Home: NextPage = () => {
           <div className='lg:flex lg:mt-4 mt-10'>
             <HomeChart data={weeklyBtc} type='BTC' />
             <div className='flex-row hidden lg:inline'>
-              <h1 className='text-xl font-bold ml-2'>Latest BTC News</h1>
+              <h1 className='text-xl font-bold'>Latest Bitcoin News</h1>
               <NewsCard key='' title={NewsData.title} authors={NewsData.authors} image={NewsData.image} date={NewsData.date} url={NewsData.url} />
             </div>
           </div>
           <div className='lg:text-4xl text-center lg:text-left lg:ml-6 my-4'>
             <a href='https://ethereum.org/669c9e2e2027310b6b3cdce6e1c52962/Ethereum_Whitepaper_-_Buterin_2014.pdf' rel="noopener noreferrer" target='_blank'>
               <img src='https://i.imgur.com/izIV4k9.png' height={btcIconSize} width={btcIconSize} alt='main-eth' className='inline pb-2' />
-              <h1 className='inline mr-1 ml-2 lg:mr-2'>Ethereum</h1>
             </a>
-            <h1 className='mr-1 lg:mr-2 mt-2 inline'>is</h1>
+            <h1 className='mr-1 lg:ml-2 lg:mr-2 mt-2 inline'>is</h1>
             {
               dailyEth < 0 ? <h1 className='inline text-red'>down {dailyEth}%</h1> : <h1 className='inline text-green-400'>up {dailyEth}%</h1>
             }
             <h1 className='inline mt-2 lg:ml-2 ml-1'>today.</h1>
           </div>
-          <div className='lg:flex lg:mt-4 mt-10'>
-            <HomeChart data={weeklyEth} type='ETH' />
+          <div className='lg:flex'>
+            <EthChart data={weeklyEth} type='ETH' />
             <div className='flex-row hidden lg:block'>
-              <h1>Latest ETH News</h1>
+              <h1 className='text-xl font-bold'>Latest Ethereum News</h1>
               <NewsCard key='' title={NewsData.title} authors={NewsData.authors} image={NewsData.image} date={NewsData.date} url={NewsData.url} />
             </div>
           </div>
