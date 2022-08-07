@@ -8,6 +8,7 @@ import { assetMetricsAtom, WeeklyBtcAtom, WeeklyEthAtom } from '../state/atoms'
 import HomeChart from '../components/chart/HomeChart'
 import fetchAssetMetrics from '../data/prices/fetchAssetMetrics'
 import dynamic from 'next/dynamic'
+import Collection from '../components/price/Collection'
 
 // test data
 const NewsData: NewsArticleProps = {
@@ -107,6 +108,7 @@ const Home: NextPage = () => {
               <NewsCard key='' title={NewsData.title} authors={NewsData.authors} image={NewsData.image} date={NewsData.date} url={NewsData.url} />
             </div>
           </div>
+          <Collection />
         </motion.div>
       </div>
     </>

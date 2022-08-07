@@ -18,7 +18,10 @@ const NewsCard: React.FC<NewsProps> = ({ title, authors, image, date, url }) => 
       <a target='_blank' rel="noopener noreferrer" onMouseOver={() => setHover(true)} onMouseOut={() => setHover(false)}>
         <div className='flex-row hover:cursor-pointer hover:underline mx-2'>
           <div className='overflow-hidden'>
-            <motion.img src={image} alt='' className='mb-2 transition-all duration-500 overflow-hidden'
+            <motion.img 
+              src={image} 
+              alt='' 
+              className='mb-2 transition-all duration-500 overflow-hidden'
               style={{
                 scale: hover ? 1.1 : 1
               }}

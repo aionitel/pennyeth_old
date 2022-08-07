@@ -3,6 +3,7 @@ import axios from 'axios';
 interface AssetProps {
   name: string,
   ticker: string,
+  image: string,
   price: number,
   hourChange: number,
   dailyChange: number,
@@ -21,6 +22,7 @@ const fetchAssetMetrics = async (ticker: string) => {
     name: asset_data["name"],
     ticker: asset_data.symbol,
     price: market_data.price_usd,
+    image: null,
     hourChange: market_data.percent_change_usd_last_1_hour,
     dailyChange: market_data.percent_change_usd_last_24_hours,
     volume: market_data.volume_last_24_hours
