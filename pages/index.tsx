@@ -4,10 +4,8 @@ import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { useRecoilValue } from 'recoil'
 import NewsCard from '../components/news/NewsCard'
-import { DailyBtcAtom, DailyEthAtom, WeeklyBtcAtom, WeeklyEthAtom } from '../state/atoms'
+import { assetMetricsAtom, WeeklyBtcAtom, WeeklyEthAtom } from '../state/atoms'
 import HomeChart from '../components/chart/HomeChart'
-import dynamic from 'next/dynamic'
-import EthChart from '../components/chart/EthChart'
 
 // test data
 const NewsData: NewsArticleProps = {
@@ -48,7 +46,7 @@ const Home: NextPage = () => {
     url: "",
   });
 
-  const dailyBtc = useRecoilValue(DailyBtcAtom);
+  const currAssetMetrics = useRecoilValue(assetMetricsAtom);
   const weeklyBtc = useRecoilValue(WeeklyBtcAtom);
 
   // fetch news articles
@@ -94,7 +92,7 @@ const Home: NextPage = () => {
               </a>
               <h1 className='inline lg:ml-2 lg:mr-2 ml-1 mr-1'>is</h1>
               {
-                dailyBtc < 0 ? <h1 className='inline text-red'>down {dailyBtc}%</h1> : <h1 className='inline text-green-400'>up {dailyBtc}%</h1>
+                currAssetMetrics[0].dailyChange < 0 ? <h1 className='inline text-red'>down {currAssetMetrics[0].dailyChange}%</h1> : <h1 className='inline text-green-400'>up {currAssetMetrics[0].dailyChange}%</h1>
               }
               <h1 className='inline'> today.</h1>
             </div>

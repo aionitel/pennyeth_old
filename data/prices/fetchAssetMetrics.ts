@@ -14,12 +14,12 @@ const fetchAssetMetrics = async (ticker: string) => {
 
   const { data: res } = await axios.get(url);
 
-  const data = res.data;
-  const market_data = data.market_data;
+  const asset_data = res["data"]["Asset"];
+  const market_data = res["data"]["market_data"];
 
   const asset: AssetProps = {
-    name: data.name,
-    ticker: data.symbol,
+    name: asset_data["name"],
+    ticker: asset_data.symbol,
     price: market_data.price_usd,
     hourChange: market_data.percent_change_usd_last_1_hour,
     dailyChange: market_data.percent_change_usd_last_24_hours,

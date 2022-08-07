@@ -3,6 +3,15 @@ import { recoilPersist } from "recoil-persist";
 
 const { persistAtom } = recoilPersist();
 
+interface AssetProps {
+  name: string,
+  ticker: string,
+  price: number,
+  hourChange: number,
+  dailyChange: number,
+  volume: number
+}
+
 // curr user's eth address
 export const currUserAtom = atom({
   key: 'currUser',
@@ -17,30 +26,10 @@ export const navOpenAtom = atom({
   effects_UNSTABLE: [persistAtom]
 })
 
-// latest btc/usd price
-export const CurrBtcAtom = atom({
-  key: 'IntradayBtcPrice',
-  default: 0 as number,
-  effects_UNSTABLE: [persistAtom]
-})
-
-// latest eth/usd price
-export const CurrEthAtom = atom({
-  key: 'IntradayEthPrice',
-  default: 0 as number,
-  effects_UNSTABLE: [persistAtom]
-})
-
-// latest daily percent change btc and eth
-export const DailyBtcAtom = atom({
-  key: 'dailyBtc',
-  default: NaN as number | typeof NaN,
-  effects_UNSTABLE: [persistAtom]
-})
-
-export const DailyEthAtom = atom({
-  key: "dailyEth",
-  default: NaN as number | typeof NaN,
+// various metrics for certain asset
+export const assetMetricsAtom = atom({
+  key: "assetMetrics",
+  default: [] as AssetProps[],
   effects_UNSTABLE: [persistAtom]
 })
 

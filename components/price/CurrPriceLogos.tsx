@@ -2,41 +2,45 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion';
 import { useRecoilState } from 'recoil';
-import { CurrBtcAtom, CurrEthAtom, DailyBtcAtom, DailyEthAtom, WeeklyBtcAtom, WeeklyEthAtom } from '../../state/atoms';
-import fetchCurrBtc from '../../data/prices/btc/fetchCurrBtc';
-import fetchCurrEth from '../../data/prices/eth/fetchCurrEth';
-import fetchDailyBtc from '../../data/prices/btc/fetchDailyBtc';
-import fetchDailyEth from '../../data/prices/eth/fetchDailyEth';
+import { assetMetricsAtom, WeeklyBtcAtom, WeeklyEthAtom } from '../../state/atoms';
 import fetchWeeklyBtc from '../../data/prices/btc/fetchWeeklyBtc';
 import fetchWeeklyEth from '../../data/prices/eth/fetchWeeklyEth';
+import fetchAssetMetrics from '../../data/prices/fetchAssetMetrics';
+
+const btcLogoSize = 30;
 
 const CurrPriceLogos: React.FC = () => {
-  const btcLogoSize = 30;
-
-  const [currBtcPrice, setCurrBtcPrice] = useRecoilState(CurrBtcAtom);
-  const [currEthPrice, setCurrEthPrice] = useRecoilState(CurrEthAtom);
-  const [dailyBtc, setDailyBtc] = useRecoilState(DailyBtcAtom);
-  const [dailyEth, setDailyEth] = useRecoilState(DailyEthAtom);
+  const [currAssetMetrics, setCurrAssetMetrics] = useRecoilState(assetMetricsAtom);
   const [currWeeklyBtc, setCurrWeeklyBtc] = useRecoilState(WeeklyBtcAtom);
   const [currWeeklyEth, setCurrWeeklyEth] = useRecoilState(WeeklyEthAtom);
 
   useEffect(() => {
     const fetchAndSetPrices = async () => {
-      const btcPrice = await fetchCurrBtc();
-      const ethPrice = await fetchCurrEth();
-      const fetchedDailyBtc = await fetchDailyBtc();
-      const fetchedDailyEth = await fetchDailyEth();
+
+      // percent change in last week for btc and eth
       const weeklyBtc = await fetchWeeklyBtc();
       const weeklyEth = await fetchWeeklyEth();
-  
-      setCurrBtcPrice(btcPrice);
-      setCurrEthPrice(ethPrice);
-      setDailyBtc(fetchedDailyBtc);
-      setDailyEth(fetchedDailyEth);
+
+      // various market data for specified asset
+      const btcData = await fetchAssetMetrics("btc");
+      const ethData = await fetchAssetMetrics("eth");
+      const xmrData = await fetchAssetMetrics("xmr");
+      const solData = await fetchAssetMetrics("sol");
+      const adaData = await fetchAssetMetrics("ada");
+
+      // set global price for each asset to be used later in app
+      setCurrAssetMetrics([
+        btcData,
+        ethData,
+        xmrData,
+        solData,
+        adaData,
+      ])
+
       setCurrWeeklyBtc(weeklyBtc);
       setCurrWeeklyEth(weeklyEth);
-  
-      console.log("Fetched and set current prices: " + btcPrice + ethPrice)
+
+      console.log(currAssetMetrics);
     }
 
     fetchAndSetPrices();
@@ -55,7 +59,7 @@ const CurrPriceLogos: React.FC = () => {
           height={btcLogoSize}
            width={btcLogoSize} 
            alt='btc_logo'/>
-        <h1 className='mt-1 ml-2'>${currBtcPrice}</h1>
+        <h1 className='mt-1 ml-2'>${currAssetMetrics[0].price.toFixed(2)}</h1>
       </div>
       <div className='flex pl-4'>
         <Image 
@@ -64,7 +68,7 @@ const CurrPriceLogos: React.FC = () => {
           width={28} 
           alt='eth_logo'
           />
-          <h1 className='mt-1 ml-2'>{currEthPrice}</h1>
+          <h1 className='mt-1 ml-2'>{currAssetMetrics[1].price.toFixed(2)}</h1>
       </div>
     </motion.div>
   )
