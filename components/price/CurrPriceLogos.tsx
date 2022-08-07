@@ -6,6 +6,7 @@ import { assetMetricsAtom, WeeklyBtcAtom, WeeklyEthAtom } from '../../state/atom
 import fetchWeeklyBtc from '../../data/prices/btc/fetchWeeklyBtc';
 import fetchWeeklyEth from '../../data/prices/eth/fetchWeeklyEth';
 import fetchAssetMetrics from '../../data/prices/fetchAssetMetrics';
+import dynamic from 'next/dynamic';
 
 const btcLogoSize = 30;
 
@@ -39,8 +40,6 @@ const CurrPriceLogos: React.FC = () => {
 
       setCurrWeeklyBtc(weeklyBtc);
       setCurrWeeklyEth(weeklyEth);
-
-      console.log(currAssetMetrics);
     }
 
     fetchAndSetPrices();
@@ -59,7 +58,6 @@ const CurrPriceLogos: React.FC = () => {
           height={btcLogoSize}
            width={btcLogoSize} 
            alt='btc_logo'/>
-        <h1 className='mt-1 ml-2'>${currAssetMetrics[0].price.toFixed(2)}</h1>
       </div>
       <div className='flex pl-4'>
         <Image 
@@ -68,7 +66,6 @@ const CurrPriceLogos: React.FC = () => {
           width={28} 
           alt='eth_logo'
           />
-          <h1 className='mt-1 ml-2'>{currAssetMetrics[1].price.toFixed(2)}</h1>
       </div>
     </motion.div>
   )

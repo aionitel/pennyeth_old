@@ -2,10 +2,12 @@ import { NextPage } from 'next'
 import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
-import { useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import NewsCard from '../components/news/NewsCard'
 import { assetMetricsAtom, WeeklyBtcAtom, WeeklyEthAtom } from '../state/atoms'
 import HomeChart from '../components/chart/HomeChart'
+import fetchAssetMetrics from '../data/prices/fetchAssetMetrics'
+import dynamic from 'next/dynamic'
 
 // test data
 const NewsData: NewsArticleProps = {
@@ -29,6 +31,9 @@ interface NewsArticleProps {
 }
 
 const Home: NextPage = () => {
+  // dynamically import btc text without ssr
+  const DynamicBtcText = dynamic(() => import('../components/price/BtcText'), {ssr: false});
+
   // articles that are returned from fetchNews()
   const [btcArticle, setBtcArticle] = useState<NewsArticleProps>({
     title: "",
@@ -46,8 +51,8 @@ const Home: NextPage = () => {
     url: "",
   });
 
-  const currAssetMetrics = useRecoilValue(assetMetricsAtom);
   const weeklyBtc = useRecoilValue(WeeklyBtcAtom);
+  const [currAssetMetrics, setCurrAssetMetrics] = useRecoilState(assetMetricsAtom);
 
   // fetch news articles
   /* useEffect(() => {
@@ -91,9 +96,7 @@ const Home: NextPage = () => {
                 <img src='https://i.imgur.com/wbZ6UVD.png' height={btcIconSize} width={btcIconSize} alt='main-btc' className='inline mb-2' />
               </a>
               <h1 className='inline lg:ml-2 lg:mr-2 ml-1 mr-1'>is</h1>
-              {
-                currAssetMetrics[0].dailyChange < 0 ? <h1 className='inline text-red'>down {currAssetMetrics[0].dailyChange}%</h1> : <h1 className='inline text-green-400'>up {currAssetMetrics[0].dailyChange}%</h1>
-              }
+              <DynamicBtcText />
               <h1 className='inline'> today.</h1>
             </div>
           </div>
@@ -110,4 +113,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default Home;

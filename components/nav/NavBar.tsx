@@ -14,6 +14,7 @@ import dynamic from 'next/dynamic'
 
 // dynamically turn ssr off for NavItem, to avoid 'location is not defined' errors
 const DynamicNavItem = dynamic(() => import('./NavItem'), {ssr: false})
+const DynamicCurrPriceLogos = dynamic(() => import('../price/CurrPriceLogos'), {ssr: false})
 
 const NavBar: React.FC = () => {
   const user = useRecoilValue(currUserAtom)
@@ -36,7 +37,7 @@ const NavBar: React.FC = () => {
             </>
           </Link>
         </motion.div>
-        <CurrPriceLogos />
+        <DynamicCurrPriceLogos />
         {user ? <LoggedInHeader /> : <ConnectWallet />}
       </div>
       <ul>
