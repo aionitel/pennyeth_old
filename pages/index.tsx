@@ -108,7 +108,15 @@ const Home: NextPage = () => {
               <NewsCard key='' title={NewsData.title} authors={NewsData.authors} image={NewsData.image} date={NewsData.date} url={NewsData.url} />
             </div>
           </div>
-          <Collection />
+          <div className='border-2 border-lightgray border-dashed rounded ml-7 mr-5'>
+            <div className='flex justify-between my-4 ml-2'>
+              <h1>Name</h1>
+              <h1>Price</h1>
+              <h1>Daily % Change</h1>
+              <h1 className='mr-20'>Volume</h1>
+            </div>
+            <Collection />
+          </div>
         </motion.div>
       </div>
     </>

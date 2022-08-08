@@ -7,7 +7,6 @@ const Collection: React.FC = () => {
 
   return (
     <div className='flex-row border border-lightgray'>
-      <h1>Your assets</h1>
       {
         assetData.map(item => (
           <CollectionItem 
@@ -38,13 +37,23 @@ interface CollectionItemProps {
 const CollectionItem: React.FC<CollectionItemProps> = ({ name, ticker, image, price, hourChange, dailyChange, volume }) => {
   const logoSize = 35;
 
+  const formatter = new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: 2,      
+    maximumFractionDigits: 2,
+ });
+
   return (
-    <div className='flex'>
-      <img src={image} alt='' height={logoSize} width={logoSize} />
-      <div>
-        <h1>{name}</h1>
-        <h1>{ticker}</h1>
+    <div className='flex justify-between my-2'>
+      <div className='flex'>
+        <img src={image} alt='' height={logoSize} width={logoSize} />
+        <div>
+          <h1>{name}</h1>
+          <h1>{ticker}</h1>
+        </div>
       </div>
+      <h1>${formatter.format(price)}</h1>
+      <h1>{formatter.format(dailyChange)}%</h1>
+      <h1 className='mr-6'>{formatter.format(volume)} {ticker}</h1>
     </div>
   )
 }
