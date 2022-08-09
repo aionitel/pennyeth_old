@@ -1,6 +1,7 @@
 import React from 'react'
 import { useRecoilValue } from 'recoil'
 import { assetMetricsAtom } from '../../state/atoms'
+import  { RiArrowUpSFill, RiArrowDownSFill } from 'react-icons/ri'
 
 const Collection: React.FC = () => {
   const assetData = useRecoilValue(assetMetricsAtom);
@@ -41,7 +42,7 @@ const CollectionItem: React.FC<CollectionItemProps> = ({ name, ticker, image, pr
  });
 
   return (
-    <div className='flex justify-between my-2'>
+    <div className='flex justify-between py-2 hover:cursor-pointer hover:bg-slate-900'>
       <div className='flex'>
         <img src={image} alt='' style={{ height: logoSize , width: logoSize, marginTop: 2 }} className='mx-3' />
         <div>
@@ -49,9 +50,12 @@ const CollectionItem: React.FC<CollectionItemProps> = ({ name, ticker, image, pr
           <h1>{ticker}</h1>
         </div>
       </div>
-      <h1 className='mr-20 pr-20'>${formatter.format(price)}</h1>
+      <div>
+      <h1>${formatter.format(price)}</h1>
+      </div>
       {
-        dailyChange < 0 ? <h1 className='text-red'>{formatter.format(dailyChange)}%</h1> : <h1 className='text-green-400'>{formatter.format(dailyChange)}%</h1>
+        dailyChange < 0 ? <div className='flex'><RiArrowUpSFill className='mt-1 text-2xl text-red' /><h1 className='text-red'>{formatter.format(dailyChange)}%</h1></div> 
+        : <div className='flex'><RiArrowUpSFill className='mt-1 text-2xl text-green-400' /><h1 className='text-green-400'>{formatter.format(dailyChange)}%</h1></div>
       }
       <h1 className='mr-6'>{formatter.format(volume)} {ticker}</h1>
     </div>

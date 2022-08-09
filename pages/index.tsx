@@ -110,8 +110,8 @@ const Home: NextPage = () => {
             <div className='flex justify-between my-4 ml-2'>
               <h1 className='ml-2'>Name</h1>
               <h1>Price</h1>
-              <h1>Daily % Change</h1>
-              <h1 className='mr-20'>Volume</h1>
+              <h1>24h %</h1>
+              <h1 className='mr-20'>Volume(24h)</h1>
             </div>
             <Collection />
           </div>
