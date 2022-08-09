@@ -2,10 +2,11 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion';
 import { useRecoilState } from 'recoil';
-import { assetMetricsAtom, WeeklyBtcAtom, WeeklyEthAtom } from '../../state/atoms';
+import { assetMetricsAtom, newsAtom, WeeklyBtcAtom, WeeklyEthAtom } from '../../state/atoms';
 import fetchWeeklyBtc from '../../data/prices/btc/fetchWeeklyBtc';
 import fetchWeeklyEth from '../../data/prices/eth/fetchWeeklyEth';
 import fetchAssetMetrics from '../../data/prices/fetchAssetMetrics';
+import fetchNews from '../../data/news/fetchNews';
 
 const btcLogoSize = 30;
 
@@ -13,9 +14,13 @@ const CurrPriceLogos: React.FC = () => {
   const [currAssetMetrics, setCurrAssetMetrics] = useRecoilState(assetMetricsAtom);
   const [currWeeklyBtc, setCurrWeeklyBtc] = useRecoilState(WeeklyBtcAtom);
   const [currWeeklyEth, setCurrWeeklyEth] = useRecoilState(WeeklyEthAtom);
+  const [newsArticles, setNewsArticles] = useRecoilState(newsAtom);
 
   useEffect(() => {
     const fetchAndSetPrices = async () => {
+
+      // fetch latest news
+      const articles = await fetchNews();
 
       // percent change in last week for btc and eth
       const weeklyBtc = await fetchWeeklyBtc();
@@ -42,10 +47,10 @@ const CurrPriceLogos: React.FC = () => {
         adaData,
       ])
 
-      console.log(currAssetMetrics[2]);
-
       setCurrWeeklyBtc(weeklyBtc);
       setCurrWeeklyEth(weeklyEth);
+      
+      setNewsArticles(articles);
     }
 
     fetchAndSetPrices();

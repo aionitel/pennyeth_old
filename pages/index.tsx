@@ -116,7 +116,7 @@ const Home: NextPage = () => {
             <Collection />
           </div>
           <div>
-            <h1 className='ml-7 my-6 text-2xl'>Latest News</h1>
+            <h1 className='ml-7 my-6 text-2xl'>Latest Crypto News</h1>
             <NewsCarousel />
           </div>
         </motion.div>

@@ -12,6 +12,14 @@ interface AssetProps {
   volume: number
 }
 
+interface NewsArticleProps {
+  title: string,
+  authors: string[],
+  image: string,
+  date: string,
+  url: string,
+}
+
 // curr user's eth address
 export const currUserAtom = atom({
   key: 'currUser',
@@ -30,6 +38,12 @@ export const navOpenAtom = atom({
 export const assetMetricsAtom = atom({
   key: "assetMetrics",
   default: [] as AssetProps[],
+  effects_UNSTABLE: [persistAtom]
+})
+
+export const newsAtom = atom({
+  key: "news",
+  default: [] as NewsArticleProps[],
   effects_UNSTABLE: [persistAtom]
 })
 
