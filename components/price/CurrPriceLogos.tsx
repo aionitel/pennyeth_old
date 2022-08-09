@@ -7,6 +7,7 @@ import fetchWeeklyBtc from '../../data/prices/btc/fetchWeeklyBtc';
 import fetchWeeklyEth from '../../data/prices/eth/fetchWeeklyEth';
 import fetchAssetMetrics from '../../data/prices/fetchAssetMetrics';
 import fetchNews from '../../data/news/fetchNews';
+import images from '../../data/images/images';
 
 const btcLogoSize = 30;
 
@@ -49,6 +50,10 @@ const CurrPriceLogos: React.FC = () => {
 
       setCurrWeeklyBtc(weeklyBtc);
       setCurrWeeklyEth(weeklyEth);
+
+      const new_articles = articles.forEach(item => {
+        item.image = images[Math.floor(Math.random() * images.length)];
+      })
       
       setNewsArticles(articles);
     }

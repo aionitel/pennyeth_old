@@ -12,24 +12,9 @@ interface NewsArticleProps {
   url: string,
 }
 
-// test data
-const NewsData: NewsArticleProps = {
-  title: "Texas bitcoin miners back online after power surge caused curtailments",
-  date: "2022-07-19",
-  url: "https://news.yahoo.com/texas-bitcoin-miners-back-online-203424037.html"
-}
-
 const NewsCarousel = () => {
   const articles = useRecoilValue(newsAtom);
-  const [cover, setCover] = useState<string>("");
-
-  if (typeof window !== 'undefined') {
-      window.onload = function() {
-      setCover(images[Math.floor(Math.random() * images.length)]);
-
-      console.log("setting images");
-    }
-  }
+  console.log(articles)
 
   return (
     <div>
@@ -37,7 +22,7 @@ const NewsCarousel = () => {
         {
           articles.map(item => (
             <Carousel.Item key=''>
-              <NewsCard title={item.title} image={cover} date={item.date} url={item.url} />
+              <NewsCard title={item.title} image={item.image} date={item.date} url={item.url} />
             </Carousel.Item>
           ))
         }

@@ -16,13 +16,11 @@ const fetchNews = async () => {
   const articles: NewsArticleProps[] = res.results.map(item => {
     return {
       title: item.title,
-      image: item.image_url,
+      image: null,
       date: item.pubDate,
       url: item.link
     }
   })
-
-  console.log(articles)
 
   return articles;
 }
