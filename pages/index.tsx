@@ -4,9 +4,8 @@ import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import NewsCard from '../components/news/NewsCard'
-import { assetMetricsAtom, WeeklyBtcAtom, WeeklyEthAtom } from '../state/atoms'
+import { WeeklyBtcAtom, WeeklyEthAtom } from '../state/atoms'
 import HomeChart from '../components/chart/HomeChart'
-import fetchAssetMetrics from '../data/prices/fetchAssetMetrics'
 import dynamic from 'next/dynamic'
 import Collection from '../components/price/Collection'
 
@@ -53,7 +52,6 @@ const Home: NextPage = () => {
   });
 
   const weeklyBtc = useRecoilValue(WeeklyBtcAtom);
-  const [currAssetMetrics, setCurrAssetMetrics] = useRecoilState(assetMetricsAtom);
 
   // fetch news articles
   /* useEffect(() => {
@@ -110,7 +108,7 @@ const Home: NextPage = () => {
           </div>
           <div className='border-2 border-lightgray border-dashed rounded ml-7 mr-5'>
             <div className='flex justify-between my-4 ml-2'>
-              <h1>Name</h1>
+              <h1 className='ml-2'>Name</h1>
               <h1>Price</h1>
               <h1>Daily % Change</h1>
               <h1 className='mr-20'>Volume</h1>

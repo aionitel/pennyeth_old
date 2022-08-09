@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['i.imgur.com', 'external-content.duckduckgo.com']
+    domains: ['i.imgur.com', 'external-content.duckduckgo.com', "localhost"]
   }
 }
 

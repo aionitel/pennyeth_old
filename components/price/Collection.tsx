@@ -6,7 +6,7 @@ const Collection: React.FC = () => {
   const assetData = useRecoilValue(assetMetricsAtom);
 
   return (
-    <div className='flex-row border border-lightgray'>
+    <div className='flex-row border border-lightgray mt-2'>
       {
         assetData.map(item => (
           <CollectionItem 
@@ -15,7 +15,6 @@ const Collection: React.FC = () => {
             ticker={item.ticker}
             image={item.image}
             price={item.price} 
-            hourChange={item.hourChange} 
             dailyChange={item.dailyChange} 
             volume={item.volume} />
         ))
@@ -29,12 +28,11 @@ interface CollectionItemProps {
   ticker: string,
   image: string,
   price: number,
-  hourChange: number,
   dailyChange: number,
   volume: number
 }
 
-const CollectionItem: React.FC<CollectionItemProps> = ({ name, ticker, image, price, hourChange, dailyChange, volume }) => {
+const CollectionItem: React.FC<CollectionItemProps> = ({ name, ticker, image, price, dailyChange, volume }) => {
   const logoSize = 35;
 
   const formatter = new Intl.NumberFormat('en-US', {
@@ -45,14 +43,16 @@ const CollectionItem: React.FC<CollectionItemProps> = ({ name, ticker, image, pr
   return (
     <div className='flex justify-between my-2'>
       <div className='flex'>
-        <img src={image} alt='' height={logoSize} width={logoSize} />
+        <img src={image} alt='' style={{ height: logoSize , width: logoSize, marginTop: 2 }} className='mx-3' />
         <div>
           <h1>{name}</h1>
           <h1>{ticker}</h1>
         </div>
       </div>
-      <h1>${formatter.format(price)}</h1>
-      <h1>{formatter.format(dailyChange)}%</h1>
+      <h1 className='mr-20 pr-20'>${formatter.format(price)}</h1>
+      {
+        dailyChange < 0 ? <h1 className='text-red'>{formatter.format(dailyChange)}%</h1> : <h1 className='text-green-400'>{formatter.format(dailyChange)}%</h1>
+      }
       <h1 className='mr-6'>{formatter.format(volume)} {ticker}</h1>
     </div>
   )

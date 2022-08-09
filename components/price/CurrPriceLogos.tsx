@@ -25,7 +25,7 @@ const CurrPriceLogos: React.FC = () => {
       const btcData = await fetchAssetMetrics("btc");
       btcData.image = 'https://i.imgur.com/wbZ6UVD.png'
       const ethData = await fetchAssetMetrics("eth");
-      ethData.image = 'http://localhost:3000/_next/image?url=https%3A%2F%2Fi.imgur.com%2FizIV4k9.png&w=64&q=75'
+      ethData.image = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fclipground.com%2Fimages%2Fethereum-png-12.png&f=1&nofb=1'
       const xmrData = await fetchAssetMetrics("xmr");
       xmrData.image = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwiki.trezor.io%2Fimages%2FMonero.png&f=1&nofb=1'
       const solData = await fetchAssetMetrics("sol");
@@ -41,6 +41,8 @@ const CurrPriceLogos: React.FC = () => {
         solData,
         adaData,
       ])
+
+      console.log(currAssetMetrics[2]);
 
       setCurrWeeklyBtc(weeklyBtc);
       setCurrWeeklyEth(weeklyEth);
