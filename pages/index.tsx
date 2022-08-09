@@ -8,6 +8,7 @@ import { WeeklyBtcAtom, WeeklyEthAtom } from '../state/atoms'
 import HomeChart from '../components/chart/HomeChart'
 import dynamic from 'next/dynamic'
 import Collection from '../components/price/Collection'
+import NewsCarousel from '../components/news/NewsCarousel'
 
 // test data
 const NewsData: NewsArticleProps = {
@@ -102,11 +103,9 @@ const Home: NextPage = () => {
           <div className='lg:flex lg:mt-4 mt-10'>
             <HomeChart data={weeklyBtc} type='BTC' />
             <div className='flex-row hidden lg:inline'>
-              <h1 className='text-xl font-bold'>Latest Bitcoin News</h1>
-              <NewsCard key='' title={NewsData.title} authors={NewsData.authors} image={NewsData.image} date={NewsData.date} url={NewsData.url} />
             </div>
           </div>
-          <div className='border-2 border-lightgray border-dashed rounded ml-7 mr-5'>
+          <div className='border-2 border-lightgray border-dashed rounded ml-7 mr-2'>
             <div className='flex justify-between my-4 ml-2'>
               <h1 className='ml-2'>Name</h1>
               <h1>Price</h1>
@@ -114,6 +113,10 @@ const Home: NextPage = () => {
               <h1 className='mr-20'>Volume(24h)</h1>
             </div>
             <Collection />
+          </div>
+          <div>
+            <h1>Latest News</h1>
+            <NewsCarousel />
           </div>
         </motion.div>
       </div>

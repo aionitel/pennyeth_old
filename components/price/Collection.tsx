@@ -54,7 +54,7 @@ const CollectionItem: React.FC<CollectionItemProps> = ({ name, ticker, image, pr
       <h1>${formatter.format(price)}</h1>
       </div>
       {
-        dailyChange < 0 ? <div className='flex'><RiArrowUpSFill className='mt-1 text-2xl text-red' /><h1 className='text-red'>{formatter.format(dailyChange)}%</h1></div> 
+        dailyChange < 0 ? <div className='flex'><RiArrowDownSFill className='mt-1 text-2xl text-red' /><h1 className='text-red'>{formatter.format(dailyChange)}%</h1></div> 
         : <div className='flex'><RiArrowUpSFill className='mt-1 text-2xl text-green-400' /><h1 className='text-green-400'>{formatter.format(dailyChange)}%</h1></div>
       }
       <h1 className='mr-6'>{formatter.format(volume)} {ticker}</h1>
