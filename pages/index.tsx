@@ -105,7 +105,7 @@ const Home: NextPage = () => {
             <div className='flex-row hidden lg:inline'>
             </div>
           </div>
-          <div className='border-2 border-lightgray border-dashed rounded ml-7 mr-2'>
+          <div className='border-2 border-lightgray border-dashed rounded ml-7 mr-7'>
             <div className='flex justify-between my-4 ml-2'>
               <h1 className='ml-2'>Name</h1>
               <h1>Price</h1>
@@ -115,7 +115,7 @@ const Home: NextPage = () => {
             <Collection />
           </div>
           <div>
-            <h1>Latest News</h1>
+            <h1 className='ml-7 my-6 text-2xl'>Latest News</h1>
             <NewsCarousel />
           </div>
         </motion.div>

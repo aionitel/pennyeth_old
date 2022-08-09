@@ -34,7 +34,7 @@ interface CollectionItemProps {
 }
 
 const CollectionItem: React.FC<CollectionItemProps> = ({ name, ticker, image, price, dailyChange, volume }) => {
-  const logoSize = 35;
+  const logoSize = 40;
 
   const formatter = new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,      
@@ -42,12 +42,12 @@ const CollectionItem: React.FC<CollectionItemProps> = ({ name, ticker, image, pr
  });
 
   return (
-    <div className='flex justify-between py-2 hover:cursor-pointer hover:bg-slate-900'>
+    <div className='flex justify-between py-2 hover:cursor-pointer hover:bg-slate-900 text-lg'>
       <div className='flex'>
-        <img src={image} alt='' style={{ height: logoSize , width: logoSize, marginTop: 2 }} className='mx-3' />
+        <img src={image} alt='' style={{ height: logoSize , width: logoSize, marginTop: 5 }} className='mx-3' />
         <div>
           <h1>{name}</h1>
-          <h1>{ticker}</h1>
+          <h1 className='text-base opacity-[0.7]'>{ticker}</h1>
         </div>
       </div>
       <div>
@@ -57,7 +57,7 @@ const CollectionItem: React.FC<CollectionItemProps> = ({ name, ticker, image, pr
         dailyChange < 0 ? <div className='flex'><RiArrowDownSFill className='mt-1 text-2xl text-red' /><h1 className='text-red'>{formatter.format(dailyChange)}%</h1></div> 
         : <div className='flex'><RiArrowUpSFill className='mt-1 text-2xl text-green-400' /><h1 className='text-green-400'>{formatter.format(dailyChange)}%</h1></div>
       }
-      <h1 className='mr-6'>{formatter.format(volume)} {ticker}</h1>
+      <h1 className='mr-6'>{Math.floor(volume).toLocaleString()} {ticker}</h1>
     </div>
   )
 }

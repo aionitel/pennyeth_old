@@ -4,7 +4,7 @@ export const getChartWidth = () => {
   } else if (typeof window !== 'undefined' && screen.height <= 900 ) { // laptops and small screens
     return 800
   } else if (typeof window !== 'undefined' && screen.height <= 1100) { // large monitors and displays
-    return 1500
+    return 1487
   }
 }
 
