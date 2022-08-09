@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import images from '../../data/images/images';
 
 interface NewsProps {
   title: string,
@@ -12,6 +13,13 @@ const NewsImageSize = 140;
 
 const NewsCard: React.FC<NewsProps> = ({ title, image, date, url }) => {
   const [hover, setHover] = useState<boolean>(false);
+  const [cover, setCover] = useState<string>("");
+
+  window.onload = function() {
+    setCover(images[Math.floor(Math.random() * images.length)]);
+
+    console.log("setting images");
+  }
 
   return (
     <a href={url} target='_blank' rel="noopener noreferrer" onMouseOver={() => setHover(true)} onMouseOut={() => setHover(false)}>

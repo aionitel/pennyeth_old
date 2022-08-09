@@ -1,6 +1,7 @@
 import React from 'react'
 import MobileNavBar from '../nav/mobile/MobileNavBar'
 import NavBar from '../nav/NavBar'
+import Footer from './Footer'
 
 const Layout: React.FC = ({ children }: any) => {
   return (
@@ -9,6 +10,7 @@ const Layout: React.FC = ({ children }: any) => {
       <main>
         <MobileNavBar />
         {children}
+        <Footer />
       </main>
     </div>   
   )
