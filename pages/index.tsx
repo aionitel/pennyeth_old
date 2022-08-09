@@ -111,6 +111,7 @@ const Home: NextPage = () => {
               <h1>Price</h1>
               <h1>24h %</h1>
               <h1 className='mr-20'>Volume(24h)</h1>
+              <h1>Market Cap</h1>
             </div>
             <Collection />
           </div>

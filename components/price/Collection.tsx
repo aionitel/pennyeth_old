@@ -17,7 +17,9 @@ const Collection: React.FC = () => {
             image={item.image}
             price={item.price} 
             dailyChange={item.dailyChange} 
-            volume={item.volume} />
+            volume={item.volume} 
+            marketCap={item.marketCap}
+          />
         ))
       }
     </div>
@@ -30,10 +32,11 @@ interface CollectionItemProps {
   image: string,
   price: number,
   dailyChange: number,
-  volume: number
+  volume: number,
+  marketCap: number,
 }
 
-const CollectionItem: React.FC<CollectionItemProps> = ({ name, ticker, image, price, dailyChange, volume }) => {
+const CollectionItem: React.FC<CollectionItemProps> = ({ name, ticker, image, price, dailyChange, volume, marketCap }) => {
   const logoSize = 40;
 
   const formatter = new Intl.NumberFormat('en-US', {
@@ -47,17 +50,18 @@ const CollectionItem: React.FC<CollectionItemProps> = ({ name, ticker, image, pr
         <img src={image} alt='' style={{ height: logoSize , width: logoSize, marginTop: 5 }} className='mx-3' />
         <div>
           <h1>{name}</h1>
-          <h1 className='text-base opacity-[0.7]'>{ticker}</h1>
+          <h1 className='text-sm opacity-[0.7]'>{ticker}</h1>
         </div>
       </div>
       <div>
-      <h1>${formatter.format(price)}</h1>
+        <h1>${formatter.format(price)}</h1>
       </div>
       {
         dailyChange < 0 ? <div className='flex'><RiArrowDownSFill className='mt-1 text-2xl text-red' /><h1 className='text-red'>{formatter.format(dailyChange)}%</h1></div> 
         : <div className='flex'><RiArrowUpSFill className='mt-1 text-2xl text-green-400' /><h1 className='text-green-400'>{formatter.format(dailyChange)}%</h1></div>
       }
       <h1 className='mr-6'>{Math.floor(volume).toLocaleString()} {ticker}</h1>
+      <h1>{Math.floor(marketCap).toLocaleString()}</h1>
     </div>
   )
 }
