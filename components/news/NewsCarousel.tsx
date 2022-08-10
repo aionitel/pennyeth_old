@@ -17,8 +17,7 @@ const NewsCarousel = () => {
   console.log(articles)
 
   return (
-    <div>
-      <Carousel cols={3} rows={1} gap={0} containerStyle={{ width: 1500 }}>
+      <Carousel cols={4} rows={1} gap={0} containerStyle={{ width: 1500 }}>
         {
           articles.map(item => (
             <Carousel.Item key=''>
@@ -27,7 +26,6 @@ const NewsCarousel = () => {
           ))
         }
       </Carousel>
-    </div>
   )
 }
 

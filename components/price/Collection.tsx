@@ -61,7 +61,7 @@ const CollectionItem: React.FC<CollectionItemProps> = ({ name, ticker, image, pr
         : <div className='flex'><RiArrowUpSFill className='mt-1 text-2xl text-green-400' /><h1 className='text-green-400'>{formatter.format(dailyChange)}%</h1></div>
       }
       <h1 className='mr-6'>{Math.floor(volume).toLocaleString()} {ticker}</h1>
-      <h1>{Math.floor(marketCap).toLocaleString()}</h1>
+      <h1 className='mr-4'>{Math.floor(marketCap).toLocaleString()}</h1>
     </div>
   )
 }

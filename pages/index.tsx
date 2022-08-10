@@ -32,8 +32,9 @@ interface NewsArticleProps {
 }
 
 const Home: NextPage = () => {
-  // dynamically import btc text without ssr
+  // dynamically import certain components without ssr
   const DynamicBtcText = dynamic(() => import('../components/price/BtcText'), {ssr: false});
+  const DynamicNewsCarousel = dynamic(() => import('../components/news/NewsCarousel'), {ssr: false})
 
   // articles that are returned from fetchNews()
   const [btcArticle, setBtcArticle] = useState<NewsArticleProps>({
@@ -111,13 +112,13 @@ const Home: NextPage = () => {
               <h1>Price</h1>
               <h1>24h %</h1>
               <h1 className='mr-20'>Volume(24h)</h1>
-              <h1>Market Cap</h1>
+              <h1 className='pr-6'>Market Cap</h1>
             </div>
             <Collection />
           </div>
           <div>
             <h1 className='ml-7 my-6 text-2xl'>Latest Crypto News</h1>
-            <NewsCarousel />
+            <DynamicNewsCarousel />
           </div>
         </motion.div>
       </div>
