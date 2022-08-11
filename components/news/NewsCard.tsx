@@ -9,7 +9,7 @@ interface NewsProps {
   url: string,
 }
 
-const NewsImageSize = 350 ;
+const NewsImageSize = 320 ;
 
 const NewsCard: React.FC<NewsProps> = ({ title, image, date, url }) => {
   const [hover, setHover] = useState<boolean>(false);
@@ -28,7 +28,7 @@ const NewsCard: React.FC<NewsProps> = ({ title, image, date, url }) => {
           <motion.img 
             src={image} 
             alt='' 
-            className='mb-2 transition-all duration-500 overflow-hidden'
+            className='mb-2 transition-all overflow-hidden duration-500 rounded-xl hover:rounded-none'
             style={{
               scale: hover ? 1.1 : 1,
               height: NewsImageSize - 150,
@@ -36,7 +36,7 @@ const NewsCard: React.FC<NewsProps> = ({ title, image, date, url }) => {
             }}
           />
         </div>
-        <h1 className='my-2'>{title}</h1>
+        <h1 className='my-2 pt-2'>{title}</h1>
         <div className='flex justify-between'>
           <h2>{date.slice(0, 10)}</h2>
         </div>
