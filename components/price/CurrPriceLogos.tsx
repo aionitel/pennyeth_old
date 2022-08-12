@@ -5,7 +5,7 @@ import { useRecoilState } from 'recoil';
 import { assetMetricsAtom, newsAtom, WeeklyBtcAtom, WeeklyEthAtom } from '../../state/atoms';
 import fetchWeeklyBtc from '../../data/prices/btc/fetchWeeklyBtc';
 import fetchWeeklyEth from '../../data/prices/eth/fetchWeeklyEth';
-import fetchAssetMetrics from '../../data/prices/fetchAssetMetrics';
+import fetchAssetMetrics from '../../data/prices/misc/fetchAssetData';
 import fetchNews from '../../data/news/fetchNews';
 import images from '../../data/images/images';
 

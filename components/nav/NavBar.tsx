@@ -37,7 +37,6 @@ const NavBar: React.FC = () => {
             </>
           </Link>
         </motion.div>
-        <DynamicCurrPriceLogos />
         {user ? <LoggedInHeader /> : <ConnectWallet />}
       </div>
       <ul>
