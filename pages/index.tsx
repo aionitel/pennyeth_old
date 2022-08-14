@@ -3,21 +3,13 @@ import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { useRecoilState, useRecoilValue } from 'recoil'
-import NewsCard from '../components/news/NewsCard'
 import { WeeklyBtcAtom, WeeklyEthAtom } from '../state/atoms'
 import HomeChart from '../components/chart/HomeChart'
 import dynamic from 'next/dynamic'
 import Collection from '../components/price/Collection'
-import NewsCarousel from '../components/news/NewsCarousel'
-
-// test data
-const NewsData: NewsArticleProps = {
-  title: "Texas bitcoin miners back online after power surge caused curtailments",
-  authors: ["Jamie Redman"],
-  image: "https://s.yimg.com/uu/api/res/1.2/xXYF4FFhrTtMRAjWFWaRhw--~B/aD01MjY7dz04MDA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/reuters.com/a56bb3178474ee2d6766f403c5216f9a",
-  date: "2022-07-19",
-  url: "https://news.yahoo.com/texas-bitcoin-miners-back-online-203424037.html"
-}
+import fetchNews from '../data/news/fetchNews'
+import fetchAssetMetrics from '../data/prices/misc/fetchAssetData'
+import fetchWeeklyBtc from '../data/prices/btc/fetchWeeklyBtc'
 
 // size of bitcoin logo in header 
 const btcIconSize = 45;
@@ -31,54 +23,29 @@ interface NewsArticleProps {
   url: string,
 }
 
-const Home: NextPage = () => {
-  // dynamically import certain components without ssr
-  const DynamicBtcText = dynamic(() => import('../components/price/BtcText'), {ssr: false});
+interface AssetProps {
+  name: string,
+  ticker: string,
+  image: string,
+  price: number,
+  dailyChange: number,
+  volume: number,
+  marketCap: number,
+}
+
+interface HomeProps {
+  newsData: NewsArticleProps[],
+  weeklyBtc: [],
+  btcData: AssetProps,
+  ethData: AssetProps,
+  xmrData: AssetProps,
+  solData: AssetProps,
+  adaData: AssetProps,
+}
+
+const Home: NextPage<HomeProps> = ({ newsData, weeklyBtc, btcData, ethData, xmrData, solData, adaData }) => {
+  // dynamically import news carousel without ssr in order for it to work
   const DynamicNewsCarousel = dynamic(() => import('../components/news/NewsCarousel'), {ssr: false})
-
-  // articles that are returned from fetchNews()
-  const [btcArticle, setBtcArticle] = useState<NewsArticleProps>({
-    title: "",
-    authors: [],
-    image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F65%2FBlack_screen_of_the_camera_2014-04-24_19-20.jpg%2F1280px-Black_screen_of_the_camera_2014-04-24_19-20.jpg&f=1&nofb=1",
-    date: "",
-    url: "",
-  });
-
-  const [ethArticle, setEthArticle] = useState<NewsArticleProps>({
-    title: "",
-    authors: [],
-    image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F65%2FBlack_screen_of_the_camera_2014-04-24_19-20.jpg%2F1280px-Black_screen_of_the_camera_2014-04-24_19-20.jpg&f=1&nofb=1",
-    date: "",
-    url: "",
-  });
-
-  const weeklyBtc = useRecoilValue(WeeklyBtcAtom);
-
-  // fetch news articles
-  /* useEffect(() => {
-    const fetchNews = async () => {
-      const btc_article = await fetchBtcArticle();
-      const eth_article = await fetchEthArticle()
-
-      setBtcArticle({
-        title: btc_article.title,
-        authors: btc_article.authors,
-        image: btc_article.image ? btc_article.image : 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.quoteinspector.com%2Fmedia%2Fbitcoin%2Fbitcoin-34569.jpg&f=1&nofb=1',
-        date: btc_article.date,
-        url: btc_article.url
-      })
-      setEthArticle({
-        title: eth_article.title,
-        authors: eth_article.authors,
-        image: eth_article.image ? btc_article.image : 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.quoteinspector.com%2Fmedia%2Fbitcoin%2Fethereum-coin-blue-candlesticks-wo.jpg&f=1&nofb=1',
-        date: eth_article.date,
-        url: eth_article.url
-      })
-    }
-
-    fetchNews();
-  }, []) */
 
   return (
     <>
@@ -97,7 +64,10 @@ const Home: NextPage = () => {
                 <img src='https://i.imgur.com/wbZ6UVD.png' height={btcIconSize} width={btcIconSize} alt='main-btc' className='inline mb-2' />
               </a>
               <h1 className='inline lg:ml-2 lg:mr-2 ml-1 mr-1'>is</h1>
-              <DynamicBtcText />
+              {
+                btcData.dailyChange < 0 ? <h1 className='text-red inline'>down {btcData.dailyChange.toFixed(2)}%</h1>
+                :  <h1 className='text-green-400 inline'>up {btcData.dailyChange.toFixed(2)}%</h1>
+              }
               <h1 className='inline'> today.</h1>
             </div>
           </div>
@@ -118,12 +88,44 @@ const Home: NextPage = () => {
           </div>
           <div>
             <h1 className='ml-7 my-6 text-2xl'>Latest Crypto News</h1>
-            <DynamicNewsCarousel />
+            <DynamicNewsCarousel newsData={newsData} />
           </div>
         </motion.div>
       </div>
     </>
   )
+}
+
+export async function getServerSideProps() {
+  // fetch latest news articles
+  const newsData = await fetchNews();
+
+  // fetch weekly btc data
+  const weeklyBtc = await fetchWeeklyBtc();
+
+  // various market data for specified asset
+  const btcData = await fetchAssetMetrics("btc");
+  btcData.image = 'https://i.imgur.com/wbZ6UVD.png'
+  const ethData = await fetchAssetMetrics("eth");
+  ethData.image = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fclipground.com%2Fimages%2Fethereum-png-12.png&f=1&nofb=1'
+  const xmrData = await fetchAssetMetrics("xmr");
+  xmrData.image = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwiki.trezor.io%2Fimages%2FMonero.png&f=1&nofb=1'
+  const solData = await fetchAssetMetrics("sol");
+  solData.image = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fyourcryptolibrary.com%2Fwp-content%2Fuploads%2F2021%2F05%2Fsolana-sol-logo.png&f=1&nofb=1'
+  const adaData = await fetchAssetMetrics("ada");
+  adaData.image = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficons-for-free.com%2Ficonfiles%2Fpng%2F512%2Fcardano%2Bicon-1320162855683510157.png&f=1&nofb=1'
+
+  return {
+    props: {
+      newsData,
+      weeklyBtc,
+      btcData,
+      ethData,
+      xmrData,
+      solData,
+      adaData,
+    }
+  }
 }
 
 export default Home;

@@ -10,7 +10,7 @@ interface AssetProps {
   marketCap: number,
 }
 
-const fetchAssetMetrics = async (ticker: string) => {
+const fetchAssetData = async (ticker: string) => {
   const metric_url = `https://data.messari.io/api/v1/assets/${ticker}/metrics`
   const price_url = `https://data.messari.io/api/v1/assets/${ticker}/metrics/market-data`
 
@@ -34,4 +34,4 @@ const fetchAssetMetrics = async (ticker: string) => {
   return asset;
 }
 
-export default fetchAssetMetrics;
+export default fetchAssetData;

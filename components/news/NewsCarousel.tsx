@@ -8,18 +8,20 @@ import NewsCard from './NewsCard'
 // type for news article that will be displayed
 interface NewsArticleProps {
   title: string,
+  image: string
   date: string,
   url: string,
 }
 
-const NewsCarousel = () => {
-  const articles = useRecoilValue(newsAtom);
-  console.log(articles)
+interface NewsCarouselProps {
+  newsData: NewsArticleProps[]
+}
 
+const NewsCarousel: React.FC<NewsCarouselProps> = ({ newsData }) => {
   return (
       <Carousel cols={4} rows={1} gap={0} containerStyle={{ width: 1500 }}>
         {
-          articles.map(item => (
+          newsData.map(item => (
             <Carousel.Item key=''>
               <NewsCard title={item.title} image={item.image} date={item.date} url={item.url} />
             </Carousel.Item>
