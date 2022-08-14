@@ -48,14 +48,8 @@ export const newsAtom = atom({
 })
 
 // weekly btc and eth ytd data
-export const WeeklyBtcAtom  = atom({
+export const weeklyBtcAtom  = atom({
   key: "weeklyBtc",
-  default: [],
-  effects_UNSTABLE: [persistAtom]
-})
-
-export const WeeklyEthAtom = atom({
-  key: 'weeklyEth',
   default: [],
   effects_UNSTABLE: [persistAtom]
 })

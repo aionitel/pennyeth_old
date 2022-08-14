@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil';
-import { assetMetricsAtom, newsAtom, WeeklyBtcAtom, WeeklyEthAtom } from '../../state/atoms';
+import { assetMetricsAtom, newsAtom, weeklyBtcAtom } from '../../state/atoms';
 import fetchWeeklyBtc from '../../data/prices/btc/fetchWeeklyBtc';
 import fetchWeeklyEth from '../../data/prices/eth/fetchWeeklyEth';
 import fetchNews from '../../data/news/fetchNews';
@@ -10,8 +10,7 @@ import fetchAssetData from '../../data/prices/misc/fetchAssetData';
 
 const Logo = () => {
   const [currAssetMetrics, setCurrAssetMetrics] = useRecoilState(assetMetricsAtom);
-  const [currWeeklyBtc, setCurrWeeklyBtc] = useRecoilState(WeeklyBtcAtom);
-  const [currWeeklyEth, setCurrWeeklyEth] = useRecoilState(WeeklyEthAtom);
+  const [currWeeklyBtc, setCurrWeeklyBtc] = useRecoilState(weeklyBtcAtom);
   const [newsArticles, setNewsArticles] = useRecoilState(newsAtom);
 
   useEffect(() => {
@@ -46,7 +45,6 @@ const Logo = () => {
       ])
 
       setCurrWeeklyBtc(weeklyBtc);
-      setCurrWeeklyEth(weeklyEth);
 
       const new_articles = articles.forEach(item => {
         item.image = images[Math.floor(Math.random() * images.length)];
