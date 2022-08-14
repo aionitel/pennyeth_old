@@ -74,7 +74,7 @@ const Home: NextPage = () => {
             <div className='flex justify-between my-4 ml-2'>
               <h1 className='ml-4'>Name</h1>
               <h1 className='mr-8 lg:mr-0'>Price</h1>
-              <h1 className='hidden lg:block'>24h %</h1>
+              <h1 className='hidden lg:block'>24h%</h1>
               <h1 className='mr-20 hidden lg:block'>Volume(24h)</h1>
               <h1 className='pr-6 hidden lg:block'>Market Cap</h1>
             </div>
