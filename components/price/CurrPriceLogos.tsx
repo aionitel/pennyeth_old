@@ -1,65 +1,14 @@
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion';
-import { useRecoilState } from 'recoil';
-import { assetMetricsAtom, newsAtom, WeeklyBtcAtom, WeeklyEthAtom } from '../../state/atoms';
-import fetchWeeklyBtc from '../../data/prices/btc/fetchWeeklyBtc';
-import fetchWeeklyEth from '../../data/prices/eth/fetchWeeklyEth';
-import fetchAssetMetrics from '../../data/prices/fetchAssetMetrics';
-import fetchNews from '../../data/news/fetchNews';
-import images from '../../data/images/images';
+import { useRecoilValue } from 'recoil';
+import { assetMetricsAtom } from '../../state/atoms';
 
 const btcLogoSize = 30;
 
 const CurrPriceLogos: React.FC = () => {
-  const [currAssetMetrics, setCurrAssetMetrics] = useRecoilState(assetMetricsAtom);
-  const [currWeeklyBtc, setCurrWeeklyBtc] = useRecoilState(WeeklyBtcAtom);
-  const [currWeeklyEth, setCurrWeeklyEth] = useRecoilState(WeeklyEthAtom);
-  const [newsArticles, setNewsArticles] = useRecoilState(newsAtom);
-
-  useEffect(() => {
-    const fetchAndSetPrices = async () => {
-
-      // fetch latest news
-      const articles = await fetchNews();
-
-      // percent change in last week for btc and eth
-      const weeklyBtc = await fetchWeeklyBtc();
-      const weeklyEth = await fetchWeeklyEth();
-
-      // various market data for specified asset
-      const btcData = await fetchAssetMetrics("btc");
-      btcData.image = 'https://i.imgur.com/wbZ6UVD.png'
-      const ethData = await fetchAssetMetrics("eth");
-      ethData.image = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fclipground.com%2Fimages%2Fethereum-png-12.png&f=1&nofb=1'
-      const xmrData = await fetchAssetMetrics("xmr");
-      xmrData.image = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwiki.trezor.io%2Fimages%2FMonero.png&f=1&nofb=1'
-      const solData = await fetchAssetMetrics("sol");
-      solData.image = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fyourcryptolibrary.com%2Fwp-content%2Fuploads%2F2021%2F05%2Fsolana-sol-logo.png&f=1&nofb=1'
-      const adaData = await fetchAssetMetrics("ada");
-      adaData.image = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficons-for-free.com%2Ficonfiles%2Fpng%2F512%2Fcardano%2Bicon-1320162855683510157.png&f=1&nofb=1'
-
-      // set global price for each asset to be used later in app
-      setCurrAssetMetrics([
-        btcData,
-        ethData,
-        xmrData,
-        solData,
-        adaData,
-      ])
-
-      setCurrWeeklyBtc(weeklyBtc);
-      setCurrWeeklyEth(weeklyEth);
-
-      const new_articles = articles.forEach(item => {
-        item.image = images[Math.floor(Math.random() * images.length)];
-      })
-      
-      setNewsArticles(articles);
-    }
-
-    fetchAndSetPrices();
-  }, [])
+  // get asset data from recoil
+  const assetData = useRecoilValue(assetMetricsAtom);
 
   return (
     <motion.div 
@@ -74,7 +23,7 @@ const CurrPriceLogos: React.FC = () => {
           height={btcLogoSize}
            width={btcLogoSize} 
            alt='btc_logo'/>
-        <h1 className='mt-1 ml-2'>${currAssetMetrics[0].price.toLocaleString().slice(0, 9)}</h1>
+        <h1 className='mt-1 ml-2'>${assetData[0].price.toLocaleString().slice(0, 9)}</h1>
       </div>
       <div className='flex pl-4'>
         <Image 
@@ -83,7 +32,7 @@ const CurrPriceLogos: React.FC = () => {
           width={28} 
           alt='eth_logo'
           />
-        <h1 className='mt-1 ml-2'>${currAssetMetrics[1].price.toLocaleString().slice(0, 8)}</h1>
+        <h1 className='mt-1 ml-2'>${assetData[1].price.toLocaleString().slice(0, 8)}</h1>
       </div>
     </motion.div>
   )

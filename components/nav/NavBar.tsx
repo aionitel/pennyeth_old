@@ -1,5 +1,4 @@
 import React from 'react'
-import { BiCoin } from 'react-icons/bi'
 import NavBarItemsData from './NavItemData'
 import Link from 'next/link'
 import ConnectWallet from '../connectWallet/ConnectWallet'
@@ -7,8 +6,8 @@ import { useRecoilValue } from 'recoil'
 import { currUserAtom } from '../../state/atoms'
 import LoggedInHeader from '../header/LoggedInHeader'
 import { motion } from 'framer-motion'
-import CurrPriceLogos from '../price/CurrPriceLogos'
 import dynamic from 'next/dynamic'
+import Logo from './Logo'
 
 // desktop side navbar
 
@@ -31,10 +30,7 @@ const NavBar: React.FC = () => {
           transition={{ duration: 0.5 }}
         >
           <Link href='/' passHref>
-            <>
-              <BiCoin className='pt-1 ml-5 text-3xl hover:cursor-pointer' />
-              <h1 className='ml-1 text-3xl hover:cursor-pointer'>PennyETH</h1>
-            </>
+            <Logo />
           </Link>
         </motion.div>
         <DynamicCurrPriceLogos />
