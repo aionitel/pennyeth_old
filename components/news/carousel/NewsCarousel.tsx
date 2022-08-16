@@ -22,7 +22,11 @@ const NewsCarousel: React.FC = () => {
 
   return (
     <div className='hidden lg:flex'>
-        <Carousel cols={3} rows={1} gap={0} containerStyle={{ width: 1500 }}>
+        <Carousel rows={1} gap={0} containerStyle={{ width: 1500 }}
+          cols={
+            typeof window !== 'undefined' ? screen.width <= 801 ? 3 : 4 : null
+          }
+        >
           {
             newsData.map(item => (
               <Carousel.Item key=''>
