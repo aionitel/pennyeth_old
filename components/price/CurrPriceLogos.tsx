@@ -12,7 +12,7 @@ const CurrPriceLogos: React.FC = () => {
 
   return (
     <motion.div 
-      className='flex text-base my-6'
+      className='flex text-base mt-6 mb-3'
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}

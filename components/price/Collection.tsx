@@ -7,7 +7,7 @@ const Collection: React.FC = () => {
   const assetData = useRecoilValue(assetMetricsAtom);
 
   return (
-    <div className='flex-row border border-lightgray mt-2'>
+    <div className='flex-row mt-2'>
       {
         assetData.map(item => (
           <CollectionItem 

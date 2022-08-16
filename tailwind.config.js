@@ -21,6 +21,7 @@ module.exports = {
         'blue': '#1552F0',
         'gray': '#171717',
         'lightgray': '#202020',
+        "chartGray": "#666",
         "pink": '#FFCCCC',
         "black": '#000000'
       }

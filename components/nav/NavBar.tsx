@@ -8,6 +8,7 @@ import LoggedInHeader from '../header/LoggedInHeader'
 import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import Logo from './Logo'
+import CurrPriceLogos from '../price/CurrPriceLogos'
 
 // desktop side navbar
 
@@ -33,6 +34,7 @@ const NavBar: React.FC = () => {
             <Logo />
           </Link>
         </motion.div>
+        <DynamicCurrPriceLogos />
         {user ? <LoggedInHeader /> : <ConnectWallet />}
       </div>
       <ul>

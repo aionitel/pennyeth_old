@@ -5,11 +5,10 @@ import { motion } from 'framer-motion'
 import HomeChart from '../components/chart/HomeChart'
 import dynamic from 'next/dynamic'
 import Collection from '../components/price/Collection'
-import fetchNews from '../data/news/fetchNews'
-import fetchAssetMetrics from '../data/prices/misc/fetchAssetData'
-import fetchWeeklyBtc from '../data/prices/btc/fetchWeeklyBtc'
 import { useRecoilValue } from 'recoil'
 import { assetMetricsAtom, weeklyBtcAtom } from '../state/atoms'
+import MobileNewsCarousel from '../components/news/carousel/MobileNewsCarousel'
+import NewsCarousel from '../components/news/carousel/NewsCarousel'
 
 // size of bitcoin logo in header 
 const btcIconSize = 45;
@@ -35,7 +34,7 @@ interface AssetProps {
 
 const Home: NextPage = () => {
   // dynamically import certain components that do data fetching stuff without ssr
-  const DynamicNewsCarousel = dynamic(() => import('../components/news/NewsCarousel'), {ssr: false})
+  const DynamicNewsCarousel = dynamic(() => import('../components/news/carousel/NewsCarousel'), {ssr: false})
   const DynamicBtcText = dynamic(() => import("../components/price/BtcText"), {ssr: false})
 
   // get global asset data from recoil
@@ -70,7 +69,7 @@ const Home: NextPage = () => {
             <div className='flex-row hidden lg:inline'>
             </div>
           </div>
-          <div className='border-2 border-lightgray border-dashed rounded ml-7 mr-2'>
+          <div className='border-2 border-chartGray border-dashed rounded ml-7 mr-2'>
             <div className='flex justify-between my-4 ml-2'>
               <h1 className='ml-4'>Name</h1>
               <h1 className='mr-8 lg:mr-0'>Price</h1>
@@ -82,6 +81,8 @@ const Home: NextPage = () => {
           </div>
           <div>
             <h1 className='ml-7 my-6 text-2xl'>Latest Crypto News</h1>
+            <MobileNewsCarousel />
+            <DynamicNewsCarousel />
           </div>
         </motion.div>
       </div>

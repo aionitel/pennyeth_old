@@ -8,7 +8,7 @@ interface NewsArticleProps {
 }
 
 const fetchNews = async () => {
-  const url = `https://newsdata.io/api/1/news?apikey=${process.env.NEXT_PUBLIC_API_KEY}&language=en&q=cryptocurrency`;
+  const url = `https://newsdata.io/api/1/news?apikey=${process.env.NEXT_PUBLIC_API_KEY}&language=en&q=crypto`;
 
   const { data: res } = await axios.get(url);
 
