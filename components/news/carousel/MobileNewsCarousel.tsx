@@ -16,12 +16,12 @@ const MobileNewsCarousel: React.FC = () => {
         style={{ width: 380 }}
         renderCenterLeftControls={({ previousSlide }) => (
           <button onClick={previousSlide}>
-            <AiOutlineLeftCircle className='text-4xl' />
+            <AiOutlineLeftCircle className='text-4xl opacity-70 ml-1' />
           </button>
         )}
         renderCenterRightControls={({ nextSlide }) => (
           <button onClick={nextSlide}>
-            <AiOutlineRightCircle className='text-4xl' />
+            <AiOutlineRightCircle className='text-4xl opacity-70 mr-1' />
           </button>
         )}
       >
