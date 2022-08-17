@@ -1,6 +1,5 @@
 import { BiNews } from 'react-icons/bi'
 import { RiHandCoinLine as HandIcon } from 'react-icons/ri'
-import { MdOutlineMarkunreadMailbox } from 'react-icons/md'
 import { IconType } from 'react-icons'
 import { AiOutlineAreaChart } from 'react-icons/ai'
 import { GiTwoCoins } from 'react-icons/gi' 
@@ -32,11 +31,6 @@ const NavBarItemsData: NavBarItemsType[] = [
     title: 'Prices',
     path: '/prices',
     icon: AiOutlineAreaChart
-  },
-  {
-    title: 'Transfer',
-    path: '/transfer',
-    icon: MdOutlineMarkunreadMailbox
   },
   {
     title: 'News',

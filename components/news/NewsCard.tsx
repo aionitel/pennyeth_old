@@ -23,8 +23,8 @@ const NewsCard: React.FC<NewsProps> = ({ title, image, date, url }) => {
 
   return (
     <a href={url} target='_blank' rel="noopener noreferrer" onMouseOver={() => setHover(true)} onMouseOut={() => setHover(false)}>
-      <div className='flex-row hover:cursor-pointer hover:underline mx-2'>
-        <div className='overflow-hidden'>
+      <div className='flex-row hover:cursor-pointer hover:underline'>
+        <div className='overflow-hidden flex justify-center'>
           <motion.img 
             src={image} 
             alt='' 

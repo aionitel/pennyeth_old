@@ -13,7 +13,7 @@ const MobileNewsCarousel: React.FC = () => {
       <Carousel 
         cellSpacing={0} 
         slidesToShow={1} 
-        style={{ width: 350 }}
+        style={{ width: 380 }}
         renderCenterLeftControls={({ previousSlide }) => (
           <button onClick={previousSlide}>
             <AiOutlineLeftCircle className='text-4xl' />
@@ -27,7 +27,9 @@ const MobileNewsCarousel: React.FC = () => {
       >
         {
           newsData.map(item => (
-            <NewsCard key='' title={item.title} image={item.image} date={item.date} url={item.url} />
+            <div key='news_carousel'>
+              <NewsCard title={item.title} image={item.image} date={item.date} url={item.url} />
+            </div>
           ))
         }
       </Carousel>
