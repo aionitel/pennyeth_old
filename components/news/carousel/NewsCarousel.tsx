@@ -24,7 +24,7 @@ const NewsCarousel: React.FC = () => {
     <div className='hidden lg:flex'>
         <Carousel rows={1} gap={0} containerStyle={{ width: 1500 }}
           cols={
-            typeof window !== 'undefined' ? screen.width <= 801 ? 3 : 4 : null
+            typeof window !== 'undefined' ? screen.width <= 901 ? 3 : 3 : null
           }
         >
           {

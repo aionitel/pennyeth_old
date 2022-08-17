@@ -7,7 +7,14 @@ const Collection: React.FC = () => {
   const assetData = useRecoilValue(assetMetricsAtom);
 
   return (
-    <div className='flex-row mt-2'>
+    <div className='flex-row border-2 border-chartGray border-dashed rounded ml-7 lg:mr-5 mr-2'>
+      <div className='flex justify-between my-4 ml-2'>
+        <h1 className='ml-4'>Name</h1>
+        <h1 className='mr-8 lg:mr-0'>Price</h1>
+        <h1 className='hidden lg:block'>24h%</h1>
+        <h1 className='mr-20 hidden lg:block'>Volume(24h)</h1>
+        <h1 className='pr-6 hidden lg:block'>Market Cap</h1>
+      </div>
       {
         assetData.map(item => (
           <CollectionItem 

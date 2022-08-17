@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil';
-import { assetMetricsAtom, newsAtom, weeklyBtcAtom } from '../../state/atoms';
+import { allAssetsAtom, assetMetricsAtom, newsAtom, weeklyBtcAtom } from '../../state/atoms';
 import fetchWeeklyBtc from '../../data/prices/btc/fetchWeeklyBtc';
 import fetchWeeklyEth from '../../data/prices/eth/fetchWeeklyEth';
 import fetchNews from '../../data/news/fetchNews';
 import images from '../../data/images/images';
 import { BiCoin } from 'react-icons/bi'
 import fetchAssetData from '../../data/prices/misc/fetchAssetData';
+import fetchAllAssets from '../../data/prices/all/fetchAllAssets';
 
 const Logo = () => {
   const [currAssetMetrics, setCurrAssetMetrics] = useRecoilState(assetMetricsAtom);
   const [currWeeklyBtc, setCurrWeeklyBtc] = useRecoilState(weeklyBtcAtom);
   const [newsArticles, setNewsArticles] = useRecoilState(newsAtom);
+  const [allAssets, setAllAssets] = useRecoilState(allAssetsAtom);
 
   useEffect(() => {
     const fetchAndSetPrices = async () => {
@@ -34,6 +36,11 @@ const Logo = () => {
       solData.image = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fyourcryptolibrary.com%2Fwp-content%2Fuploads%2F2021%2F05%2Fsolana-sol-logo.png&f=1&nofb=1'
       const adaData = await fetchAssetData("ada");
       adaData.image = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficons-for-free.com%2Ficonfiles%2Fpng%2F512%2Fcardano%2Bicon-1320162855683510157.png&f=1&nofb=1'
+
+      // get all asset data for assets page
+      const allAssetData = await fetchAllAssets();
+
+      setAllAssets(allAssetData);
 
       // set global price for each asset to be used later in app
       setCurrAssetMetrics([

@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
-import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Head from 'next/head'
+import AssetList from '../../components/price/AssetList'
 
 const Home: NextPage = () => {
   return (
@@ -9,13 +9,14 @@ const Home: NextPage = () => {
       <Head>
         <title>PennyETH  •  Assets</title>
       </Head>
-      <div className='flex bg-black h-screen'>
+      <div className='flex bg-black mx-20'>
         <motion.div 
-          className='flex flex-col items-center text-white'
+          className='flex flex-col items-center text-white mx-20'
           exit={{ opacity:0 }}
           initial={{ opacity:0 }}
           animate={{ opacity:1 }}
         >
+          <AssetList />
         </motion.div>
       </div>
     </>

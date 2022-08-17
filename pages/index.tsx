@@ -55,7 +55,7 @@ const Home: NextPage = () => {
           transition={{ duration: 1 }}
         >
           <div className='lg:mr-20 lg:pr-20'>
-            <div className='text-3xl lg:text-left lg:ml-6 my-8 ml-12'>
+            <div className='lgtext-3xl text-2xl lg:text-left lg:ml-6 my-8 ml-12'>
               <a href='https://bitcoin.org/bitcoin.pdf' rel="noopener noreferrer" target='_blank'>
                 <img src='https://i.imgur.com/wbZ6UVD.png' height={btcIconSize} width={btcIconSize} alt='main-btc' className='inline mb-2' />
               </a>
@@ -69,14 +69,7 @@ const Home: NextPage = () => {
             <div className='flex-row hidden lg:inline'>
             </div>
           </div>
-          <div className='border-2 border-chartGray border-dashed rounded ml-7 lg:mr-5 mr-2'>
-            <div className='flex justify-between my-4 ml-2'>
-              <h1 className='ml-4'>Name</h1>
-              <h1 className='mr-8 lg:mr-0'>Price</h1>
-              <h1 className='hidden lg:block'>24h%</h1>
-              <h1 className='mr-20 hidden lg:block'>Volume(24h)</h1>
-              <h1 className='pr-6 hidden lg:block'>Market Cap</h1>
-            </div>
+          <div>
             <Collection />
           </div>
           <div>

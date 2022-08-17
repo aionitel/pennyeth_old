@@ -53,3 +53,9 @@ export const weeklyBtcAtom  = atom({
   default: [],
   effects_UNSTABLE: [persistAtom]
 })
+
+export const allAssetsAtom = atom({
+  key: "allAssets",
+  default: [],
+  effects_UNSTABLE: [persistAtom]
+})
