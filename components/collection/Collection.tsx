@@ -2,12 +2,17 @@ import React from 'react'
 import { useRecoilValue } from 'recoil'
 import { assetMetricsAtom } from '../../state/atoms'
 import  { RiArrowUpSFill, RiArrowDownSFill } from 'react-icons/ri'
+import { getChartWidth } from '../../data/utils/getDimensions'
 
-const Collection: React.FC = () => {
+const Collection: React.FC = ({ type }: any) => {
   const assetData = useRecoilValue(assetMetricsAtom);
 
   return (
-    <div className='flex-row border-2 border-chartGray border-dashed rounded ml-7 lg:mr-5 mr-2'>
+    <div className='flex-row border-2 border-chartGray border-dashed rounded ml-7 lg:mr-5 mr-2'
+      style={{
+        width: getChartWidth() - 35,
+      }}
+    >
       <div className='flex justify-between my-4 ml-2'>
         <h1 className='ml-4'>Name</h1>
         <h1 className='mr-8 lg:mr-0'>Price</h1>

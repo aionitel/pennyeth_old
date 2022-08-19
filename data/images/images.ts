@@ -14,4 +14,17 @@ const images = [
   "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fc93fea60bb98e121740fc38ff31162a8.s3.amazonaws.com%2Fwp-content%2Fuploads%2F2017%2F12%2Fbitcoin.jpg&f=1&nofb=1",
 ]
 
+const logos = [
+  'https://i.imgur.com/wbZ6UVD.png', // bitcoin
+  'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fclipground.com%2Fimages%2Fethereum-png-12.png&f=1&nofb=1', // ethereum
+  'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwiki.trezor.io%2Fimages%2FMonero.png&f=1&nofb=1', // monero
+  'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fyourcryptolibrary.com%2Fwp-content%2Fuploads%2F2021%2F05%2Fsolana-sol-logo.png&f=1&nofb=1', // solana
+  'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficons-for-free.com%2Ficonfiles%2Fpng%2F512%2Fcardano%2Bicon-1320162855683510157.png&f=1&nofb=1', // cardano
+  'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.bytefederal.com%2Fwp-content%2Fuploads%2F2021%2F03%2Fbitcoin-cash-bch-logo-1536x1536.png&f=1&nofb=1', // bitcoin cash
+  'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.cryptovantage.com%2Fapp%2Fuploads%2F2020%2F03%2Fxrp-xrp-logo-1.png&f=1&nofb=1', // xrp
+  'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ficons.iconarchive.com%2Ficons%2Fcjdowner%2Fcryptocurrency-flat%2F1024%2FBinance-Coin-BNB-icon.png&f=1&nofb=1', // bnb
+  'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fexternal-preview.redd.it%2FJ5JddfNQhpkNxV-Xa9cS0qDNE6JEMwdovfwzSQBUuis.png%3Fauto%3Dwebp%26s%3Da6d28ae76bc538d751b7976c6e9d0095c371c070&f=1&nofb=1', // dogecoin
+  'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.freebiesupply.com%2Flogos%2Flarge%2F2x%2Flitecoin-logo-png-transparent.png&f=1&nofb=1', // litecoin
+]
+
 export default images;

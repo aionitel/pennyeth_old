@@ -25,14 +25,14 @@ const fetchAllAssets = async () => {
   ]
 
   const assetDatas = await Promise.all(tickers.map(async (item) => {
-    const metric_url = `https://data.messari.io/api/v1/assets/${item}/metrics`
-    const price_url = `https://data.messari.io/api/v1/assets/${item}/metrics/market-data`
+    const metric_data_url = `https://data.messari.io/api/v1/assets/${item}/metrics`
+    const profile_data_url = `https://data.messari.io/api/v2/assets/${item}/profile`
   
-    const { data: metric_data } = await axios.get(metric_url);
-    const { data: price_data } = await axios.get(price_url);
+    const { data: metric_data } = await axios.get(metric_data_url);
+    const { data: profile_data } = await axios.get(profile_data_url);
   
-    const asset_data = price_data["data"]["Asset"];
-    const market_data = price_data["data"]["market_data"];
+    const asset_data = metric_data["data"]
+    const market_data = metric_data["data"]["market_data"]
     const marketcap = metric_data["data"]["marketcap"];
   
     const asset: AssetProps = {

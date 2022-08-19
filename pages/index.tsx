@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { motion } from 'framer-motion'
 import HomeChart from '../components/chart/HomeChart'
 import dynamic from 'next/dynamic'
-import Collection from '../components/price/Collection'
+import Collection from '../components/collection/Collection'
 import { useRecoilValue } from 'recoil'
 import { assetMetricsAtom, weeklyBtcAtom } from '../state/atoms'
 import MobileNewsCarousel from '../components/news/carousel/MobileNewsCarousel'
@@ -36,6 +36,7 @@ const Home: NextPage = () => {
   // dynamically import certain components that do data fetching stuff without ssr
   const DynamicNewsCarousel = dynamic(() => import('../components/news/carousel/NewsCarousel'), {ssr: false})
   const DynamicBtcText = dynamic(() => import("../components/price/BtcText"), {ssr: false})
+  const DynamicCollection = dynamic(() => import('../components/collection/Collection'), {ssr: false})
 
   // get global asset data from recoil
   const assetData = useRecoilValue(assetMetricsAtom);
@@ -70,7 +71,7 @@ const Home: NextPage = () => {
             </div>
           </div>
           <div>
-            <Collection />
+            <DynamicCollection />
           </div>
           <div>
             <h1 className='ml-7 my-6 text-2xl'>Latest Crypto News</h1>
