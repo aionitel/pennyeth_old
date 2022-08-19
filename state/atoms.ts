@@ -6,10 +6,13 @@ const { persistAtom } = recoilPersist();
 interface AssetProps {
   name: string,
   ticker: string,
+  image: string,
   price: number,
-  hourChange: number,
   dailyChange: number,
-  volume: number
+  volume: number,
+  marketCap: number,
+  marketDominance: number,
+  supply: number,
 }
 
 interface NewsArticleProps {

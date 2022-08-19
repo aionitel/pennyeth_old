@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { logos } from '../../images/images'
 
 interface AssetProps {
   name: string,
@@ -8,6 +9,8 @@ interface AssetProps {
   dailyChange: number,
   volume: number,
   marketCap: number,
+  marketDominance: number,
+  supply: number,
 }
 
 const fetchAllAssets = async () => {
@@ -24,25 +27,26 @@ const fetchAllAssets = async () => {
     "LTC",
   ]
 
-  const assetDatas = await Promise.all(tickers.map(async (item) => {
+  const assetDatas = await Promise.all(tickers.map(async (item, index) => {
     const metric_data_url = `https://data.messari.io/api/v1/assets/${item}/metrics`
-    const profile_data_url = `https://data.messari.io/api/v2/assets/${item}/profile`
   
     const { data: metric_data } = await axios.get(metric_data_url);
-    const { data: profile_data } = await axios.get(profile_data_url);
   
-    const asset_data = metric_data["data"]
-    const market_data = metric_data["data"]["market_data"]
+    const asset_data = metric_data["data"];
+    const market_data = metric_data["data"]["market_data"];
     const marketcap = metric_data["data"]["marketcap"];
+    const supply_data = metric_data["data"]["supply"];
   
     const asset: AssetProps = {
       name: asset_data["name"],
       ticker: asset_data.symbol,
       price: market_data.price_usd,
-      image: null,
+      image: logos[index],
       dailyChange: market_data.percent_change_usd_last_24_hours,
       volume: market_data.volume_last_24_hours,
       marketCap: marketcap.current_marketcap_usd,
+      marketDominance: market_data.marketcap_dominance_percent,
+      supply: supply_data.circulating,
     }
   
     return asset;

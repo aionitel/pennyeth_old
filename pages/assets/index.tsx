@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import { motion } from 'framer-motion'
 import Head from 'next/head'
-import AssetList from '../../components/price/AssetList'
+import Collection from '../../components/collection/Collection'
 
 const Home: NextPage = () => {
   return (
@@ -16,7 +16,7 @@ const Home: NextPage = () => {
           initial={{ opacity:0 }}
           animate={{ opacity:1 }}
         >
-          <AssetList />
+          <Collection />
         </motion.div>
       </div>
     </>

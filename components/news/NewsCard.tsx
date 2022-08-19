@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import images from '../../data/images/images';
+import { images } from '../../data/images/images'
 
 interface NewsProps {
   title: string,

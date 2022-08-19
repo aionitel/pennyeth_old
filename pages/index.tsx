@@ -13,25 +13,6 @@ import NewsCarousel from '../components/news/carousel/NewsCarousel'
 // size of bitcoin logo in header 
 const btcIconSize = 45;
 
-// type for news article that will be displayed
-interface NewsArticleProps {
-  title: string,
-  authors: string[],
-  image: string,
-  date: string,
-  url: string,
-}
-
-interface AssetProps {
-  name: string,
-  ticker: string,
-  image: string,
-  price: number,
-  dailyChange: number,
-  volume: number,
-  marketCap: number,
-}
-
 const Home: NextPage = () => {
   // dynamically import certain components that do data fetching stuff without ssr
   const DynamicNewsCarousel = dynamic(() => import('../components/news/carousel/NewsCarousel'), {ssr: false})

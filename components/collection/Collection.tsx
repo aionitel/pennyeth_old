@@ -1,11 +1,23 @@
 import React from 'react'
 import { useRecoilValue } from 'recoil'
-import { assetMetricsAtom } from '../../state/atoms'
 import  { RiArrowUpSFill, RiArrowDownSFill } from 'react-icons/ri'
 import { getChartWidth } from '../../data/utils/getDimensions'
+import { allAssetsAtom } from '../../state/atoms'
+
+interface AssetProps {
+  name: string,
+  ticker: string,
+  image: string,
+  price: number,
+  dailyChange: number,
+  volume: number,
+  marketCap: number,
+  marketDominance: number,
+  supply: number,
+}
 
 const Collection: React.FC = ({ type }: any) => {
-  const assetData = useRecoilValue(assetMetricsAtom);
+  const allAssets = useRecoilValue(allAssetsAtom);
 
   return (
     <div className='flex-row border-2 border-chartGray border-dashed rounded ml-7 lg:mr-5 mr-2'
@@ -21,7 +33,7 @@ const Collection: React.FC = ({ type }: any) => {
         <h1 className='pr-6 hidden lg:block'>Market Cap</h1>
       </div>
       {
-        assetData.map(item => (
+        allAssets.map(item => (
           <CollectionItem 
             key=''
             name={item.name} 
@@ -31,6 +43,8 @@ const Collection: React.FC = ({ type }: any) => {
             dailyChange={item.dailyChange} 
             volume={item.volume} 
             marketCap={item.marketCap}
+            marketDominance={item.marketDominance}
+            supply={item.supply}
           />
         ))
       }
@@ -38,17 +52,7 @@ const Collection: React.FC = ({ type }: any) => {
   )
 }
 
-interface CollectionItemProps {
-  name: string,
-  ticker: string,
-  image: string,
-  price: number,
-  dailyChange: number,
-  volume: number,
-  marketCap: number,
-}
-
-const CollectionItem: React.FC<CollectionItemProps> = ({ name, ticker, image, price, dailyChange, volume, marketCap }) => {
+const CollectionItem: React.FC<AssetProps> = ({ name, ticker, image, price, dailyChange, volume, marketCap, marketDominance, supply }) => {
   const logoSize = 40;
 
   const formatter = new Intl.NumberFormat('en-US', {
@@ -74,6 +78,8 @@ const CollectionItem: React.FC<CollectionItemProps> = ({ name, ticker, image, pr
       }
       <h1 className='hidden lg:flex mr-6'>{Math.floor(volume).toLocaleString()} {ticker}</h1>
       <h1 className='hidden lg:flex mr-4'>${Math.floor(marketCap).toLocaleString()}</h1>
+      <h1>{marketDominance}</h1>
+      <h1>{supply}</h1>
     </div>
   )
 }
