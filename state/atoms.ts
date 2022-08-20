@@ -37,13 +37,6 @@ export const navOpenAtom = atom({
   effects_UNSTABLE: [persistAtom]
 })
 
-// various metrics for certain asset
-export const assetMetricsAtom = atom({
-  key: "assetMetrics",
-  default: [] as AssetProps[],
-  effects_UNSTABLE: [persistAtom]
-})
-
 export const newsAtom = atom({
   key: "news",
   default: [] as NewsArticleProps[],

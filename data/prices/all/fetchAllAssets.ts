@@ -25,6 +25,8 @@ const fetchAllAssets = async () => {
     "BNB",
     "DOGE",
     "LTC",
+    "USDT",
+    "FIL",
   ]
 
   const assetDatas = await Promise.all(tickers.map(async (item, index) => {

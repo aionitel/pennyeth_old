@@ -1,10 +1,10 @@
 import React from 'react'
 import { useRecoilValue } from 'recoil'
-import { assetMetricsAtom } from '../../state/atoms'
+import { allAssetsAtom } from '../../state/atoms'
 
 const BtcText = () => {
   // get asset data from recoil
-  const assetData = useRecoilValue(assetMetricsAtom);
+  const assetData = useRecoilValue(allAssetsAtom);
   
   return (
     <div className='inline'>

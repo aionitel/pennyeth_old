@@ -16,8 +16,9 @@ interface AssetProps {
   supply: number,
 }
 
-const Collection: React.FC = () => {
+const MiniCollection: React.FC = () => {
   const allAssets = useRecoilValue(allAssetsAtom);
+  const assets = allAssets.slice(0, 5)  
 
   return (
     <div className='flex-row border-2 border-chartGray border-dashed rounded ml-7 lg:mr-5 mr-2'
@@ -33,7 +34,7 @@ const Collection: React.FC = () => {
         <h1 className='pr-6 hidden lg:block'>Market Cap</h1>
       </div>
       {
-        allAssets.map(item => (
+        assets.map(item => (
           <CollectionItem 
             key=''
             name={item.name} 
@@ -64,7 +65,7 @@ interface AssetProps {
   supply: number,
 }
 
-const CollectionItem: React.FC<AssetProps> = ({ name, ticker, image, price, dailyChange, volume, marketCap, marketDominance, supply }) => {
+const CollectionItem: React.FC<AssetProps> = ({ name, ticker, image, price, dailyChange, volume, marketCap, }) => {
   const logoSize = 40;
 
   const formatter = new Intl.NumberFormat('en-US', {
@@ -90,10 +91,8 @@ const CollectionItem: React.FC<AssetProps> = ({ name, ticker, image, price, dail
       }
       <h1 className='hidden lg:flex mr-6'>{Math.floor(volume).toLocaleString()} {ticker}</h1>
       <h1 className='hidden lg:flex mr-4'>${Math.floor(marketCap).toLocaleString()}</h1>
-      <h1>{marketDominance}</h1>
-      <h1>{supply}</h1>
     </div>
   )
 }
 
-export default Collection
+export default MiniCollection;

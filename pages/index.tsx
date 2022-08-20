@@ -6,7 +6,7 @@ import HomeChart from '../components/chart/HomeChart'
 import dynamic from 'next/dynamic'
 import Collection from '../components/collection/Collection'
 import { useRecoilValue } from 'recoil'
-import { assetMetricsAtom, weeklyBtcAtom } from '../state/atoms'
+import { allAssetsAtom, weeklyBtcAtom } from '../state/atoms'
 import MobileNewsCarousel from '../components/news/carousel/MobileNewsCarousel'
 import NewsCarousel from '../components/news/carousel/NewsCarousel'
 
@@ -17,10 +17,10 @@ const Home: NextPage = () => {
   // dynamically import certain components that do data fetching stuff without ssr
   const DynamicNewsCarousel = dynamic(() => import('../components/news/carousel/NewsCarousel'), {ssr: false})
   const DynamicBtcText = dynamic(() => import("../components/price/BtcText"), {ssr: false})
-  const DynamicCollection = dynamic(() => import('../components/collection/Collection'), {ssr: false})
+  const DynamicCollection = dynamic(() => import('../components/collection/MiniCollection'), {ssr: false})
 
   // get global asset data from recoil
-  const assetData = useRecoilValue(assetMetricsAtom);
+  const assetData = useRecoilValue(allAssetsAtom);
 
   // get weekly timeseries btc data
   const weeklyBtc = useRecoilValue(weeklyBtcAtom);

@@ -2,13 +2,13 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion';
 import { useRecoilValue } from 'recoil';
-import { assetMetricsAtom } from '../../state/atoms';
+import { allAssetsAtom } from '../../state/atoms';
 
 const btcLogoSize = 30;
 
 const CurrPriceLogos: React.FC = () => {
   // get asset data from recoil
-  const assetData = useRecoilValue(assetMetricsAtom);
+  const assetData = useRecoilValue(allAssetsAtom);
 
   return (
     <motion.div 

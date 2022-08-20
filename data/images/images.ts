@@ -25,4 +25,6 @@ export const logos = [
   'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ficons.iconarchive.com%2Ficons%2Fcjdowner%2Fcryptocurrency-flat%2F1024%2FBinance-Coin-BNB-icon.png&f=1&nofb=1', // bnb
   'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fexternal-preview.redd.it%2FJ5JddfNQhpkNxV-Xa9cS0qDNE6JEMwdovfwzSQBUuis.png%3Fauto%3Dwebp%26s%3Da6d28ae76bc538d751b7976c6e9d0095c371c070&f=1&nofb=1', // dogecoin
   'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.freebiesupply.com%2Flogos%2Flarge%2F2x%2Flitecoin-logo-png-transparent.png&f=1&nofb=1', // litecoin
+  "https://s2.coinmarketcap.com/static/img/coins/64x64/825.png", // tether
+  "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcryptologos.cc%2Flogos%2Ffilecoin-fil-logo.png&f=1&nofb=1", // filecoin
 ]
