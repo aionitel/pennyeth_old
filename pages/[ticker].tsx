@@ -28,21 +28,21 @@ const logoSize = 40;
 
 const AssetPage: NextPage = ({ asset }: any) => {
   return (
-    <>
+    <div className='mx-20'>
       <Head>
         <title>PennyETH • {asset.name}</title>
       </Head>
-      <div className='text-white'>
+      <div className='text-white mx-20'>
         <div className='flex justify-between'>
           <div className='flex'>
-            <img src={asset.image} height={logoSize} width={logoSize} />
+            <img src={asset.image} height={logoSize} width={logoSize} alt=''/>
             <h1>{asset.name}</h1>
           </div>
           <h1>${asset.price.toLocaleString()}</h1>
         </div>
         <h1>{asset.rank}</h1>
       </div>
-    </>
+    </div>
   )
 }
 

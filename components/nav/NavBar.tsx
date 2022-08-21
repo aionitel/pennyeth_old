@@ -4,7 +4,7 @@ import Link from 'next/link'
 import ConnectWallet from '../connectWallet/ConnectWallet'
 import { useRecoilValue } from 'recoil'
 import { currUserAtom } from '../../state/atoms'
-import LoggedInHeader from '../header/LoggedInHeader'
+import LoggedInHeader from '../connectWallet/LoggedInHeader'
 import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import Logo from './Logo'
@@ -23,7 +23,7 @@ const NavBar: React.FC = () => {
     <nav 
       className="bg-black border-r border-r-lightgray hidden lg:block text-white"
     >
-      <div className='flex-row my-8 ml-7'>
+      <div className='flex-row my-8 ml-7 justify-between'>
         <motion.div 
           className='flex my-5'
           initial={{ opacity: 0 }}
@@ -37,11 +37,9 @@ const NavBar: React.FC = () => {
         <DynamicCurrPriceLogos />
         {user ? <LoggedInHeader /> : <ConnectWallet />}
       </div>
-      <ul>
         {NavBarItemsData.map(item => (
           <DynamicNavItem key={1} title={item.title} path={item.path} Icon={item.icon} />
         ))}
-      </ul>
     </nav>
   )
 }

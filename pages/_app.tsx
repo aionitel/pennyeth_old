@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app'
 import '../styles/globals.css'
-import Layout from '../components/utils/Layout'
+import Layout from '../components/layout/Layout'
 import { MoralisProvider } from 'react-moralis'
 import { RecoilRoot } from 'recoil'
 import { ToastProvider } from 'react-toast-notifications'
