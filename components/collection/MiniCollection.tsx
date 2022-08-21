@@ -13,8 +13,6 @@ interface AssetProps {
   dailyChange: number,
   volume: number,
   marketCap: number,
-  marketDominance: number,
-  supply: number,
 }
 
 const MiniCollection: React.FC = () => {
@@ -36,18 +34,18 @@ const MiniCollection: React.FC = () => {
       </div>
       {
         assets.map(item => (
-          <CollectionItem 
-            key=''
-            name={item.name} 
-            ticker={item.ticker}
-            image={item.image}
-            price={item.price} 
-            dailyChange={item.dailyChange} 
-            volume={item.volume} 
-            marketCap={item.marketCap}
-            marketDominance={item.marketDominance}
-            supply={item.supply}
-          />
+          <div key='' className='hover:cursor-pointer hover:bg-darkGray'>
+            <CollectionItem 
+              key=''
+              name={item.name} 
+              ticker={item.ticker}
+              image={item.image}
+              price={item.price} 
+              dailyChange={item.dailyChange} 
+              volume={item.volume} 
+              marketCap={item.marketCap}
+            />
+          </div>
         ))
       }
     </div>
@@ -62,12 +60,10 @@ interface AssetProps {
   dailyChange: number,
   volume: number,
   marketCap: number,
-  marketDominance: number,
-  supply: number,
 }
 
-const CollectionItem: React.FC<AssetProps> = ({ name, ticker, image, price, dailyChange, volume, marketCap, }) => {
-  const logoSize = 40;
+const CollectionItem: React.FC<AssetProps> = ({ name, ticker, image, price, dailyChange, volume, marketCap }) => {
+  const logoSize = 30;
 
   const formatter = new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,      
@@ -75,8 +71,8 @@ const CollectionItem: React.FC<AssetProps> = ({ name, ticker, image, price, dail
  });
 
   return (
-    <Link href={`/${ticker.toLocaleLowerCase()}`}>
-      <div className='flex justify-between py-2 hover:cursor-pointer hover:bg-slate-900 text-lg'>
+    <Link href={`/${ticker.toLowerCase()}`} passHref>
+      <div className='flex justify-between text-md py-5'>
         <div className='flex'>
           <img src={image} alt='' style={{ height: logoSize , width: logoSize, marginTop: 5 }} className='mx-3' />
           <div>
@@ -85,14 +81,14 @@ const CollectionItem: React.FC<AssetProps> = ({ name, ticker, image, price, dail
           </div>
         </div>
         <div>
-          <h1>${formatter.format(price)}</h1>
+          <h1 className='pt-2'>${formatter.format(price)}</h1>
         </div>
         {
-          dailyChange < 0 ? <div className='hidden lg:flex'><RiArrowDownSFill className='mt-1 text-2xl text-red' /><h1 className='text-red hidden lg:flex'>{formatter.format(dailyChange)}%</h1></div> 
-          : <div className='hidden lg:flex'><RiArrowUpSFill className='hidden lg:flex mt-1 text-2xl text-green-400' /><h1 className='text-green-400 hidden lg:flex'>{formatter.format(dailyChange)}%</h1></div>
+          dailyChange < 0 ? <div className='hidden lg:flex'><RiArrowDownSFill className='mt-1 text-2xl text-red' /><h1 className='text-red hidden lg:flex pt-1'>{formatter.format(dailyChange)}%</h1></div> 
+          : <div className='hidden lg:flex'><RiArrowUpSFill className='hidden lg:flex mt-1 text-2xl text-green-400' /><h1 className='text-green-400 hidden lg:flex pt-1'>{formatter.format(dailyChange)}%</h1></div>
         }
-        <h1 className='hidden lg:flex mr-6'>{Math.floor(volume).toLocaleString()} {ticker}</h1>
-        <h1 className='hidden lg:flex mr-4'>${Math.floor(marketCap).toLocaleString()}</h1>
+        <h1 className='hidden lg:flex'>{Math.floor(volume).toLocaleString()} {ticker}</h1>
+        <h1 className='hidden lg:flex'>${Math.floor(marketCap).toLocaleString()}</h1>
       </div>
     </Link>
   )

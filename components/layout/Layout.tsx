@@ -1,7 +1,8 @@
+import dynamic from 'next/dynamic'
 import React from 'react'
 import MobileNavBar from '../nav/mobile/MobileNavBar'
 import NavBar from '../nav/NavBar'
-import Footer from './Footer'
+import Footer from '../layout/Footer'
 
 const Layout: React.FC = ({ children }: any) => {
   return (
@@ -10,7 +11,6 @@ const Layout: React.FC = ({ children }: any) => {
       <main>
         <MobileNavBar />
         {children}
-        <Footer />
       </main>
     </div>   
   )
