@@ -1,4 +1,5 @@
 import { NextPage } from 'next'
+import Head from 'next/head';
 import fetchAsset from '../data/prices/fetchAsset';
 
 interface Asset {
@@ -23,11 +24,25 @@ interface Asset {
   consensusAlgorithm: string,
 }
 
+const logoSize = 40;
+
 const AssetPage: NextPage = ({ asset }: any) => {
   return (
-    <div className='text-white'>
-      {asset.name}
-    </div>
+    <>
+      <Head>
+        <title>PennyETH • {asset.name}</title>
+      </Head>
+      <div className='text-white'>
+        <div className='flex justify-between'>
+          <div className='flex'>
+            <img src={asset.image} height={logoSize} width={logoSize} />
+            <h1>{asset.name}</h1>
+          </div>
+          <h1>${asset.price.toLocaleString()}</h1>
+        </div>
+        <h1>{asset.rank}</h1>
+      </div>
+    </>
   )
 }
 

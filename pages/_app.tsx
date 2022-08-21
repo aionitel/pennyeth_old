@@ -4,6 +4,7 @@ import Layout from '../components/utils/Layout'
 import { MoralisProvider } from 'react-moralis'
 import { RecoilRoot } from 'recoil'
 import { ToastProvider } from 'react-toast-notifications'
+import NextNProgress from "nextjs-progressbar";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -11,6 +12,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <RecoilRoot>
         <ToastProvider>
           <Layout>
+            <NextNProgress color='#1552F0' />
             <Component {...pageProps} /> 
           </Layout>
         </ToastProvider>
