@@ -43,7 +43,7 @@ const fetchAllAssets = async () => {
       name: asset_data["name"],
       ticker: asset_data.symbol,
       price: market_data.price_usd,
-      image: logos[index],
+      image: logos[asset_data["symbol"]],
       dailyChange: market_data.percent_change_usd_last_24_hours,
       volume: market_data.volume_last_24_hours,
       marketCap: marketcap.current_marketcap_usd,

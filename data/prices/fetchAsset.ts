@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { logos } from '../images/images';
 
 interface Asset {
   name: string,
@@ -10,6 +11,16 @@ interface Asset {
   marketCap: number,
   marketDominance: number,
   supply: number,
+  rank: number,
+  stockToFlow: number,
+  medianTxFee: number,
+  allTimeHigh: number,
+  hashRate: number,
+  overview: string,
+  desc: string,
+  background: string,
+  blockReward: number,
+  consensusAlgorithm: string,
 }
 
 const fetchAsset = async (ticker: string) => {
@@ -19,7 +30,12 @@ const fetchAsset = async (ticker: string) => {
   const { data: metric_data } = await axios.get(metric_url);
   const { data: profile_data } = await axios.get(profile_url);
 
-  const market_data = metric_data["data"]["market_data"];
+  const asset: Asset = {
+    name: profile_data["data"]["name"],
+    ticker: profile_data["data"]["symbol"],
+    image: logos[profile_data["data"]["symbol"]],
+    
+  }
 }
 
 export default fetchAsset;
