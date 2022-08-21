@@ -1,8 +1,5 @@
 import { NextPage } from 'next'
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import fetchAsset from '../data/prices/fetchAsset';
-import { useState } from 'react'
 
 interface Asset {
   name: string,
@@ -35,7 +32,8 @@ const AssetPage: NextPage = ({ asset }: any) => {
 }
 
 export async function getServerSideProps(context) {
-  const asset = await fetchAsset(context.params.ticker as string);
+  const ticker = context.params.ticker as string;
+  const asset = await fetchAsset(ticker);
 
   return {
     props: {
