@@ -1,9 +1,10 @@
 import type { NextPage } from 'next'
 import { motion } from 'framer-motion'
 import Head from 'next/head'
-import Collection from '../../components/collection/Collection'
+import dynamic from 'next/dynamic'
 
 const Home: NextPage = () => {
+  const DynamicCollection = dynamic(() => import('../../components/collection/Collection'), {ssr: false});
   return (
     <>
       <Head>
@@ -16,7 +17,7 @@ const Home: NextPage = () => {
           initial={{ opacity:0 }}
           animate={{ opacity:1 }}
         >
-          <Collection />
+          <DynamicCollection />
         </motion.div>
       </div>
     </>

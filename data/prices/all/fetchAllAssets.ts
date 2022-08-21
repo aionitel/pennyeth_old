@@ -47,13 +47,14 @@ const fetchAllAssets = async () => {
       dailyChange: market_data.percent_change_usd_last_24_hours,
       volume: market_data.volume_last_24_hours,
       marketCap: marketcap.current_marketcap_usd,
-      marketDominance: market_data.marketcap_dominance_percent,
+      marketDominance: marketcap.marketcap_dominance_percent,
       supply: supply_data.circulating,
     }
   
     return asset;
   }))
 
+  console.log(assetDatas);
   return assetDatas;
 }
 
