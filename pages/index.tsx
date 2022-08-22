@@ -19,9 +19,6 @@ const Home: NextPage = () => {
   const DynamicBtcText = dynamic(() => import("../components/price/BtcText"), {ssr: false})
   const DynamicCollection = dynamic(() => import('../components/collection/MiniCollection'), {ssr: false})
 
-  // get global asset data from recoil
-  const assetData = useRecoilValue(allAssetsAtom);
-
   // get weekly timeseries btc data
   const weeklyBtc = useRecoilValue(weeklyBtcAtom);
 

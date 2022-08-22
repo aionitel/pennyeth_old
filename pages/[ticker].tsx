@@ -1,5 +1,6 @@
 import { NextPage } from 'next'
 import Head from 'next/head';
+import AssetHeader from '../components/asset/AssetHeader';
 import fetchAsset from '../data/prices/fetchAsset';
 
 interface Asset {
@@ -24,8 +25,6 @@ interface Asset {
   consensusAlgorithm: string,
 }
 
-const logoSize = 40;
-
 const AssetPage: NextPage = ({ asset }: any) => {
   return (
     <div className='mx-20'>
@@ -33,14 +32,7 @@ const AssetPage: NextPage = ({ asset }: any) => {
         <title>PennyETH • {asset.name}</title>
       </Head>
       <div className='text-white mx-20'>
-        <div className='flex justify-between'>
-          <div className='flex'>
-            <img src={asset.image} height={logoSize} width={logoSize} alt=''/>
-            <h1>{asset.name}</h1>
-          </div>
-          <h1>${asset.price.toLocaleString()}</h1>
-        </div>
-        <h1>{asset.rank}</h1>
+        <AssetHeader asset={asset} />
       </div>
     </div>
   )

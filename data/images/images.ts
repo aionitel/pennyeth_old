@@ -27,4 +27,8 @@ export const logos = {
   "LTC": 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.freebiesupply.com%2Flogos%2Flarge%2F2x%2Flitecoin-logo-png-transparent.png&f=1&nofb=1', // litecoin
   "USDT": "https://s2.coinmarketcap.com/static/img/coins/64x64/825.png", // tether
   "FIL": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcryptologos.cc%2Flogos%2Ffilecoin-fil-logo.png&f=1&nofb=1", // filecoin
+  "ZEC": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficons.iconarchive.com%2Ficons%2Fcjdowner%2Fcryptocurrency-flat%2F1024%2FZcash-ZEC-icon.png&f=1&nofb=1", //zcash
+  "DASH": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos-download.com%2Fwp-content%2Fuploads%2F2018%2F04%2FDash_logo_blue.png&f=1&nofb=1", // dash
+  "ETC": "https://s2.coinmarketcap.com/static/img/coins/64x64/1321.png", // eth classic
+  "SHIB": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcryptologos.cc%2Flogos%2Fshiba-inu-shib-logo.png&f=1&nofb=1", //shibu ina
 }

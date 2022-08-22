@@ -1,9 +1,10 @@
-import React from 'react'
-import { useRecoilValue } from 'recoil'
+import React, { useEffect, useState } from 'react'
 import  { RiArrowUpSFill, RiArrowDownSFill } from 'react-icons/ri'
 import { getChartWidth } from '../../data/utils/getDimensions'
-import { allAssetsAtom } from '../../state/atoms'
 import Link from 'next/link'
+import fetchAllAssets from '../../data/prices/all/fetchAllAssets'
+import { useRecoilValue } from 'recoil'
+import { allAssetsAtom } from '../../state/atoms'
 
 interface AssetProps {
   name: string,
@@ -18,7 +19,9 @@ interface AssetProps {
 }
 
 const Collection: React.FC = () => {
+  
   const allAssets = useRecoilValue(allAssetsAtom);
+  const assets = allAssets.slice(0, 14)
 
   return (
     <div className='flex-row text-md'
@@ -36,7 +39,7 @@ const Collection: React.FC = () => {
         <h1>Supply</h1>
       </div>
       {
-        allAssets.map(item => (
+        assets.map(item => (
           <div key='' className='border-y border-lightgray border-dashed hover:cursor-pointer hover:bg-darkGray'>
             <CollectionItem 
               name={item.name} 

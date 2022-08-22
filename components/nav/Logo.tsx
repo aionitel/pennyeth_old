@@ -12,6 +12,25 @@ const Logo = () => {
   const [newsArticles, setNewsArticles] = useRecoilState(newsAtom);
   const [allAssets, setAllAssets] = useRecoilState(allAssetsAtom);
 
+  const tickers = [
+    "BTC",
+    "ETH",
+    "SOL",
+    "USDT",
+    "ADA",
+    "BCH",
+    "XRP",
+    "BNB",
+    "DOGE",
+    "LTC",
+    "FIL",
+    "XMR",
+    "ZEC",
+    "DASH",
+    "ETC",
+    "SHIB",
+  ]
+
   useEffect(() => {
     const fetchAndSetPrices = async () => {
 
@@ -22,7 +41,7 @@ const Logo = () => {
       const weeklyBtc = await fetchWeeklyBtc();
 
       // fetch all asset data for assets page
-      const allAssetData = await fetchAllAssets();
+      const allAssetData = await fetchAllAssets(tickers);
       console.log(allAssetData)
 
       setAllAssets(allAssetData);

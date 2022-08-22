@@ -13,22 +13,7 @@ interface AssetProps {
   supply: number,
 }
 
-const fetchAllAssets = async () => {
-  const tickers = [
-    "BTC",
-    "ETH",
-    "XMR",
-    "SOL",
-    "ADA",
-    "BCH",
-    "XRP",
-    "BNB",
-    "DOGE",
-    "LTC",
-    "USDT",
-    "FIL",
-  ]
-
+const fetchAllAssets = async (tickers: string[]) => {
   const assetDatas = await Promise.all(tickers.map(async (item, index) => {
     const metric_data_url = `https://data.messari.io/api/v1/assets/${item}/metrics`
   
