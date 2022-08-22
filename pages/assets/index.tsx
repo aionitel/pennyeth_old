@@ -47,8 +47,11 @@ const Home: NextPage = () => {
           animate={{ opacity:1 }}
           transition={{ duration: 1 }}
         >
-          <ListCard assets={allAssets.slice(0, 3)} />
-          <ListCard assets={allAssets.slice(14, 17)} />
+          <div className='flex my-10'>
+            <ListCard title='DeFi Projects' assets={allAssets.slice(1, 4)} />
+            <ListCard title='Privacy Coins' assets={allAssets.slice(10, 13)} />
+            <ListCard title="Meme Coins" assets={allAssets.slice(13, 16)} />
+          </div>
           <DynamicCollection />
         </motion.div>
       </div>

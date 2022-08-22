@@ -21,7 +21,7 @@ interface AssetProps {
 const Collection: React.FC = () => {
   
   const allAssets = useRecoilValue(allAssetsAtom);
-  const assets = allAssets.slice(0, 14)
+  const assets = allAssets.slice(0, 15)
 
   return (
     <div className='flex-row text-md'
