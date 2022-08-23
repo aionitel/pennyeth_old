@@ -85,7 +85,7 @@ const CollectionItem: React.FC<AssetProps> = ({ name, ticker, image, price, dail
         </div>
         {
           dailyChange < 0 ? <div className='hidden lg:flex'><RiArrowDownSFill className='mt-1 text-2xl text-red' /><h1 className='text-red hidden lg:flex pt-1'>{formatter.format(dailyChange)}%</h1></div> 
-          : <div className='hidden lg:flex'><RiArrowUpSFill className='hidden lg:flex mt-1 text-2xl text-green-400' /><h1 className='text-green-400 hidden lg:flex pt-1'>{formatter.format(dailyChange)}%</h1></div>
+          : <div className='hidden lg:flex'><RiArrowUpSFill className='hidden lg:flex mt-2 text-2xl text-green-400' /><h1 className='text-green-400 hidden lg:flex pt-1'>{formatter.format(dailyChange)}%</h1></div>
         }
         <h1 className='hidden lg:flex'>{Math.floor(volume).toLocaleString()} {ticker}</h1>
         <h1 className='hidden lg:flex'>${Math.floor(marketCap).toLocaleString()}</h1>

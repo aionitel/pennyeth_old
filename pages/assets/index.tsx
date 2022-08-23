@@ -5,7 +5,10 @@ import dynamic from 'next/dynamic'
 import ListCard from '../../components/asset/ListCard'
 import { useRecoilValue } from 'recoil'
 import { allAssetsAtom } from '../../state/atoms'
-import { useState } from 'react'
+import { AiOutlineNodeIndex } from 'react-icons/ai'
+import { BiKey } from 'react-icons/bi'
+import { FaDog } from 'react-icons/fa'
+import { FcKey } from 'react-icons/fc'
 
 interface Asset {
   name: string,
@@ -48,9 +51,9 @@ const Home: NextPage = () => {
           transition={{ duration: 1 }}
         >
           <div className='flex my-10'>
-            <ListCard title='DeFi Projects' assets={allAssets.slice(1, 4)} />
-            <ListCard title='Privacy Coins' assets={allAssets.slice(10, 13)} />
-            <ListCard title="Meme Coins" assets={allAssets.slice(13, 16)} />
+            <ListCard title='DeFi Projects' Icon={AiOutlineNodeIndex} assets={allAssets.slice(1, 4)} />
+            <ListCard title='Privacy Coins' Icon={FcKey} assets={allAssets.slice(10, 13)} />
+            <ListCard title="Meme Coins" Icon={FaDog} assets={allAssets.slice(13, 16)} />
           </div>
           <DynamicCollection />
         </motion.div>
