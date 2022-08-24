@@ -3,8 +3,8 @@ export const getChartWidth = () => {
     return 380
   } else if (typeof window !== 'undefined' && window.outerHeight <= 900 ) { // laptops and small screens
     return 1125
-  } else if (typeof window !== 'undefined' && window.outerHeight <= 1100) { // large monitors and displays
-    return 1487
+  } else if (typeof window !== 'undefined' && window.outerWidth <= 1920) { // large monitors and displays
+    return 1496
   }
 }
 

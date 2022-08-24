@@ -44,7 +44,7 @@ const Home: NextPage = () => {
       </Head>
       <div className='flex bg-black'>
         <motion.div 
-          className='flex flex-col items-center text-white px-7'
+          className='flex flex-col items-center text-white ml-8'
           exit={{ opacity:0 }}
           initial={{ opacity:0 }}
           animate={{ opacity:1 }}

@@ -49,7 +49,7 @@ const Metmask: React.FC = () => {
       '
     >
       <h1 className='text-center mr-2'>Connect with Metamask</h1>
-      <Image src='https://i.imgur.com/Ga5DEu3.png' width={logoSize} height={logoSize} alt='' />
+      <h1>🦊</h1>
     </button>
   )
 }

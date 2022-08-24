@@ -4,6 +4,7 @@ import { useMoralis } from 'react-moralis'
 import { useRecoilState } from 'recoil'
 import { currUserAtom } from '../../../state/atoms'
 import { useToasts } from 'react-toast-notifications'
+import { BiGhost } from 'react-icons/bi'
 
 const PhantomWallet: React.FC = () => {
   const { Moralis } = useMoralis()
@@ -48,11 +49,7 @@ const PhantomWallet: React.FC = () => {
       '
     >
       <h1 className='mr-2'>Connect with PhantomWallet</h1>
-      <Image src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.yadawallets.com%2Fwp-content%2Fuploads%2F2021%2F06%2FPhantom-wallet-logo-200x200.png&f=1&nofb=1'
-        width={logoSize}
-        height={logoSize}
-        alt=''
-      />
+      <BiGhost />
     </button>
   )
 }
