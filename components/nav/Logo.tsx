@@ -5,7 +5,7 @@ import fetchNews from '../../data/news/fetchNews';
 import { images } from '../../data/images/images';
 import { BiCoin } from 'react-icons/bi'
 import fetchAllAssets from '../../data/prices/metric/fetchAllAssets';
-import fetchWeeklyAsset from '../../data/prices/time/fetchWeeklyAsset';
+import fetchDailyAsset from '../../data/prices/time/fetchWeeklyAsset';
 
 const Logo = () => {
   const [currWeeklyBtc, setCurrWeeklyBtc] = useRecoilState(weeklyBtcAtom);
@@ -38,7 +38,7 @@ const Logo = () => {
       const articles = await fetchNews();
 
       // fetch percent change in last week for btc and eth
-      const weeklyBtc = await fetchWeeklyAsset("btc");
+      const weeklyBtc = await fetchDailyAsset("btc");
 
       // fetch all asset data for assets page
       const allAssetData = await fetchAllAssets(tickers);

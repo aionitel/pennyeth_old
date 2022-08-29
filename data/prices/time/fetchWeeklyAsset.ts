@@ -7,7 +7,7 @@ interface Data {
 }
 
 // fetching ytd data for btc
-const fetchWeeklyAsset = async (asset: string) => {
+const fetchDailyAsset = async (asset: string) => {
   const today = new Date();
   const daysOfYear = [];
   const year_start = new Date(2021, 0, 1);
@@ -33,4 +33,4 @@ const fetchWeeklyAsset = async (asset: string) => {
   return data;
 }
 
-export default fetchWeeklyAsset;
+export default fetchDailyAsset;
