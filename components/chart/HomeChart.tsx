@@ -26,6 +26,7 @@ const HomeChart: React.FC<HomeChartProps> = ({ data, type }) => {
           type="category"
           ticks={["root"]}
         />
+        <CartesianGrid strokeDasharray="5" />
         <Tooltip 
           labelStyle={{ color: '#8884d8' }} 
           formatter={value => new Intl.NumberFormat('en-US',
