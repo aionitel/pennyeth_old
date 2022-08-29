@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import Head from 'next/head';
 import AssetHeader from '../components/asset/AssetHeader';
-import fetchAsset from '../data/prices/fetchAsset';
+import fetchAsset from '../data/prices/metric/fetchAsset';
 
 interface Asset {
   name: string,

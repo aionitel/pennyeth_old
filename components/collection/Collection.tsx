@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import  { RiArrowUpSFill, RiArrowDownSFill } from 'react-icons/ri'
 import { getChartWidth } from '../../data/utils/getDimensions'
 import Link from 'next/link'
-import fetchAllAssets from '../../data/prices/all/fetchAllAssets'
+import fetchAllAssets from '../../data/prices/metric/fetchAllAssets'
 import { useRecoilValue } from 'recoil'
 import { allAssetsAtom } from '../../state/atoms'
 

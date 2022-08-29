@@ -3,10 +3,9 @@ import { getChartHeight, getChartWidth } from '../../data/utils/getDimensions';
 
 interface HomeChartProps {
   data: any[],
-  type: string
 }
 
-const HomeChart: React.FC<HomeChartProps> = ({ data, type }) => {
+const HomeChart: React.FC<HomeChartProps> = ({ data }) => {
  return (
     <div className='flex'>
       <AreaChart
@@ -32,7 +31,7 @@ const HomeChart: React.FC<HomeChartProps> = ({ data, type }) => {
           formatter={value => new Intl.NumberFormat('en-US',
                     { style: 'currency', currency: 'USD',
                       minimumFractionDigits: 2 }).format(value)} />
-        <Area dataKey={type} stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+        <Area dataKey='price' stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
       </AreaChart>
     </div>
   )

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { logos } from '../images/images';
+import { logos } from '../../images/images';
 
 interface Asset {
   name: string,
