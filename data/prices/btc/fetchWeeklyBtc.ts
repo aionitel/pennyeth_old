@@ -9,18 +9,23 @@ interface Data {
 // fetching ytd data for btc
 const fetchWeeklyBtc = async () => {
   const today = new Date();
-  const year_start = new Date(2021, 0, 0);
+  const daysOfYear = [];
+  const year_start = new Date(2021, 0, 1);
+
+  for (var d = new Date(2021, 0, 1); d <= today; d.setDate(d.getDate() + 1)) {
+    daysOfYear.push(new Date(d).toDateString());
+  }
 
   const btc_url = `https://data.messari.io/api/v1/assets/btc/metrics/price/time-series?start=${year_start.toString()}&end=${today.toString()}&interval=1d`
 
   const { data: btc_res } = await axios.get(btc_url);
 
-  const data: Data[] = btc_res.data.values.map(item => {
+  const data: Data[] = btc_res.data.values.map((item, index) => {
 
     const date = today.toLocaleTimeString()
 
     return {
-      "date": date,
+      "date": daysOfYear[index].slice(3, 16),
       "BTC": item[4].toFixed(2)
     }
   })

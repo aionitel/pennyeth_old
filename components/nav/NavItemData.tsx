@@ -32,15 +32,16 @@ const NavBarItemsData: NavBarItemsType[] = [
     path: '/prices',
     icon: AiOutlineAreaChart
   },
-  {
-    title: 'News',
-    path: '/news',
-    icon: BiNews
-  },
+
   {
     title: 'NFTs',
     path: '/nft',
     icon: CgSmileMouthOpen
+  },
+  {
+    title: 'News',
+    path: '/news',
+    icon: BiNews
   },
   {
     title: 'About',
