@@ -17,6 +17,16 @@ const NavItem: React.FC<NavItemProps> = ({ title, path, Icon }) => {
   // set current pathname everytime user changes path (goes to new page), initially /
   useEffect(() => setUrlPathname(location.pathname), [location.pathname])
 
+  const getColor = () => {
+    if (urlPathname === path && urlPathname === '/bitcoin') {
+      return "#f7931a"
+    } else if (urlPathname === path) {
+      return 'blue'
+    } else {
+      return "white"
+    }
+  }
+
   return (
     <Link href={path} passHref>
       <motion.div className='flex w-72 mx-2 hover:cursor-pointer hover:bg-gray rounded-full transition-all duration-300'
@@ -28,7 +38,7 @@ const NavItem: React.FC<NavItemProps> = ({ title, path, Icon }) => {
           <div className='bg-gray p-3 rounded-full'>
             <Icon style={{
               fontSize: 20,
-              color: urlPathname === path ? '#1552F0' : 'white',
+              color: getColor()
             }}/>
           </div>
           <span>
