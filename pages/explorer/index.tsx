@@ -1,9 +1,14 @@
 import { NextPage } from 'next'
+import Head from 'next/head'
 import React from 'react'
 
 const Bitcoin: NextPage = () => {
   return (
-    <div>Bitcoin</div>
+    <div>
+      <Head>
+        <title>PennyETH • Explorer</title>
+      </Head>
+    </div>
   )
 }
 
