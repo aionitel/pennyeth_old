@@ -4,7 +4,7 @@ import { IconType } from 'react-icons'
 import { GiTwoCoins } from 'react-icons/gi' 
 import { SiHomeadvisor } from 'react-icons/si'
 import { CgSmileMouthOpen } from 'react-icons/cg'
-import { IoMdPlanet } from 'react-icons/io'
+import { FaBtc, FaEthereum } from 'react-icons/fa'
 
 // universal navbar items (assets, about, etc...) to be used for both desktop and mobile navbars, and better modularity
 
@@ -28,9 +28,14 @@ const NavBarItemsData: NavBarItemsType[] = [
     icon: HandIcon
   },
   {
-    title: "Explorer",
-    path: '/explorer',
-    icon: IoMdPlanet 
+    title: "Bitcoin",
+    path: '/bitcoin',
+    icon: FaBtc
+  },
+  {
+    title: "Ethereum",
+    path: '/ethereum',
+    icon: FaEthereum
   },
   {
     title: 'NFTs',

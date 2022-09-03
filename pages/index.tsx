@@ -4,11 +4,9 @@ import Head from 'next/head'
 import { motion } from 'framer-motion'
 import HomeChart from '../components/chart/HomeChart'
 import dynamic from 'next/dynamic'
-import Collection from '../components/collection/Collection'
 import { useRecoilValue } from 'recoil'
-import { allAssetsAtom, weeklyBtcAtom } from '../state/atoms'
+import { weeklyBtcAtom } from '../state/atoms'
 import MobileNewsCarousel from '../components/news/carousel/MobileNewsCarousel'
-import NewsCarousel from '../components/news/carousel/NewsCarousel'
 
 // size of bitcoin logo in header 
 const btcIconSize = 45;
@@ -44,7 +42,7 @@ const Home: NextPage = () => {
             </div>
           </div>
           <div className='lg:flex lg:mt-4 mt-10'>
-            <HomeChart data={weeklyBtc} type='BTC' />
+            <HomeChart data={weeklyBtc} />
             <div className='flex-row hidden lg:inline'>
             </div>
           </div>

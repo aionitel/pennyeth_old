@@ -5,15 +5,12 @@ import Search from '../../components/explore/Search'
 
 const Bitcoin: NextPage = () => {
   return (
-    <div className='flex-row bg-black h-screen'>
+    <div>
       <Head>
-        <title>PennyETH • Explorer</title>
+        <title>PennyETH • Bitcoin</title>
       </Head>
-      <div className='ml-5 my-10'>
+      <div>
         <Search />
-      </div>
-      <div className='text-white'>
-        <h1>Supported Chains</h1>
       </div>
     </div>
   )
