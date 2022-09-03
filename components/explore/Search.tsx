@@ -18,7 +18,7 @@ const Search: React.FC = () => {
   }
 
   return (
-    <form method='GET' className='flex' action={`/explorer/${ticker.toLocaleLowerCase()}/${query}`} >
+    <form method='GET' className='flex' action={`/explorer/${query}`} >
       <Dropdown options={options} placeholder={options[0]} value={ticker} onChange={(e) => setTicker(e.value)} />;
       <input
         className='max-w-screen-xl w-screen rounded-sm pl-2'
