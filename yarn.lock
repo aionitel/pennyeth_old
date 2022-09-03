@@ -2461,7 +2461,7 @@ cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-classnames@^2.2.5, classnames@^2.2.6, classnames@^2.3.1:
+classnames@^2.2.3, classnames@^2.2.5, classnames@^2.2.6, classnames@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
   integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
@@ -5392,6 +5392,13 @@ react-dom@17.0.2, react-dom@^17.0.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     scheduler "^0.20.2"
+
+react-dropdown@^1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/react-dropdown/-/react-dropdown-1.10.0.tgz#c566e5de5212dc4bf2041c20d755e667760b8fab"
+  integrity sha512-jvlPVB5KU1tuacx9+igu5c+Xtpzjos5ZRXhMxHiVmdEM0SR2vabeAoL9QfN3p4e1CjgdjYsM8gCXbFNSyT25EQ==
+  dependencies:
+    classnames "^2.2.3"
 
 react-grid-carousel@^1.0.1:
   version "1.0.1"

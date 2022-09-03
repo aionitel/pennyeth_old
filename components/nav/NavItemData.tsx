@@ -1,10 +1,11 @@
 import { BiNews } from 'react-icons/bi'
 import { RiHandCoinLine as HandIcon } from 'react-icons/ri'
 import { IconType } from 'react-icons'
-import { GiTwoCoins, GiAstronautHelmet } from 'react-icons/gi' 
+import { GiTwoCoins } from 'react-icons/gi' 
 import { SiHomeadvisor } from 'react-icons/si'
 import { CgSmileMouthOpen } from 'react-icons/cg'
-import { FaUserAstronaut } from 'react-icons/fa'
+import { IoMdPlanet } from 'react-icons/io'
+
 // universal navbar items (assets, about, etc...) to be used for both desktop and mobile navbars, and better modularity
 
 interface NavBarItemsType{
@@ -29,7 +30,7 @@ const NavBarItemsData: NavBarItemsType[] = [
   {
     title: "Explorer",
     path: '/explorer',
-    icon: FaUserAstronaut
+    icon: IoMdPlanet 
   },
   {
     title: 'NFTs',
