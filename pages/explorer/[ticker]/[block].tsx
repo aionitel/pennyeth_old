@@ -2,18 +2,21 @@ import { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-const Query: NextPage = () => {
+const Block: NextPage = () => {
   const router = useRouter();
-  const { query } = router.query;
+
+  const { block } = router.query;
 
   return (
     <div>
       <Head>
-        <title>PennyETH • {query}</title>
+        <title>PennyETH • {block}</title>
       </Head>
-      <h1>{query}</h1>
+      <div className="text-white">
+        {block}
+      </div>
     </div>
   )
 }
 
-export default Query;
+export default Block;
