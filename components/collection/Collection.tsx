@@ -35,8 +35,8 @@ const Collection: React.FC = () => {
         <h1 className='hidden lg:block'>24h%</h1>
         <h1 className='hidden lg:block'>Volume(24h)</h1>
         <h1 className='pr-6 hidden lg:block'>Market Cap</h1>
-        <h1>Market Dominance</h1>
-        <h1>Supply</h1>
+        <h1 className='hidden lg:block'>Market Dominance</h1>
+        <h1 className='hidden lg:block'>Supply</h1>
       </div>
       {
         assets.map(item => (
@@ -98,8 +98,8 @@ const CollectionItem: React.FC<AssetProps> = ({ name, ticker, image, price, dail
         }
         <h1 className='hidden lg:flex'>{Math.floor(volume).toLocaleString()} {ticker}</h1>
         <h1 className='hidden lg:flex'>${Math.floor(marketCap).toLocaleString()}</h1>
-        <h1>{marketDominance.toFixed(2)}%</h1>
-        <h1>{supply.toLocaleString()}</h1>
+        <h1 className='hidden lg:flex'>{marketDominance.toFixed(2)}%</h1>
+        <h1 className='hidden lg:flex'>{supply.toLocaleString()}</h1>
       </div>
     </Link>
   )

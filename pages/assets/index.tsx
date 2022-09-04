@@ -50,7 +50,7 @@ const Home: NextPage = () => {
           animate={{ opacity:1 }}
           transition={{ duration: 1 }}
         >
-          <div className='flex my-10'>
+          <div className='lg:flex my-10'>
             <ListCard title='DeFi Projects' Icon={AiOutlineNodeIndex} assets={allAssets.slice(1, 4)} />
             <ListCard title='Privacy Coins' Icon={FcKey} assets={allAssets.slice(10, 13)} />
             <ListCard title="Meme Coins" Icon={FaDog} assets={allAssets.slice(13, 16)} />
