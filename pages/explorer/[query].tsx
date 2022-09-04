@@ -1,20 +1,27 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import Result from "../../components/explorer/Result";
+import Search from "../../components/explorer/Search";
 import fetchAddr from "../../data/explorer/fetchAddr";
 import fetchBlock from "../../data/explorer/fetchBlock";
 import fetchTx from "../../data/explorer/fetchTx";
+import { useRouter } from "next/router";
 
 const Query: NextPage = ({ data }: any) => {
+  const router = useRouter();
+  const query = router.query;
+
   return (
-    <div className='text-white'>
+    <div>
       <Head>
         <title>PennyETH • Results</title>
       </Head>
-      <div>
+      <div className='m-10'>
+        <Search />
+        <h1 className='text-white text-center my-5 text-2xl'>Your search for {query.query} yielded {data.length as string} results</h1>
         {
           data.map(item => (
-            <div key=''>
+            <div key='' className='my-5'>
               <Result data={item} />
             </div>
           ))
