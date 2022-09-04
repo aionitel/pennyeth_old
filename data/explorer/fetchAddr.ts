@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 interface Address {
+  type: string;
+  ticker: string;
   address: string;
   totalReceived: number;
   totalSent: number;
@@ -15,6 +17,8 @@ const fetchAddr = async (ticker: string, addr: string) => {
   const { data: res } = await axios.get(url);
 
   const address: Address = {
+    type: "Address",
+    ticker,
     address: res.address,
     totalReceived: res.total_received,
     totalSent: res.total_sent,

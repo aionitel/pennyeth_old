@@ -15,7 +15,7 @@ const Query: NextPage = ({ data }: any) => {
         {
           data.map(item => (
             <div key=''>
-              {item.address}
+              <Result data={item} />
             </div>
           ))
         }

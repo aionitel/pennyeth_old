@@ -18,6 +18,8 @@ interface TxOut {
 }
 
 interface Tx {
+  type: string;
+  ticker: string;
   hash: string;
   blockHeight: string;
   addresses: string[];
@@ -33,6 +35,8 @@ const fetchTx = async (ticker: string, txId: string) => {
   const { data: res } = await axios.get(url);
 
   const tx: Tx = {
+    type: "Transaction",
+    ticker,
     hash: res.hash,
     blockHeight: res.block_height,
     addresses: res.addresses,
