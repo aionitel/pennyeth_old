@@ -1,11 +1,12 @@
 import axios from 'axios'
 
 interface Block {
-  hash: string,
-  height: number,
-  nonce: number,
-  time: string,
-  prevBlock: string,
+  ticker: string;
+  hash: string;
+  height: number;
+  nonce: number;
+  time: string;
+  prevBlock: string;
 }
 
 const fetchBlock = async (ticker: string, query: string) => {
@@ -14,6 +15,7 @@ const fetchBlock = async (ticker: string, query: string) => {
   const { data: res } = await axios.get(url);
 
   const block: Block = {
+    ticker,
     hash: res.hash,
     height: res.height,
     nonce: res.nonce,

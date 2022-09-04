@@ -4,31 +4,31 @@ import React from 'react'
 import Search from '../../components/explorer/Search'
 import fetchProfile from '../../data/explorer/fetchProfile'
 
-const Bitcoin: NextPage = ({ profile }: any) => {
+const Explorer: NextPage = ({ btc_profile, eth_profile }: any) => {
   return (
     <div>
       <Head>
-        <title>PennyETH • Bitcoin</title>
+        <title>PennyETH • Explorer</title>
       </Head>
       <div className='text-white'>
         <div className='ml-10 my-8 text-black'>
           <Search />
         </div>
-        <h1>Network Info</h1>
-        <h1>{profile.name}</h1>
       </div>
     </div>
   )
 }
 
 export async function getServerSideProps() {
-  const profile = await fetchProfile("btc");
+  const btc_profile = await fetchProfile('btc');
+  const eth_profile = await fetchProfile('eth');
 
   return {
     props: {
-      profile
+      btc_profile,
+      eth_profile
     }
   }
 }
 
-export default Bitcoin
+export default Explorer;
