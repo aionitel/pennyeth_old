@@ -1,8 +1,8 @@
 import React from 'react'
 import { SiHiveBlockchain } from 'react-icons/si'
-import { BsPiggyBankFill, BsCreditCard } from 'react-icons/bs'
+import { BsCreditCard } from 'react-icons/bs'
 import Link from 'next/link'
-import Search from './Search'
+import { MdAccountBalance } from 'react-icons/md'
 
 const Result: React.FC = ({ data }: any) => {
   return (
@@ -12,20 +12,14 @@ const Result: React.FC = ({ data }: any) => {
           data.type === 'Block' ? <SiHiveBlockchain className='text-3xl' /> : null
         }
         {
-          data.type === 'Address' ? <BsPiggyBankFill /> : null
+          data.type === 'Address' ? <MdAccountBalance className='text-3xl' /> : null
         }
         {
-          data.type === 'Transaction' ? <BsCreditCard /> : null
+          data.type === 'Transaction' ? <BsCreditCard className='text-3xl' /> : null
         }
-        <div className='flex mt-1 mx-2'>
+        <div className='flex mt-1 mx-3'>
           <h1 className='text-medGray'>{data.ticker.toUpperCase()}</h1>
           <h1 className='ml-8 mr-1'>{data.type}</h1>
-          {
-            data.height !== null ? <h1 className='mr-4'>{data.height}</h1> : null
-          }
-          {
-            data.hash !== null ? <h1>({data.hash})</h1> : null
-          }
         </div>
       </div>
     </Link>

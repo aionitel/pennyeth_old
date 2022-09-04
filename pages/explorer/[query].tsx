@@ -18,7 +18,7 @@ const Query: NextPage = ({ data }: any) => {
       </Head>
       <div className='m-10'>
         <Search />
-        <h1 className='text-white text-center my-5 text-2xl'>Your search for {query.query} yielded {data.length as string} results</h1>
+        <h1 className='text-white text-center my-5 text-2xl'>Your search for {query.query} yielded {data.length as string} result(s)</h1>
         {
           data.map(item => (
             <div key='' className='my-5'>
