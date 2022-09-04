@@ -6,7 +6,14 @@ import { MdAccountBalance } from 'react-icons/md'
 
 const Result: React.FC = ({ data }: any) => {
   return (
-    <Link href='/' passHref>
+    <Link href={{
+      pathname: data.type === 'Block' ? `/block/${data.hash}` : data.type === 'Address' ? `/address/${data.address}` : `/tx/${data.hash}`,
+      query: {
+        type: "btc"
+      }
+    }}
+      passHref
+    >
       <div className='flex text-white border p-5 hover:cursor-pointer hover:bg-almostBlack transition-all duration-300'>
         {
           data.type === 'Block' ? <SiHiveBlockchain className='text-3xl' /> : null

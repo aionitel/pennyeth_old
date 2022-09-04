@@ -20,7 +20,7 @@ const MiniCollection: React.FC = () => {
   const assets = allAssets.slice(0, 5)  
 
   return (
-    <div className='flex-row border-2 border-chartGray border-dashed rounded ml-7 lg:mr-5 mr-2'
+    <div className='flex-row border-2 border-chartGray border-dashed rounded ml-7 lg:mr-4 mr-2'
       style={{
         width: getChartWidth() - 35,
       }}

@@ -11,6 +11,8 @@ const Query: NextPage = ({ data }: any) => {
   const router = useRouter();
   const query = router.query;
 
+  console.log("query" + data)
+
   return (
     <div>
       <Head>

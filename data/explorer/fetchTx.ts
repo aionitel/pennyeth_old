@@ -21,7 +21,6 @@ interface Tx {
   type: string;
   ticker: string;
   hash: string;
-  blockHeight: string;
   addresses: string[];
   vin: number;
   vout: number;
@@ -38,7 +37,6 @@ const fetchTx = async (ticker: string, txId: string) => {
     type: "Transaction",
     ticker,
     hash: res.hash,
-    blockHeight: res.block_height,
     addresses: res.addresses,
     vin: res.vin_sz,
     vout: res.vout_sz,

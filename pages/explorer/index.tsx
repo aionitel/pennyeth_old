@@ -4,7 +4,7 @@ import React from 'react'
 import Search from '../../components/explorer/Search'
 import fetchProfile from '../../data/explorer/fetchProfile'
 
-const Explorer: NextPage = ({ btc_profile, eth_profile }: any) => {
+const Explorer: NextPage = () => {
   return (
     <div>
       <Head>
@@ -17,18 +17,6 @@ const Explorer: NextPage = ({ btc_profile, eth_profile }: any) => {
       </div>
     </div>
   )
-}
-
-export async function getServerSideProps() {
-  const btc_profile = await fetchProfile('btc');
-  const eth_profile = await fetchProfile('eth');
-
-  return {
-    props: {
-      btc_profile,
-      eth_profile
-    }
-  }
 }
 
 export default Explorer;

@@ -15,7 +15,6 @@ const MobileNavBar: React.FC = () => { // mainly top of screen, with three bars,
         h-30
         bg-black border-b 
         border-lightgray 
-        w-screen 
         text-white
         text-4xl
         sticky
