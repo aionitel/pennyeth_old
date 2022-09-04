@@ -42,7 +42,6 @@ const Logo = () => {
 
       // fetch all asset data for assets page
       const allAssetData = await fetchAllAssets(tickers);
-      console.log(allAssetData)
 
       setAllAssets(allAssetData);
 
