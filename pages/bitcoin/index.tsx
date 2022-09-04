@@ -9,11 +9,17 @@ const Bitcoin: NextPage = () => {
       <Head>
         <title>PennyETH • Bitcoin</title>
       </Head>
-      <div>
-        <Search />
+      <div className='text-white'>
+        <div className='ml-10 my-8 text-black'>
+          <Search />
+        </div>
+        <h1>Network Info</h1>
       </div>
     </div>
   )
+}
+
+export async function getServerSideProps() {
 }
 
 export default Bitcoin

@@ -22,9 +22,9 @@ module.exports = {
         'gray': '#171717',
         'lightgray': '#202020',
         "medGray": "#9c9c9c",
-        'darkGray': '#020202',
         "chartGray": "#666",
         "pink": '#FFCCCC',
+        'almostBlack': "#141414",
         "black": '#000000'
       }
     },

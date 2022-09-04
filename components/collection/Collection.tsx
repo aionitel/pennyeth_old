@@ -40,7 +40,7 @@ const Collection: React.FC = () => {
       </div>
       {
         assets.map(item => (
-          <div key='' className='border-y border-lightgray border-dashed hover:cursor-pointer hover:bg-darkGray'>
+          <div key='' className='border-y border-lightgray border-dashed hover:cursor-pointer hover:bg-almostBlack'>
             <CollectionItem 
               name={item.name} 
               ticker={item.ticker}
