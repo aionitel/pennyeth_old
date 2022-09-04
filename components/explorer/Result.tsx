@@ -1,9 +1,11 @@
 import React from 'react'
 
-const Result: React.FC = () => {
+const Result: React.FC = ({ data }: any) => {
   return (
-    <div>
-
+    <div className='text-white'>
+      {
+        data.hash
+      }
     </div>
   )
 }

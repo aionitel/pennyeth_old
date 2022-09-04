@@ -16,6 +16,7 @@ const Search: React.FC = () => {
         placeholder='Search Block / Address / Transaction (Bitcoin and Ethereum)'
         onChange={handleChange}
         value={query}
+        spellCheck={false}
       >
       </input>
     </form>
