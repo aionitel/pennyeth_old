@@ -25,7 +25,7 @@ const Home: NextPage = () => {
       <Head>
         <title>PennyETH</title>
       </Head>
-      <div className='flex bg-black text-white'>
+      <div className='flex text-white'>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

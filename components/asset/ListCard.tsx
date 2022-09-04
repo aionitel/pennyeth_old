@@ -35,7 +35,7 @@ const logoSize = 20;
 
 const ListCard: React.FC<ListCardProps> = ({ title, Icon, assets }) => {
   return (
-    <div className='flex-row mx-10 bg-lightgray rounded-xl w-max'>
+    <div className='flex-row mx-5 bg-lightgray rounded-xl max-w-sm w-screen'>
       <div className='flex'>
         <Icon className='text-2xl ml-4' style={{ marginTop: 18 }} />
         <h1 className='text-lg my-4 mx-2'>Top {title}</h1>

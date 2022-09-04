@@ -11,7 +11,7 @@ interface MobileNavItemProps {
 const MobileNavItem: React.FC<MobileNavItemProps> = ({ title, path, Icon }) => { // item for each button on sliding mobile navbar, very similar to desktop navbar item
   return (
     <Link href={path} passHref>
-      <div className='flex w-72 hover:cursor-pointer bg-black'>
+      <div className='flex w-72 hover:cursor-pointer'>
         <li>
           <a className="flex items-center text-sm py-4 h-14 my-5">
             <div className='bg-gray p-3 rounded-full'>

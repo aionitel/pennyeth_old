@@ -21,7 +21,7 @@ const NavBar: React.FC = () => {
 
   return (
     <nav 
-      className="bg-black border-r border-r-lightgray hidden lg:block text-white"
+      className="border-r border-r-lightgray hidden lg:block text-white"
     >
       <div className='flex-row my-8 ml-7 justify-between'>
         <motion.div 

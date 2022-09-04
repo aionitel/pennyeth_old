@@ -7,6 +7,11 @@ import { ToastProvider } from 'react-toast-notifications'
 import NextNProgress from "nextjs-progressbar";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
+
+  if (typeof window !== 'undefined') {
+    document.body.style.background = 'black';
+  }
+
   return (
     <MoralisProvider serverUrl={process.env.NEXT_PUBLIC_DAPP_URL as string} appId={process.env.NEXT_PUBLIC_APP_ID as string}>
       <RecoilRoot>

@@ -7,7 +7,7 @@ const About = () => {
       <Head>
         <title>PennyETH  •  About</title>
       </Head>
-      <div className='bg-black h-screen text-white'>
+      <div className='h-screen text-white'>
         About Page
       </div>
     </>

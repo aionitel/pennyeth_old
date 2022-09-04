@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import Head from 'next/head';
 import React from 'react'
-import Search from '../../components/explore/Search';
+import Search from '../../components/explorer/Search';
 
 const Ethereum: NextPage = () => {
   return (
