@@ -8,6 +8,7 @@ interface Block {
   nonce: number;
   time: string;
   prevBlock: string;
+  merkleRoot: string;
 }
 
 const fetchBlock = async (ticker: string, query: string) => {
@@ -22,7 +23,8 @@ const fetchBlock = async (ticker: string, query: string) => {
     height: res.height,
     nonce: res.nonce,
     time: res.time,
-    prevBlock: res.prev_block
+    prevBlock: res.prev_block,
+    merkleRoot: res.mrkl_root,
   }
 
   return block;

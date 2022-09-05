@@ -9,7 +9,9 @@ const Block: NextPage = ({ block }: any) => {
       <Head>
         <title>PennyETH • Block {block.height}</title>
       </Head>
-      <div className='flex text-white'>
+      <div className='flex-row text-white'>
+        <h1>Block {block.height}</h1>
+        <h1>This block was mined on {block.time.slice(0, 10)}</h1>
       </div>
     </div>
   )
