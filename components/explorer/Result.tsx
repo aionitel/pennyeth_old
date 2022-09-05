@@ -9,7 +9,7 @@ const Result: React.FC = ({ data }: any) => {
     <Link href={{
       pathname: data.type === 'Block' ? `/block/${data.hash}` : data.type === 'Address' ? `/address/${data.address}` : `/tx/${data.hash}`,
       query: {
-        type: "btc"
+        ticker: data.ticker
       }
     }}
       passHref
