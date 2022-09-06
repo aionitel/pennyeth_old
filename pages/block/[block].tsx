@@ -54,11 +54,13 @@ const Block: NextPage = ({ block, txs }: any) => {
           </div>
         </div>
       <div className='my-8'>
-        <h1 className='text-3xl text-white'>Block Transactions</h1>
-        <BsFillInfoCircleFill data-tip={<h1></h1>} />
-        <ReactTooltip place='right'>
-          <h1>jkadfh</h1>
-        </ReactTooltip>
+        <div className='flex'>
+          <h1 className='text-3xl text-white'>Block Transactions</h1>
+          <BsFillInfoCircleFill data-tip={<h1></h1>} className='mt-3 mx-2' />
+          <ReactTooltip place='right'>
+            <h1>All transactions included in this block.</h1>
+          </ReactTooltip>
+        </div>
         {
             txs.map(item => (
               <TxCard tx={item} key='' />
@@ -76,7 +78,7 @@ export async function getServerSideProps(context) {
 
   // fetch txs for every tx in block
   const txs = await Promise.all(block.txs.map(async (item ,index) => {
-    const tx = await fetchTx(block.ticker, item);
+    const tx = await fetchTx(context.query.ticker, item);
 
     return tx
   }))

@@ -18,7 +18,7 @@ interface Block {
 // ticker (btc or eth) and hash or height of block required
 
 const fetchBlock = async (ticker: string, query: string) => {
-  const url = `https://api.blockcypher.com/v1/${ticker}/main/blocks/${query}`;
+  const url = `https://api.blockcypher.com/v1/${ticker}/main/blocks/${query}?token=${process.env.NEXT_PUBLIC_CHAIN_KEY}`;
 
   const { data: res } = await axios.get(url);
 
