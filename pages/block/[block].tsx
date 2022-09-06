@@ -6,23 +6,10 @@ import { BsFillInfoCircleFill } from 'react-icons/bs'
 import ReactTooltip from 'react-tooltip';
 import Search from '../../components/explorer/Search';
 import fetchTx from '../../data/explorer/fetchTx';
-
-interface Block {
-  type: string;
-  ticker: string;
-  hash: string;
-  height: number;
-  nonce: number;
-  size: number;
-  time: string;
-  depth: number;
-  txs: string[];
-  prevBlock: string;
-  merkleRoot: string;
-}
+import TxCard from '../../components/explorer/TxCard';
+import Link from 'next/link';
 
 const Block: NextPage = ({ block, txs }: any) => {
-  console.log(txs)
   return (
     <div>
       <Head>
@@ -59,7 +46,24 @@ const Block: NextPage = ({ block, txs }: any) => {
           <h1 className='py-2 border-b'>Nonce: {block.nonce}</h1>
           <h1 className='py-2 border-b'>Merkle Root: {block.merkleRoot}</h1>
           <h1 className='py-2 border-b'>Size: {block.size} (in bits)</h1>
-          <h1 className='py-2 border-b'>Previous Block: {block.prevBlock}</h1>
+          <div className='flex'>
+            <h1>Previous Block: </h1>
+            <Link href={`/block/${block.prevBlock}?ticker=${block.ticker}`} passHref>
+              <h1 className='text-blue hover:cursor-pointer hover:underline hover:opacity-[0.9] ml-2'>{block.prevBlock}</h1>
+            </Link>
+          </div>
+        </div>
+      <div className='my-8'>
+        <h1 className='text-3xl text-white'>Block Transactions</h1>
+        <BsFillInfoCircleFill data-tip={<h1></h1>} />
+        <ReactTooltip place='right'>
+          <h1>jkadfh</h1>
+        </ReactTooltip>
+        {
+            txs.map(item => (
+              <TxCard tx={item} key='' />
+            ))
+          }
         </div>
       </div>
     </div>
