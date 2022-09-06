@@ -8,7 +8,6 @@ import LoggedInHeader from '../connectWallet/LoggedInHeader'
 import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import Logo from './Logo'
-import CurrPriceLogos from '../price/CurrPriceLogos'
 
 // desktop side navbar
 
