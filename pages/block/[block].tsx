@@ -5,6 +5,7 @@ import fetchBlock from '../../data/explorer/fetchBlock';
 import { BsFillInfoCircleFill } from 'react-icons/bs'
 import ReactTooltip from 'react-tooltip';
 import Search from '../../components/explorer/Search';
+import fetchTx from '../../data/explorer/fetchTx';
 
 interface Block {
   type: string;
@@ -13,7 +14,6 @@ interface Block {
   height: number;
   nonce: number;
   size: number;
-  bits: number;
   time: string;
   depth: number;
   txs: string[];
@@ -21,7 +21,8 @@ interface Block {
   merkleRoot: string;
 }
 
-const Block: NextPage = ({ block }: { block: Block }) => {
+const Block: NextPage = ({ block, txs }: any) => {
+  console.log(txs)
   return (
     <div>
       <Head>
@@ -34,7 +35,10 @@ const Block: NextPage = ({ block }: { block: Block }) => {
         <div className='flex-row'>
           <span className='flex'>
             {
-              block.height === 0 ? <h1 className='text-3xl my-6 text-white'>Genesis Block</h1> : <h1 className='text-3xl my-6 text-white'>Block {block.height}</h1>
+              block.height === 0 ? block.ticker === 'btc' ? 
+              <h1 className='text-3xl my-6 text-white'>Genesis Block</h1> 
+              : null 
+              : <h1 className='text-3xl my-6 text-white'>Block {block.height}</h1>
             }
             <BsFillInfoCircleFill className='mt-8 mx-4' data-tip={<h1></h1>} />
             <ReactTooltip place='right'>
@@ -44,7 +48,7 @@ const Block: NextPage = ({ block }: { block: Block }) => {
           <span className='flex mb-4'>
             <h1>This block was mined on {new Date(block.time).toDateString().slice(3, 15)} at {new Date(block.time).toLocaleTimeString()}.</h1>
             {
-              block.height === 0 ? <h1>(By Satoshi Nakamoto!)</h1> : null
+              block.height === 0 ? block.ticker === 'btc' ? <h1>(By Satoshi Nakamoto!)</h1> : null : null
             }
           </span>
         </div>
@@ -66,8 +70,15 @@ export async function getServerSideProps(context) {
   // get block pertaining to page
   const block = await fetchBlock(context.query.ticker, context.query.block);
 
+  // fetch txs for every tx in block
+  const txs = await Promise.all(block.txs.map(async (item ,index) => {
+    const tx = await fetchTx(block.ticker, item);
+
+    return tx
+  }))
+
   return {
-    props: { block }
+    props: { block, txs }
   }
 }
 

@@ -7,7 +7,6 @@ interface Block {
   height: number;
   nonce: number;
   size: number;
-  bits: number;
   time: string;
   depth: number;
   txs: string[];
@@ -31,7 +30,6 @@ const fetchBlock = async (ticker: string, query: string) => {
     nonce: res.nonce,
     size: res.size,
     time: res.time,
-    bits: res.bits,
     depth: res.depth,
     txs: res.txids,
     prevBlock: res.prev_block,
