@@ -1,7 +1,9 @@
 import { NextPage } from 'next'
 import Head from 'next/head';
 import AssetHeader from '../components/asset/AssetHeader';
+import YearChart from '../components/chart/YearChart';
 import fetchAsset from '../data/prices/metric/fetchAsset';
+import fetchDailyAsset from '../data/prices/time/fetchDailyAsset';
 
 interface Asset {
   name: string,
@@ -25,7 +27,7 @@ interface Asset {
   consensusAlgorithm: string,
 }
 
-const AssetPage: NextPage = ({ asset }: any) => {
+const AssetPage: NextPage = ({ asset, weeklyAsset }: any) => {
   return (
     <div className='mx-20'>
       <Head>
@@ -34,6 +36,7 @@ const AssetPage: NextPage = ({ asset }: any) => {
       <div className='text-white mx-20'>
         <AssetHeader asset={asset} />
       </div>
+      <YearChart data={weeklyAsset} />
     </div>
   )
 }
@@ -41,10 +44,12 @@ const AssetPage: NextPage = ({ asset }: any) => {
 export async function getServerSideProps(context) {
   const ticker = context.params.ticker as string;
   const asset = await fetchAsset(ticker);
+  const weeklyAsset = await fetchDailyAsset(context.params.ticker);
 
   return {
     props: {
-      asset
+      asset,
+      weeklyAsset
     }
   }
 }

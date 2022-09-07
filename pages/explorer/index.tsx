@@ -10,7 +10,7 @@ const Explorer: NextPage = () => {
       <Head>
         <title>PennyETH • Explorer</title>
       </Head>
-      <div className='text-white'>
+      <div className='text-white h-screen'>
         <div className='ml-10 my-8 text-black'>
           <Search />
         </div>

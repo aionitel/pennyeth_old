@@ -10,14 +10,15 @@ import TxCard from '../../components/explorer/TxCard';
 import Link from 'next/link';
 
 const Block: NextPage = ({ block, txs }: any) => {
+  console.log(txs)
   return (
     <div>
       <Head>
         {
-          block.height === 0 ? <title>PennyETH • Genesis Block</title> : <title>PennyETH • {block.height}</title>
+          block.height === 0 ? <title>PennyETH • Genesis Block</title> : <title>PennyETH • Block {block.height}</title>
         }
       </Head>
-      <div className='ml-20 text-medGray'>
+      <div className='ml-14 text-medGray h-screen'>
         <div className='mt-8 text-black'><Search /></div>
         <div className='flex-row'>
           <span className='flex'>
@@ -27,7 +28,7 @@ const Block: NextPage = ({ block, txs }: any) => {
               : null 
               : <h1 className='text-3xl my-6 text-white'>Block {block.height}</h1>
             }
-            <BsFillInfoCircleFill className='mt-8 mx-4' data-tip={<h1></h1>} />
+            <BsFillInfoCircleFill className='mt-8 mx-2 text-lightgray' data-tip={<h1></h1>} />
             <ReactTooltip place='right'>
               <h1>Block at height <br /> {block.height.toLocaleString()} in the blockchain.</h1>
             </ReactTooltip>
@@ -40,14 +41,32 @@ const Block: NextPage = ({ block, txs }: any) => {
           </span>
         </div>
         <div className='flex-row'>
-          <h1 className='py-2 border-b'>Hash: {block.hash}</h1>
-          <h1 className='py-2 border-b'>Height: {block.height}</h1>
-          <h1 className='py-2 border-b'>Confirmations: {block.depth.toLocaleString()}</h1>
-          <h1 className='py-2 border-b'>Nonce: {block.nonce}</h1>
-          <h1 className='py-2 border-b'>Merkle Root: {block.merkleRoot}</h1>
-          <h1 className='py-2 border-b'>Size: {block.size} (in bits)</h1>
-          <div className='flex'>
-            <h1>Previous Block: </h1>
+          <div className='flex justify-between border-b py-4'>
+            <h1>Hash</h1>
+            <h1>{block.hash}</h1>
+          </div>
+          <div className='flex justify-between border-b py-4'>
+            <h1>Height</h1>
+            <h1>{block.height}</h1>
+          </div>
+          <div className='flex justify-between border-b py-4'>
+            <h1>Confirmations</h1>
+            <h1>{block.depth}</h1>
+          </div>
+          <div className='flex justify-between border-b py-4'>
+            <h1>Nonce</h1>
+            <h1>{block.nonce}</h1>
+          </div>
+          <div className='flex justify-between border-b py-4'>
+            <h1>Merkle Root</h1>
+            <h1>{block.merkleRoot}</h1>
+          </div>
+          <div className='flex justify-between border-b py-4'>
+            <h1>Siz:</h1>
+            <h1>{block.size}</h1>
+          </div>
+          <div className='flex justify-between border-b py-4'>
+            <h1>Previous Block</h1>
             <Link href={`/block/${block.prevBlock}?ticker=${block.ticker}`} passHref>
               <h1 className='text-blue hover:cursor-pointer hover:underline hover:opacity-[0.9] ml-2'>{block.prevBlock}</h1>
             </Link>
@@ -56,7 +75,7 @@ const Block: NextPage = ({ block, txs }: any) => {
       <div className='my-8'>
         <div className='flex'>
           <h1 className='text-3xl text-white'>Block Transactions</h1>
-          <BsFillInfoCircleFill data-tip={<h1></h1>} className='mt-3 mx-2' />
+          <BsFillInfoCircleFill data-tip={<h1></h1>} className='mt-3 mx-2 text-lightgray' />
           <ReactTooltip place='right'>
             <h1>All transactions included in this block.</h1>
           </ReactTooltip>

@@ -5,7 +5,7 @@ interface HomeChartProps {
   data: any[],
 }
 
-const HomeChart: React.FC<HomeChartProps> = ({ data }) => {
+const YearChart: React.FC<HomeChartProps> = ({ data }) => {
  return (
     <div className='flex'>
       <AreaChart
@@ -37,4 +37,4 @@ const HomeChart: React.FC<HomeChartProps> = ({ data }) => {
   )
 }
 
-export default HomeChart;
+export default YearChart;

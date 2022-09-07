@@ -5,7 +5,7 @@ import fetchNews from '../../data/news/fetchNews';
 import { images } from '../../data/images/images';
 import { BiCoin } from 'react-icons/bi'
 import fetchAllAssets from '../../data/prices/metric/fetchAllAssets';
-import fetchDailyAsset from '../../data/prices/time/fetchWeeklyAsset';
+import fetchDailyAsset from '../../data/prices/time/fetchDailyAsset';
 
 const Logo = () => {
   const [currWeeklyBtc, setCurrWeeklyBtc] = useRecoilState(weeklyBtcAtom);

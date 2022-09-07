@@ -6,7 +6,6 @@ import ListCard from '../../components/asset/ListCard'
 import { useRecoilValue } from 'recoil'
 import { allAssetsAtom } from '../../state/atoms'
 import { AiOutlineNodeIndex } from 'react-icons/ai'
-import { BiKey } from 'react-icons/bi'
 import { FaDog } from 'react-icons/fa'
 import { FcKey } from 'react-icons/fc'
 
