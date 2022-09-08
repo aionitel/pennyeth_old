@@ -44,13 +44,15 @@ const Home: NextPage = () => {
       </Head>
       <div className='flex bg-black mb-14'>
         <motion.div 
-          className='flex flex-col items-center text-white ml-8'
+          className='flex flex-col text-white ml-8 items-center'
           exit={{ opacity:0 }}
           initial={{ opacity:0 }}
           animate={{ opacity:1 }}
           transition={{ duration: 1 }}
         >
-          <AssetSearch />
+          <div className='mt-8'>
+            <AssetSearch />
+          </div>
           <div className='lg:flex my-10'>
             <ListCard title='DeFi Projects' Icon={AiOutlineNodeIndex} assets={allAssets.slice(1, 4)} />
             <ListCard title='Privacy Coins' Icon={FcKey} assets={allAssets.slice(10, 13)} />

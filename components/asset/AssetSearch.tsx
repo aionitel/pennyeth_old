@@ -13,7 +13,7 @@ const AssetSearch: React.FC = () => {
       <input
         className='max-w-screen-xs lg:max-w-screen-lg w-screen rounded-md pl-3 py-2 text-black'
         type='text'
-        placeholder='Search Asset'
+        placeholder='Search Asset (Name or Ticker, eg. "Bitcoin")'
         onChange={handleChange}
         value={asset}
         spellCheck={false}
