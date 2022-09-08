@@ -7,10 +7,11 @@ interface HomeChartProps {
 
 const YearChart: React.FC<HomeChartProps> = ({ data }) => {
  return (
-    <div className='flex'>
+    <ResponsiveContainer
+      width={getChartWidth()}
+      height={getChartHeight()}
+    >
       <AreaChart
-        height={getChartHeight()}
-        width={getChartWidth()}
         data={data}
         margin={{ top: 6, right: 10, left: 30, bottom: 0 }}
       >
@@ -33,7 +34,7 @@ const YearChart: React.FC<HomeChartProps> = ({ data }) => {
                       minimumFractionDigits: 2 }).format(value)} />
         <Area dataKey='price' stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
       </AreaChart>
-    </div>
+    </ResponsiveContainer>
   )
 }
 

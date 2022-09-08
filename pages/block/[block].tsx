@@ -5,12 +5,9 @@ import fetchBlock from '../../data/explorer/fetchBlock';
 import { BsFillInfoCircleFill } from 'react-icons/bs'
 import ReactTooltip from 'react-tooltip';
 import Search from '../../components/explorer/Search';
-import fetchTx from '../../data/explorer/fetchTx';
-import TxCard from '../../components/explorer/TxCard';
 import Link from 'next/link';
 
-const Block: NextPage = ({ block, txs }: any) => {
-  console.log(txs)
+const Block: NextPage = ({ block, }: any) => {
   return (
     <div>
       <Head>
@@ -74,17 +71,12 @@ const Block: NextPage = ({ block, txs }: any) => {
         </div>
       <div className='my-8'>
         <div className='flex'>
-          <h1 className='text-3xl text-white'>Block Transactions</h1>
+          <h1 className='text-3xl text-white mb-2'>Block Transactions</h1>
           <BsFillInfoCircleFill data-tip={<h1></h1>} className='mt-3 mx-2 text-lightgray' />
           <ReactTooltip place='right'>
             <h1>All transactions included in this block.</h1>
           </ReactTooltip>
         </div>
-        {
-            txs.map(item => (
-              <TxCard tx={item} key='' />
-            ))
-          }
         </div>
       </div>
     </div>
@@ -95,15 +87,8 @@ export async function getServerSideProps(context) {
   // get block pertaining to page
   const block = await fetchBlock(context.query.ticker, context.query.block);
 
-  // fetch txs for every tx in block
-  const txs = await Promise.all(block.txs.map(async (item ,index) => {
-    const tx = await fetchTx(context.query.ticker, item);
-
-    return tx
-  }))
-
   return {
-    props: { block, txs }
+    props: { block }
   }
 }
 
