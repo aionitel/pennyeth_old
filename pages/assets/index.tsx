@@ -8,6 +8,7 @@ import { allAssetsAtom } from '../../state/atoms'
 import { AiOutlineNodeIndex } from 'react-icons/ai'
 import { FaDog } from 'react-icons/fa'
 import { FcKey } from 'react-icons/fc'
+import AssetSearch from '../../components/asset/AssetSearch'
 
 interface Asset {
   name: string,
@@ -49,6 +50,7 @@ const Home: NextPage = () => {
           animate={{ opacity:1 }}
           transition={{ duration: 1 }}
         >
+          <AssetSearch />
           <div className='lg:flex my-10'>
             <ListCard title='DeFi Projects' Icon={AiOutlineNodeIndex} assets={allAssets.slice(1, 4)} />
             <ListCard title='Privacy Coins' Icon={FcKey} assets={allAssets.slice(10, 13)} />

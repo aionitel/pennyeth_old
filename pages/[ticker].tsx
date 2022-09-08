@@ -1,6 +1,8 @@
 import { NextPage } from 'next'
 import Head from 'next/head';
+import YearChart from '../components/chart/YearChart';
 import fetchAsset from '../data/prices/metric/fetchAsset';
+import fetchDailyAsset from '../data/prices/time/fetchDailyAsset';
 
 interface Asset {
   name: string,
@@ -25,12 +27,13 @@ interface Asset {
 }
 
 interface AssetPageProps {
-  asset: Asset
+  asset: Asset;
+  weeklyAsset: any
 }
 
-const imageSize = 200;
+const imageSize = 75;
 
-const AssetPage: NextPage<AssetPageProps> = ({ asset }) => {
+const AssetPage: NextPage<AssetPageProps> = ({ asset, weeklyAsset }) => {
   return (
     <div className='mx-20 pt-20'>
       <Head>
@@ -39,8 +42,12 @@ const AssetPage: NextPage<AssetPageProps> = ({ asset }) => {
       <div className='text-white'>
         <div className='flex'>
           <img src={asset.image} height={imageSize} width={imageSize} />
-          <h1>{asset.name}</h1>
+          <h1 className='mt-5 mx-2 text-3xl'>{asset.name}</h1>
+          <div className='bg-almostBlack mb-12 px-2 rounded-md'>
+            <h1 className='text-medGray'>{asset.ticker}</h1>
+          </div>
         </div>
+        <YearChart data={weeklyAsset} />
       </div>
     </div>
   )
@@ -49,10 +56,12 @@ const AssetPage: NextPage<AssetPageProps> = ({ asset }) => {
 export async function getServerSideProps(context) {
   const ticker = context.params.ticker as string;
   const asset = await fetchAsset(ticker);
+  const weeklyAsset = await fetchDailyAsset(ticker);
 
   return {
     props: {
       asset,
+      weeklyAsset
     }
   }
 }
