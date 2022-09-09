@@ -1,4 +1,5 @@
 import React from 'react'
+import  { RiArrowUpSFill, RiArrowDownSFill } from 'react-icons/ri'
 
 interface Asset {
   name: string,
@@ -29,6 +30,12 @@ interface AssetHeaderProps {
 const imageSize = 75;
 
 const AssetHeader: React.FC<AssetHeaderProps> = ({ asset }) => {
+
+  const formatter = new Intl.NumberFormat('en', {
+    minimumFractionDigits: 2,      
+    maximumFractionDigits: 2,
+ });
+
   return (
     <div className='flex ml-6 justify-between max-w-screen-md w-screen'>
       <div className='flex'>
@@ -38,10 +45,13 @@ const AssetHeader: React.FC<AssetHeaderProps> = ({ asset }) => {
       </div>
       <div>
         <div>
-          <h1>{asset.name} Price</h1>
-          <div className='flex'>
-            <h1>{asset.price}</h1>
-            <h1>{asset.dailyChange.toFixed(2)}</h1>
+          <h1 className='text-sm text-chartGray ml-2'>{asset.ticker}/USD Price</h1>
+          <div className='flex text-3xl'>
+            <h1 className='mt-2 mx-2'>${formatter.format(asset.price)}</h1>
+            {
+              asset.dailyChange > 0 ? <div className='flex text-lg bg-almostBlack rounded text-green-400 mt-2 px-1 py-1'><RiArrowUpSFill className='mt-2' /><h1>{asset.dailyChange.toFixed(2)}%</h1></div>
+              : <div className='flex text-lg bg-almostBlack rounded text-red mt-2 px-1 py-1'><RiArrowDownSFill className='mt-2' /><h1>{asset.dailyChange.toFixed(2)}%</h1></div>
+            }
           </div>
         </div>
       </div>

@@ -32,6 +32,15 @@ interface AssetPageProps {
   weeklyAsset: any
 }
 
+const allowedChart = [
+  "BTC",
+  "ADA",
+  "USDT",
+  "XRP",
+  "XMR",
+  "DOGE",
+]
+
 const AssetPage: NextPage<AssetPageProps> = ({ asset, weeklyAsset }) => {
   return (
     <div className='pt-12 h-screen'>
@@ -39,10 +48,15 @@ const AssetPage: NextPage<AssetPageProps> = ({ asset, weeklyAsset }) => {
         <title>PennyETH • {asset.name}</title>
       </Head>
       <div className='text-white'>
-        <AssetHeader asset={asset} />
+        <div className='mb-10'>
+          <AssetHeader asset={asset} />
+        </div>
         {
-          asset.ticker !== "ETH" ? <YearChart data={weeklyAsset} /> : null
+          allowedChart.includes(asset.ticker) ? <YearChart data={weeklyAsset} /> : null
         }
+      </div>
+      <div className='text-white'>
+        <h1>test</h1>
       </div>
     </div>
   )

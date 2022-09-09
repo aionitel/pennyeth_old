@@ -3,18 +3,6 @@ import { recoilPersist } from "recoil-persist";
 
 const { persistAtom } = recoilPersist();
 
-interface AssetProps {
-  name: string,
-  ticker: string,
-  image: string,
-  price: number,
-  dailyChange: number,
-  volume: number,
-  marketCap: number,
-  marketDominance: number,
-  supply: number,
-}
-
 interface NewsArticleProps {
   title: string,
   authors: string[],
