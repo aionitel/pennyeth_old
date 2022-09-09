@@ -13,7 +13,6 @@ const YearChart: React.FC<HomeChartProps> = ({ data }) => {
     >
       <AreaChart
         data={data}
-        margin={{ top: 6, right: 10, left: 30, bottom: 0 }}
       >
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">

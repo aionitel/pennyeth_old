@@ -37,7 +37,7 @@ const AssetHeader: React.FC<AssetHeaderProps> = ({ asset }) => {
  });
 
   return (
-    <div className='flex ml-6 justify-between max-w-screen-md w-screen'>
+    <div className='lg:flex ml-6 lg:justify-between max-w-screen-md w-screen'>
       <div className='flex'>
         <img src={asset.image} height={imageSize} width={imageSize} />
          <h1 className='mt-5 mx-2 text-3xl'>{asset.name}</h1>
@@ -45,7 +45,7 @@ const AssetHeader: React.FC<AssetHeaderProps> = ({ asset }) => {
       </div>
       <div>
         <div>
-          <h1 className='text-sm text-chartGray ml-2'>{asset.ticker}/USD Price</h1>
+          <h1 className='text-sm mt-4 lg:mt-0 text-chartGray ml-2'>{asset.ticker}/USD Price</h1>
           <div className='flex text-3xl'>
             <h1 className='mt-2 mx-2'>${formatter.format(asset.price)}</h1>
             {

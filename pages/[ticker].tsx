@@ -43,7 +43,7 @@ const allowedChart = [
 
 const AssetPage: NextPage<AssetPageProps> = ({ asset, weeklyAsset }) => {
   return (
-    <div className='pt-12 h-screen'>
+    <div className='lg:pt-12 pt-4 h-screen'>
       <Head>
         <title>PennyETH • {asset.name}</title>
       </Head>
@@ -55,8 +55,24 @@ const AssetPage: NextPage<AssetPageProps> = ({ asset, weeklyAsset }) => {
           allowedChart.includes(asset.ticker) ? <YearChart data={weeklyAsset} /> : null
         }
       </div>
-      <div className='text-white'>
-        <h1>test</h1>
+      <h1 className='text-white text-5xl'>title</h1>
+      <div className='text-white lg:flex flex-col justify-between mr-20'>
+        <div>
+          <h2>Market Cap:</h2>
+          <h2>{asset.marketCap.toLocaleString()}</h2>
+        </div>
+        <div>
+          <h2>Volume:</h2>
+          <h2>{asset.volume.toLocaleString()}</h2>
+        </div>
+        <div>
+          <h2>Stock to Flow:</h2>
+          <h2>{asset.stockToFlow.toLocaleString()}</h2>
+        </div>
+        <div>
+          <h2>All Time High:</h2>
+          <h2>${asset.allTimeHigh.toFixed(2)}</h2>
+        </div>
       </div>
     </div>
   )
