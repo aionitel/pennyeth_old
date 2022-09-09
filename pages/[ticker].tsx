@@ -1,5 +1,6 @@
 import { NextPage } from 'next'
 import Head from 'next/head';
+import AssetHeader from '../components/asset/AssetHeader';
 import YearChart from '../components/chart/YearChart';
 import fetchAsset from '../data/prices/metric/fetchAsset';
 import fetchDailyAsset from '../data/prices/time/fetchDailyAsset';
@@ -31,23 +32,17 @@ interface AssetPageProps {
   weeklyAsset: any
 }
 
-const imageSize = 75;
-
 const AssetPage: NextPage<AssetPageProps> = ({ asset, weeklyAsset }) => {
   return (
-    <div className='mx-20 pt-20'>
+    <div className='pt-12 h-screen'>
       <Head>
         <title>PennyETH • {asset.name}</title>
       </Head>
       <div className='text-white'>
-        <div className='flex'>
-          <img src={asset.image} height={imageSize} width={imageSize} />
-          <h1 className='mt-5 mx-2 text-3xl'>{asset.name}</h1>
-          <div className='bg-almostBlack mb-12 px-2 rounded-md'>
-            <h1 className='text-medGray'>{asset.ticker}</h1>
-          </div>
-        </div>
-        <YearChart data={weeklyAsset} />
+        <AssetHeader asset={asset} />
+        {
+          asset.ticker !== "ETH" ? <YearChart data={weeklyAsset} /> : null
+        }
       </div>
     </div>
   )

@@ -48,7 +48,7 @@ const Block: NextPage = ({ block, }: any) => {
           </div>
           <div className='flex justify-between border-b py-4'>
             <h1>Confirmations</h1>
-            <h1>{block.depth}</h1>
+            <h1>{block.depth + 1}</h1>
           </div>
           <div className='flex justify-between border-b py-4'>
             <h1>Nonce</h1>
@@ -59,7 +59,7 @@ const Block: NextPage = ({ block, }: any) => {
             <h1>{block.merkleRoot}</h1>
           </div>
           <div className='flex justify-between border-b py-4'>
-            <h1>Siz:</h1>
+            <h1>Size:</h1>
             <h1>{block.size}</h1>
           </div>
           <div className='flex justify-between border-b py-4'>

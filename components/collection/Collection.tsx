@@ -74,10 +74,12 @@ interface AssetProps {
 const CollectionItem: React.FC<AssetProps> = ({ name, ticker, image, price, dailyChange, volume, marketCap, marketDominance, supply }) => {
   const logoSize = 30;
 
-  const formatter = new Intl.NumberFormat('en-US', {
+  const price_formatter = new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,      
     maximumFractionDigits: 2,
  });
+
+ const compact_formtatter = new Intl.NumberFormat("en", { notation: 'compact' });
 
   return (
     <Link href={`/${ticker.toLowerCase()}`} passHref>
@@ -90,16 +92,16 @@ const CollectionItem: React.FC<AssetProps> = ({ name, ticker, image, price, dail
           </div>
         </div>
         <div>
-          <h1 className='pt-2'>${formatter.format(price)}</h1>
+          <h1 className='pt-2'>${price_formatter.format(price)}</h1>
         </div>
         {
-          dailyChange < 0 ? <div className='hidden lg:flex'><RiArrowDownSFill className='mt-1 text-2xl text-red' /><h1 className='text-red hidden lg:flex pt-1'>{formatter.format(dailyChange)}%</h1></div> 
-          : <div className='hidden lg:flex'><RiArrowUpSFill className='hidden lg:flex mt-1 text-2xl text-green-400' /><h1 className='text-green-400 hidden lg:flex pt-1'>{formatter.format(dailyChange)}%</h1></div>
+          dailyChange < 0 ? <div className='hidden lg:flex'><RiArrowDownSFill className='mt-1 text-2xl text-red' /><h1 className='text-red hidden lg:flex pt-1'>{price_formatter.format(dailyChange)}%</h1></div> 
+          : <div className='hidden lg:flex'><RiArrowUpSFill className='hidden lg:flex mt-1 text-2xl text-green-400' /><h1 className='text-green-400 hidden lg:flex pt-1'>{price_formatter.format(dailyChange)}%</h1></div>
         }
-        <h1 className='hidden lg:flex'>{Math.floor(volume).toLocaleString()} {ticker}</h1>
-        <h1 className='hidden lg:flex'>${Math.floor(marketCap).toLocaleString()}</h1>
+        <h1 className='hidden lg:flex'>{compact_formtatter.format(volume)} {ticker}</h1>
+        <h1 className='hidden lg:flex'>${compact_formtatter.format(marketCap)}</h1>
         <h1 className='hidden lg:flex'>{marketDominance.toFixed(2)}%</h1>
-        <h1 className='hidden lg:flex'>{supply.toLocaleString()}</h1>
+        <h1 className='hidden lg:flex'>{compact_formtatter.format(supply)}</h1>
       </div>
     </Link>
   )
