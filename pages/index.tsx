@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 import HomeChart from '../components/chart/YearChart'
@@ -42,7 +42,7 @@ const Home: NextPage = () => {
             </div>
           </div>
           <div className='lg:flex lg:mt-4 mt-10'>
-            <HomeChart data={weeklyBtc} />
+            <HomeChart data={weeklyBtc} marginLeft={30} marginRight={10} />
             <div className='flex-row hidden lg:inline'>
             </div>
           </div>

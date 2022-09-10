@@ -36,6 +36,7 @@ const Home: NextPage = () => {
   const DynamicCollection = dynamic(() => import('../../components/collection/Collection'), {ssr: false});
 
   const allAssets = useRecoilValue(allAssetsAtom);
+  console.log(allAssets)
   
   return (
     <>

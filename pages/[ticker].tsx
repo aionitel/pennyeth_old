@@ -52,11 +52,11 @@ const AssetPage: NextPage<AssetPageProps> = ({ asset, weeklyAsset }) => {
           <AssetHeader asset={asset} />
         </div>
         {
-          allowedChart.includes(asset.ticker) ? <YearChart data={weeklyAsset} /> : null
+          allowedChart.includes(asset.ticker) ? <YearChart data={weeklyAsset} marginLeft={25} marginRight={0} /> : null
         }
       </div>
-      <h1 className='text-white text-5xl'>title</h1>
-      <div className='text-white lg:flex flex-col justify-between mr-20'>
+      <h1 className='text-white text-3xl'>Price Info</h1>
+      <div className='text-white justify-between mr-20 max-w-screen-lg w-screen'>
         <div>
           <h2>Market Cap:</h2>
           <h2>{asset.marketCap.toLocaleString()}</h2>
